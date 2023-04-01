@@ -22,7 +22,7 @@
 <body>
 
 <!-- Navbar_Registrar-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
   <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -50,39 +50,39 @@
 </nav>
 
 <!-- Regitrar -->
-<div class="d-flex justify-content-center m-4">
-  <form>
-      <div class="form-row">
+<div class="container-fluid d-flex justify-content-center m-4">
+  <form class="border bg-primary rounded">
+      <div class="form-row m-2">
         <div class="form-group col-md-6">
-          <label for="inputAddress">Nombre</label>
+          <label class="text-white" for="inputAddress">Nombre</label>
           <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Alan">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputAddress">Apellidos</label>
+          <label class="text-white" for="inputAddress">Apellidos</label>
           <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Brito">
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row m-2">
         <div class="form-group col-md-6">
-          <label for="inputEmail4">Correo</label>
+          <label class="text-white" for="inputEmail4">Correo</label>
           <input type="email" class="form-control " placeholder="Ej: Tuemail@gmail.com" id="inputEmail4">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4">Contraseña</label>
+          <label class="text-white" for="inputPassword4">Contraseña</label>
           <input type="password" class="form-control" id="inputPassword4">
         </div>
       </div>
-      <div class="form-group">
-        <label for="inputAddress">Dirección 1</label>
+      <div class="form-group w-50 m-2">
+        <label class="text-white" for="inputAddress">Dirección 1</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Tu casa #1234">
       </div>
-      <div class="form-group">
-        <label for="inputAddress">Número de celular</label>
+      <div class="form-group w-50 m-2">
+        <label class="text-white" for="inputAddress">Número de celular</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="ej: +569 12345678">
       </div>
-      <div class="form-row">
+      <div class="form-row m-2">
           <div class="form-group col-md-4">
-              <label for="inputState">Región</label>
+              <label class="text-white" for="inputState">Región</label>
               <select id="inputState" class="form-control">
                 <option selected>Elegir</option>
                 <option>Arica</option>
@@ -95,7 +95,7 @@
             </div>
 
         <div class="form-group col-md-6">
-          <label for="inputCity">Comuna</label>
+          <label class="text-white " for="inputCity">Comuna</label>
           <input type="text" class="form-control" id="inputCity">
         </div>
         
@@ -104,11 +104,13 @@
         
       </div>
       <button type="submit" class="btn btn-info m-2">Registrar</button>
+      <button type="button" class="btn btn-danger">Cancelar</button>
+
     </form>
 </div>
 
 <!-- Footer -->
-<div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
+<div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5 border-top border-dark">
   <div class="row pt-5">
       <div class="col-lg-4 col-md-12 mb-5">
           <h1 class="mb-3 display-5 text-capitalize text-dark"><span class="text-primary">Entre</span>Amigos</h1>
