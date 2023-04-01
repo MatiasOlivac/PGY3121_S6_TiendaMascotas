@@ -1,0 +1,68 @@
+body {
+    background-image: url("src/back.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+.divisor{
+
+    border: 2px
+    solid rgb(5, 5, 5);
+    height: 2px; 
+    background-color:rgb(253, 253, 250);
+
+}
+.container{
+    background-color: gainsboro;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#inputAddress{
+    margin-left: 5px;
+    margin-right: 20px;
+    width: 200px;
+}
+#inputEmail4{
+    margin-left: 5px;
+    width: 200px;
+    position: center;
+}
+#inputState{
+    margin-left: 5px;
+    width: 200px;
+}
+#inputPassword4{
+    margin-left: 5px;
+    width: 200px;
+}
+#pass_login{
+    width: 300px;
+}
+#email_login{
+    width: 300px;
+}
+
+#inputCity{
+    margin-left: 5px;
+    width: 200px;
+}
+
+label{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+form{
+    background-color: gainsboro; 
+    width: auto; 
+}
+
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 30px;
+    bottom: 30px;
+    z-index: 11;
+    animation: action 1s infinite alternate;
+}
