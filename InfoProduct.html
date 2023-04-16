@@ -58,24 +58,70 @@
   </nav>  
 </nav>
 
-<!-- Tienda Perros-->
-
-<div class="d-flex justify-content-between">
-<div class="card mb-3 m-5 d-flex" style="max-width: 1000px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="src/img_Gato/comida2.jpg" class="card-img-top" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">title</h5>
-        <p class="card-text">.</p>
-        <p class="card-text"><small class="text-muted">o</small></p>
+<!-- Inicio detalle producto -->
+<main class="flex-shrink-0 m-5">
+  <div class="container bg-light">
+      <div class="row">
+          <div class="col-md-5 order-md-1">
+            <!--Carrusel-->
+            <div class="d-flex justify-content-center m-4">
+              <div id="carouselExampleCaptions" class="carousel slide w-100 d-flex" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="src/img_Gato/comida2.JPG" class="d-block w-100" alt="..." width="600" height="600">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="src/img_Gato/comida1.JPG" class="d-block w-100" alt="..." width="600" height="600">
+                  </div>
+                </div>
+                  <a class="carousel-control-prev" href="#carouselExampleCaptions" data-slide="prev">
+                    <div class="btn btn-info rounded" style="width: 45px; height: 45px;">
+                      <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleCaptions" data-slide="next">
+                    <div class="btn btn-info rounded" style="width: 45px; height: 45px;">
+                      <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          </div>
+            <!-- Fin carrusel -->
+            <div class="col-md-7 order-md-2">
+              <h1>---------------------------------------</h1>
+              <h2>Alimento Seco Salmón para Gato Bolsa 8 Kg</h2>
+                  <h2>$20.392 <span class="badge badge-pill badge-danger">-20%</span></h2>
+                  <p><del class="text-dark">$ 25.490 </del></p>
+              <div class="col-6">
+                <li>Marca : Master Cat</li>
+                <li>Envase : Bolsa 8 Kg</li>
+                <li>País de origen : Chile</li>
+                <li>Etapa : Adulto</li>
+                <li>Sabor : Atún y sardina.</li>
+                <li>Tipo alimento : Seco</li>
+                <li>Duración : 12 Meses</li>
+                <li>Modo de uso : Deposite Master Cat en un pocillo limpio y seco.</li>
+                <li>Información adicional : Prohibido su uso en la alimentación de rumiantes. Uso exclusivo para alimentación animal.</li>
+              </div>
+              <div class="col-3 my-3">
+                <input class="form-control" id="cantidad" name="cantidad" type="number" min="1" max="10" value="1">
+              </div>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-info" type="button">Comprar ahora</button>
+                <button class="btn btn-outline-info" type="button">Agregar al carrito</button>
+              </div>
+              <h1>---------------------------------------</h1>  
+            </div>
       </div>
-    </div>
   </div>
-</div>
-</div>
+</main>
+<!-- Fin detalle producto -->
+
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
   <div class="row pt-5">
