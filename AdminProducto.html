@@ -18,6 +18,10 @@
     <!-- Font Awesome(footer) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
 </head>
 <body>
 
@@ -67,64 +71,73 @@
     </div>    
   </nav>  
 </nav>
+<!-- Fin navbar -->
 
-<!-- Regitrar -->
-<div class="d-flex justify-content-center m-4">
-  <form class="bg-light">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputAddress">Nombre</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Alan">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputAddress">Apellidos</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Brito">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Correo</label>
-          <input type="email" class="form-control " placeholder="Ej: Tuemail@gmail.com" id="inputEmail4">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Contraseña</label>
-          <input type="password" class="form-control" id="inputPassword4">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputAddress">Dirección 1</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Tu casa #1234">
-      </div>
-      <div class="form-group">
-        <label for="inputAddress">Número de celular</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="ej: +569 12345678">
-      </div>
-      <div class="form-row">
-          <div class="form-group col-md-6">
-              <label for="inputState">Región</label>
-              <select id="inputState" class="form-control">
-                <option selected>Elegir</option>
-                <option>Arica</option>
-                <option>Antofagasta</option>
-                <option>Atacama y Coquimbo</option>
-                <option>Valparaiso</option>
-                <option>O'Higgins</option>
-                <option>Santiago</option>
-              </select>
+<!-- Inicio tablas --> 
+<div class="content mt-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">assignment</i>
+              </div>
+              <h4 class="card-title">Productos</h4>
             </div>
-
-        <div class="form-group col-md-6">
-          <label for="inputCity">Comuna</label>
-          <input type="text" class="form-control" id="inputCity">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center">#</th>
+                      <th>Nombre</th>
+                      <th>Marca</th>
+                      <th>Envase</th>
+                      <th>Etapa</th>
+                      <th>Duracion</th>
+                      <th>Modo de uso</th>
+                      <th>Informacion adicional</th>
+                      <th>Precio</th>
+                      <th class="text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>Comida1</td>
+                      <td>Master cat</td>
+                      <td>8 kg</td>
+                      <td>Adulto</td>
+                      <td>1 año</td>
+                      <td>1 año</td>
+                      <td>1 año</td>
+                      <td class="text-right"> 99,225</td>
+                      <td class="td-actions text-right">
+                        <button type="button" data-toggle="tooltip" class="btn btn-info">
+                          <i class="material-icons">person</i>
+                        </button>
+                        <button type="button" data-toggle="tooltip" class="btn btn-success">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" data-toggle="tooltip" class="btn btn-danger">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        
       </div>
-      <div class="form-group">
-        
-      </div>
-      <button type="submit" class="btn btn-info m-2 ">Registrar</button>
-    </form>
-</div>
+    </div>
+  </div>
+
+<!-- Fin tablas -->
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
