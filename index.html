@@ -18,17 +18,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
 </head>
-<body class="">
+<body class="body">
  
 <!-- Navbar_Index-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
-  <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
+  <a class="navbar-brand" href="index.html"><img src="src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link active" href="index.html">Inicio </a>
       </li>
       <li class="nav-item dropdown">
@@ -41,16 +41,26 @@
           <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
         </div>   
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+          Tipo de productos
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item bg-white text-dark" href="Comid_perros.html">Comida</a>
+          <a class="dropdown-item bg-white text-dark" href="Meds_perros.html">Medicamentos</a>
+          <a class="dropdown-item bg-white text-dark" href="Accs_perros.html">Accesorios</a>
+        </div>
+      </li>
     </ul>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link mr-4" href="Login.html">Login</a>
+            <a class="nav-link mr-4 text-light" href="Login.html">Login</a>
           </li>
           <li class="nav-item active">
-            <a class="bi bi-cart4 text-dark" href="carrito.html"></a>
+            <a class="bi bi-cart4 text-light" href="carrito.html"></a>
           </li>
       </ul>
     </div>    
@@ -72,15 +82,15 @@
         <div class="carousel-caption d-none d-md-block">
           <h5 class="badge badge-warning w-50">60% Descuento</h5>
           <p class="text-dark font-weight-bolder">Arena para Gatos</p>
-          <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Ir a la oferta</a>
+          <a href="" class="btn btn-lg btn-info mt-3 mt-md-4 px-4">Ir a la oferta</a>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="src/img_Carrupromo/Promo_DesPerro.jpg" class="d-block w-100 rounded-lg border border-dark" alt="Desparacitante de perro">
+        <img src="src/img_Carrupromo/Promo_DesPerro.jpg"  class="d-block w-100 rounded-lg border border-dark" alt="Desparacitante de perro">
         <div class="carousel-caption d-none d-md-block">
           <h5 class="badge badge-warning w-50">50% Descuento</h5>
           <p class="text-dark font-weight-bolder">Desparacitante para Perros</p>
-          <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Ir a la oferta</a>
+          <a href="" class="btn btn-lg btn-info mt-3 mt-md-4 px-4">Ir a la oferta</a>
         </div>
       </div>
       <div class="carousel-item">
@@ -88,22 +98,79 @@
         <div class="carousel-caption d-none d-md-block">
           <h4 class="badge badge-warning w-50">50% Descuento</h4>
           <p class="text-dark font-weight-bolder">Filtro de agua, para Gatos</p>
-          <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Ir a la oferta</a>
+          <a href="" class="btn btn-lg btn-info mt-3 mt-md-4 px-4">Ir a la oferta</a>
         </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" data-slide="prev">
-      <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+      <div class="btn btn-info rounded" style="width: 45px; height: 45px;">
           <span class="carousel-control-prev-icon mb-n2"></span>
       </div>
   </a>
     <a class="carousel-control-next" href="#carouselExampleCaptions" data-slide="next">
-      <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+      <div class="btn btn-info rounded" style="width: 45px; height: 45px;">
           <span class="carousel-control-next-icon mb-n2"></span>
       </div>
   </a>
   </div>
 </div>
+
+
+
+<div class="container" with="1980px" hight="1080px">
+  <div class="d-flex justify-content-around m-5">
+    <div class="card m-2 " style="width: 18rem;">
+        <img src="https://images.hola.com/imagenes/mascotas/20221020219416/razas-perros-toy/1-154-385/razas-de-perro-toy-t.jpg" calss="card-img-top" alt="Libro1">
+        <div class="card-body">
+          <h5 class="card-title">   
+            Comprar accesorios para perros es una forma fácil de mejorar la calidad de vida de tu peludo amigo.
+            Desde juguetes divertidos hasta productos para el cuidado personal, 
+            los accesorios pueden ayudar a personalizar la experiencia que tienes
+            con tu perro y hacerla más agradable.
+          </h5>       
+        </div>
+    </div>  
+    <div class="card m-2" style="width: 18rem;">
+        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/75552.ngsversion.1422285553360.jpg?w=1600&h=1067" calss="card-img-top" alt="Libro1">
+        <div class="card-body">
+            <h5 class="card-title">
+              Comprar accesorios para gatos puede hacer una gran diferencia en la calidad de vida de tu amigo felino.
+              Desde juguetes y rascadores hasta productos para el cuidado personal,
+              los accesorios pueden ayudar a mantener a tu gato feliz y saludable.
+            </h5>
+        </div>
+    </div>  
+  </div>
+  <div class="d-flex justify-content-around m-5">
+    <div class="card m-2 " style="width: 18rem;">
+      <img src="https://muchosnegociosrentables.com/wp-content/uploads/2020/10/franquicias-de-tiendas-para-mascotas.jpg" calss="card-img-top" alt="Libro1">
+      <div class="card-body">
+        <h5 class="card-title">
+          ¡Bienvenidos a nuestra tienda de animales! Aquí encontrarás todo lo que necesitas para cuidar a tu mascota. 
+          Desde comida y accesorios hasta productos para el cuidado personal,
+          nuestra tienda ofrece una amplia variedad de opciones para satisfacer las necesidades de tu animal.
+        </h5>
+      </div>
+    </div>
+  
+    <div class="card m-2" style="width: 18rem;">
+      <img src="https://cdn.shopify.com/s/files/1/0655/5228/5949/articles/Muchos_accesorios_de_mascotas_topets_2.jpg?v=1675363730" calss="card-img-top" alt="Libro1">
+      <div class="card-body">
+        <h5 class="card-title">
+          Comprar accesorios para tu mascota es una forma de mostrarle cuánto te importa su bienestar y felicidad.
+          Los accesorios adecuados pueden hacer que tu mascota se sienta cómoda, segura y feliz,
+          lo que a su vez puede mejorar su salud y comportamiento.
+        </h5>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+
+
+
+
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
@@ -154,31 +221,7 @@
       </div>
   </div>
 </div>
-<div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
-  <div class="row">
-      <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-          <p class="m-0 text-white">
-              &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
-          </p>
-      </div>
-      <div class="col-md-6 text-center text-md-right">
-          <ul class="nav d-inline-flex">
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">Privacy</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">Terms</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">FAQs</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</div>
+
 <!-- Final Footer -->
 
 <!-- Back to Top -->

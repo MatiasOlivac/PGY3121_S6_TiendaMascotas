@@ -19,11 +19,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="body">
 
 <!-- Navbar_Gatos -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-  <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
+  <a class="navbar-brand" href="index.html"><img src="src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -47,115 +47,182 @@
           Tipo de productos
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item active" href="Comid_Gatos.html">Comida</a>
-          <a class="dropdown-item" href="Med_Gatos.html">Medicamentos</a>
-          <a class="dropdown-item" href="Acce_Gatos.html">Accesorios</a>
+          <a class="dropdown-item bg-white text-dark active" href="Comid_Gatos.html">Comida</a>
+          <a class="dropdown-item bg-white text-dark" href="Med_Gatos.html">Medicamentos</a>
+          <a class="dropdown-item bg-white text-dark" href="Acce_Gatos.html">Accesorios</a>
         </div>
       </li>
     </ul>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link mr-4" href="Login.html">Login</a>
+            <a class="nav-link mr-4 text-light" href="Login.html">Login</a>
           </li>
           <li class="nav-item active">
-            <a class="bi bi-cart4 text-dark" href="carrito.html"></a>
+            <a class="bi bi-cart4 text-light" href="carrito.html"></a>
           </li>
       </ul>
     </div>    
   </nav>  
 </nav>
 
+<!-- Carousel gatos -->
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active  mb-5">
+        <img src="src/img_Gato/Imagen_banner_gatos1.JPG" class="d-block w-100" alt="..." height="400px">
+      </div>
+      <div class="carousel-item  mb-5">
+        <img src="src/img_Gato/Imagen_banner_gatos2.JPG" class="d-block w-100" alt="..." height="400px">
+      </div>
+      <div class="carousel-item  mb-5">
+        <img src="src/img_Gato/Imagen_banner_gatos3.JPG" class="d-block w-100" alt="..." height="400px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#carouselExampleFade" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </button>
+  </div>
+  
+  <!-- fin carousel gatos -->
+
 <!-- Tienda Gatos-->
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-around m-5">
 
     <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida1.jpg" calss="card-img-top" alt="Libro1">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida1.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>  
         <div class="card-body">
-            <h5 class="card-title">comida</h5>
+            <h5 class="card-title">Comida</h5>
             <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $1500</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
+            <h5 class="card-text"> $6000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
         </div>
     </div>
   
     <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida2.jpg" calss="card-img-top" alt="Libro1">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida2.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>  
         <div class="card-body">
-            <h5 class="card-title">comida</h5>
+            <h5 class="card-title">Comida</h5>
             <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $2000</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
+            <h5 class="card-text"> $2000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
         </div>
     </div>
   
     <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida3.jpg" calss="card-img-top" alt="Libro1">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida3.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>  
         <div class="card-body">
-            <h5 class="card-title">comida</h5>
+            <h5 class="card-title">Comida</h5>
             <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $4000</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
+            <h5 class="card-text"> $4000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
         </div>
     </div>
   
     <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida4.jpg" calss="card-img-top" alt="Libro1">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida4.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>  
         <div class="card-body">
-            <h5 class="card-title">comida</h5>
+            <h5 class="card-title">Comida</h5>
             <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $5000</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
+            <h5 class="card-text"> $5000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
+        </div>
+    </div>
+  </div>
+  
+  <div class="d-flex justify-content-around m-5">
+    <div class="card m-2" style="width: 18rem;">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida5.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>  
+        <div class="card-body">
+            <h5 class="card-title">Comida</h5>
+            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
+            <h5 class="card-text"> $3500</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
+        </div>
+    </div>
+  
+    <div class="card m-2" style="width: 18rem;">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida6.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>
+        <div class="card-body">
+            <h5 class="card-title">Comida</h5>
+            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
+            <h5 class="card-text"> $1900</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
+        </div>
+    </div>
+  
+    <div class="card m-2" style="width: 18rem;">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida7.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>
+        <div class="card-body">
+            <h5 class="card-title">Comida</h5>
+            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
+            <h5 class="card-text"> $7000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
+        </div>
+    </div>
+  
+    <div class="card m-2" style="width: 18rem;">
+      <a href="InfoProduct.html">
+        <img src="src/img_Gato/comida8.jpg" class="card-img-top" alt="..." style="width: 18rem; height: 18rem;">
+      </a>
+        <div class="card-body">
+            <h5 class="card-title">Comida</h5>
+            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
+            <h5 class="card-text"> $3000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
         </div>
     </div>
   
   </div>
-  
-  <div class="d-flex justify-content-between">
-  
-    <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida5.jpg" calss="card-img-top" alt="Libro1">
-        <div class="card-body">
-            <h5 class="card-title">comida</h5>
-            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $3500</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
-        </div>
-    </div>
-  
-    <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida6.jpg" calss="card-img-top" alt="Libro1">
-        <div class="card-body">
-            <h5 class="card-title">comida</h5>
-            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $1990</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
-        </div>
-    </div>
-  
-    <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida7.jpg" calss="card-img-top" alt="Libro1">
-        <div class="card-body">
-            <h5 class="card-title">comida</h5>
-            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $7000</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
-        </div>
-    </div>
-  
-    <div class="card m-2" style="width: 18rem;">
-        <img src="src/img_Gato/comida8.jpg" calss="card-img-top" alt="Libro1">
-        <div class="card-body">
-            <h5 class="card-title">comida</h5>
-            <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-            <p class="card-text"> $3000</p>
-            <button class="btn btn-warning btn-sm">Agregar</button>
-        </div>
-    </div>
-  
-  </div>
+
+  <!-- Cambio de pagina -->
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center mt-4">
+      <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <span class="page-link">2</span>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- final cambio de pagina -->
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
@@ -206,31 +273,7 @@
         </div>
     </div>
   </div>
-  <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
-    <div class="row">
-        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-            <p class="m-0 text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
-            </p>
-        </div>
-        <div class="col-md-6 text-center text-md-right">
-            <ul class="nav d-inline-flex">
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Privacy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Terms</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">FAQs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
+
   <!-- Final Footer -->
 
 <!-- Back to Top -->

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pequeños Amigos</title>
+    <title>Producto</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -20,8 +20,8 @@
 
 </head>
 <body class="body">
-
-<!-- Navbar_Pequeños_Amigos -->
+  
+<!-- Navbar_Producto -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
   <a class="navbar-brand" href="index.html"><img src="src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,24 +33,14 @@
         <a class="nav-link" href="index.html">Inicio </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           Productos
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="Perros.html">Perros</a>
           <a class="dropdown-item" href="Gatos.html">Gatos</a>
-          <a class="dropdown-item active" href="PequeñosAmigos.html">Pequeños amigos</a>
+          <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
         </div>   
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Tipo de productos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item bg-white text-dark" href="Comid_PeqAmig.html">Comida</a>
-          <a class="dropdown-item bg-white text-dark" href="Med_PeqAmig.html">Medicamentos</a>
-          <a class="dropdown-item bg-white text-dark" href="Acce_PeqAmig.html">Accesorios</a>
-        </div>
       </li>
     </ul>
   </div>
@@ -68,43 +58,70 @@
   </nav>  
 </nav>
 
-<!-- Tienda  -->
-
-
-<div class="d-flex justify-content-around m-5">
-
-  <div class="card m-5" style="width: 18rem;">
-      <img src="src/img_PeqAmig/Submen1.jpg" calss="card-img-top" alt="Libro1">
-      <div class="card-body">
-          <h5 class="card-title">Comida</h5>
-          <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <button class="btn btn-warning btn-sm">Visitar</button>
+<!-- Inicio detalle producto -->
+<main class="flex-shrink-0 m-5">
+  <div class="container bg-light">
+      <div class="row">
+          <div class="col-md-5 order-md-1">
+            <!--Carrusel-->
+            <div class="d-flex justify-content-center m-4">
+              <div id="carouselExampleCaptions" class="carousel slide w-100 d-flex" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="src/img_Gato/comida2.JPG" class="d-block w-100" alt="..." width="600" height="600">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="src/img_Gato/comida1.JPG" class="d-block w-100" alt="..." width="600" height="600">
+                  </div>
+                </div>
+                  <a class="carousel-control-prev" href="#carouselExampleCaptions" data-slide="prev">
+                    <div class="btn btn-info rounded" style="width: 45px; height: 45px;">
+                      <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleCaptions" data-slide="next">
+                    <div class="btn btn-info rounded" style="width: 45px; height: 45px;">
+                      <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          </div>
+            <!-- Fin carrusel -->
+            <div class="col-md-7 order-md-2">
+              <h1>---------------------------------------</h1>
+              <h2>Alimento Seco Salmón para Gato Bolsa 8 Kg</h2>
+                  <h2>$20.392 <span class="badge badge-pill badge-danger">-20%</span></h2>
+                  <p>Precio Normal: <del class="text-dark">$ 25.490 </del></p>
+              <div class="col-6">
+                <li>Marca : Master Cat</li>
+                <li>Envase : Bolsa 8 Kg</li>
+                <li>País de origen : Chile</li>
+                <li>Etapa : Adulto</li>
+                <li>Sabor : Atún y sardina.</li>
+                <li>Tipo alimento : Seco</li>
+                <li>Duración : 12 Meses</li>
+                <li>Modo de uso : Deposite Master Cat en un pocillo limpio y seco.</li>
+                <li>Información adicional : Prohibido su uso en la alimentación de rumiantes. Uso exclusivo para alimentación animal.</li>
+              </div>
+              <div class="col-3 my-3">
+                <p>CANTIDAD:</p>
+                <input class="form-control" type="number" min="1" max="10" value="1">
+              </div>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-info" type="button">Comprar ahora</button>
+                <button class="btn btn-outline-info" type="button">Agregar al carrito</button>
+              </div>
+              <h1>---------------------------------------</h1>  
+            </div>
       </div>
   </div>
-
-  <div class="card m-5" style="width: 18rem;">
-      <img src="src/img_PeqAmig/Submen2.jpg" calss="card-img-top" alt="Libro1">
-      <div class="card-body">
-          <h5 class="card-title">Medicamento</h5>
-          <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          
-          <button class="btn btn-warning btn-sm">Visitar</button>
-      </div>
-  </div>
-
-  
-
-  <div class="card m-5" style="width: 18rem;">
-      <img src="src/img_PeqAmig/Submen3.jpg" class="card-img-top" alt="Libro1">
-      <div class="card-body">
-          <h5 class="card-title">Accesorio</h5>
-          <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          
-          <button class="btn btn-warning btn-sm">Visitar</button>
-      </div>
-  </div>
-
-</div>
+</main>
+<!-- Fin detalle producto -->
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">

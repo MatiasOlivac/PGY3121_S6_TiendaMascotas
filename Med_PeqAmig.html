@@ -19,65 +19,66 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="body">
 
 <!-- Navbar_Pequeños_Amigos -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-  <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Inicio </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Productos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="Perros.html">Perros</a>
-          <a class="dropdown-item" href="Gatos.html">Gatos</a>
-          <a class="dropdown-item active" href="PequeñosAmigos.html">Pequeños amigos</a>
-        </div>   
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Tipo de productos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="Comid_PeqAmig.html">Comida</a>
-          <a class="dropdown-item" href="Med_PeqAmig.html">Medicamentos</a>
-          <a class="dropdown-item" href="Acce_PeqAmig.html">Accesorios</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link mr-4" href="Login.html">Login</a>
-          </li>
-          <li class="nav-item active">
-            <a class="bi bi-cart4 text-dark" href="carrito.html"></a>
-          </li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
+    <a class="navbar-brand" href="index.html"><img src="src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Productos
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item active" href="Perros.html">Perros</a>
+            <a class="dropdown-item" href="Gatos.html">Gatos</a>
+            <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
+          </div>   
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Tipo de productos
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item bg-white text-dark" href="Comid_perros.html">Comida</a>
+            <a class="dropdown-item bg-white text-dark" href="Meds_perros.html">Medicamentos</a>
+            <a class="dropdown-item bg-white text-dark" href="Accs_perros.html">Accesorios</a>
+          </div>
+        </li>
       </ul>
-    </div>    
-  </nav>  
-</nav>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link mr-4 text-light" href="Login.html">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="bi bi-cart4 text-light" href="carrito.html"></a>
+            </li>
+        </ul>
+      </div>    
+    </nav>  
+  </nav>
 
 <!-- Tienda  -->
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-around m-5">
 
   <div class="card m-2" style="width: 18rem;">
       <img src="src/img_PeqAmig/Med_ave1.0.jpg" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $1500</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $1500</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -86,8 +87,9 @@
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $2000</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $2000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -96,8 +98,9 @@
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $4000</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $4000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -106,22 +109,24 @@
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $5000</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $6000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
 </div>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-around m-5">
 
   <div class="card m-2" style="width: 18rem;">
       <img src="src/img_PeqAmig/Med_pez3.jpg" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $3500</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $3500</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -130,8 +135,9 @@
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $1990</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $1990</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -140,8 +146,9 @@
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $7000</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $7000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -150,8 +157,9 @@
       <div class="card-body">
           <h5 class="card-title">Medicamentos</h5>
           <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempore.</p>
-          <p class="card-text"> $3000</p>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <h5 class="card-text"> $3000</h5>
+            <button class="btn btn-success btn-sm">+</button>
+            <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -206,31 +214,7 @@
         </div>
     </div>
   </div>
-  <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
-    <div class="row">
-        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-            <p class="m-0 text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
-            </p>
-        </div>
-        <div class="col-md-6 text-center text-md-right">
-            <ul class="nav d-inline-flex">
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Privacy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Terms</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">FAQs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
+
   <!-- Final Footer -->
 
 <!-- Back to Top -->
