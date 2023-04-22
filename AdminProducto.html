@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ADMIN</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
-    
+
     <!-- logotipo -->
     <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
     <!-- Google Web Fonts(footer) -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome(footer) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!--     Fonts and icons     -->
+    <!--    Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-</head>
-<body background-image="bg-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Navbar_AdminProducto-->
+    <title>Página Principal</title>
+  </head>
+  <body>
+
+    <!-- Navbar_AdminProducto-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-light border-bottom text-dark">
   <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +46,7 @@
           <a class="dropdown-item active" href="AdminProducto.html">Tabla productos</a>
           <a class="dropdown-item" href="#">Clientes</a>
           <a class="dropdown-item" href="#">Compras</a>
-        </div>   
+        </div>
       </li>
     </ul>
   </div>
@@ -57,64 +59,109 @@
             <a class="bi bi-person text-dark" href="#"></a>
           </li>
       </ul>
-  </nav>  
+  </nav>
 </nav>
 <!-- Fin navbar -->
 
-<!-- Inicio tablas --> 
-<div class="content mt-4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
+<div class="container">
+
+    <!-- Inicio registro Producto -->
+    <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
           <div class="card">
-            <div class="card-header card-header-primary card-header-icon">
-              <div class="card-icon">
-                <i class="material-icons">assignment</i>
-              </div>
-              <h4 class="card-title">Productos</h4>
-            </div>
             <div class="card-body">
+              <h5 class="card-title">Registro de Productos</h5>
+
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputNombre">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputMarca">Marca</label>
+                    <input type="text" class="form-control" id="inputMarca">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputEnvase">Envase</label>
+                    <input type="text" class="form-control" id="inputEnvase">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputEtapa">Etapa</label>
+                    <input type="text" class="form-control" id="inputEtapa">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputDuracion">Duración</label>
+                    <input type="text" class="form-control" id="inputDuracion">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputPrecio">Precio</label>
+                    <input type="text" class="form-control" id="inputPrecio">
+                  </div>
+                </div>
+                <div class="input-group mt-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" for="inputModoDeUso" id="inputModoDeUso">Modo de uso</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+
+                <div class="input-group mt-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" for="inputInformacionAdicional" id="inputInformacionAdicional">Información adicional </span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+
+              <a id="btnAgregarProducto" class="btn btn-primary mt-4">Registrar</a>
+              <a id="btnEditarProductoTabla" class="btn btn-success mt-4">Editar</a>
+              <a id="btnCancelarEdicion" class="btn btn-secondary mt-4">Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Fin registro productos -->
+
+    <!-- Inicio tabla productos -->
+      <div class="row mt-4">
+        <div class="col-sm-12">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+
+              <h5 class="card-title">Listado de Productos</h5>
+
               <div class="table-responsive">
-                <table class="table">
-                  <thead>
+                <table class="table" id="tablaProductos">
+                  <thead class="thead-dark">
                     <tr>
-                      <th class="text-center">#</th>
-                      <th>Nombre</th>
-                      <th>Marca</th>
-                      <th>Envase</th>
-                      <th>Etapa</th>
-                      <th>Duracion</th>
-                      <th>Modo de uso</th>
-                      <th>Informacion adicional</th>
-                      <th>Precio</th>
-                      <th class="text-right">Acciones</th>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Envase</th>
+                      <th scope="col">Etapa</th>
+                      <th scope="col">Duración</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Modo de uso</th>
+                      <th scope="col">Información adicional</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="text-center">1</td>
-                      <td>Comida1</td>
-                      <td>Master cat</td>
-                      <td>8 kg</td>
+                      <th scope="row">1</th>
+                      <td>Alimento Seco Salmón para Gato Bolsa 8 Kg</td>
+                      <td>Master Cat</td>
+                      <td>Bolsa 8 Kg</td>
                       <td>Adulto</td>
-                      <td>1 año</td>
-                      <td>1 año</td>
-                      <td>1 año</td>
-                      <td class="text-right"> 99,225</td>
-                    </tr>
+                      <td>12 Meses</td>
+                      <td>25.490</td>
+                      <td>Deposite Master Cat en un pocillo limpio y seco.</td>
+                      <td>Prohibido su uso en la alimentación de rumiantes. Uso exclusivo para alimentación animal.</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
                       </td>
                     </tr>
-                    <td class="td-actions text-right">
-                      <button type="button" data-toggle="tooltip" class="btn btn-info">
-                        <i class="material-icons">add</i>
-                      </button>
-                      <button type="button" data-toggle="tooltip" class="btn btn-success">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" data-toggle="tooltip" class="btn btn-danger">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </td>
                   </tbody>
                 </table>
               </div>
@@ -122,93 +169,82 @@
           </div>
         </div>
       </div>
+    <!-- Fin tabla productos -->
+
     </div>
-  </div>
 
-<!-- Fin tablas -->
 
-<!-- Footer -->
-<div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
-  <div class="row pt-5">
-      <div class="col-lg-4 col-md-12 mb-5">
-          <h1 class="mb-3 display-5 text-capitalize text-dark"><span class="text-info">Grandes</span>Amigos</h1>
-          <p class="m-0">Un grupo de amigas comenzó a realizar la venta de productos para mascotas como bandanas, correas e identificaciones, todo esto para ayudar a una fundación sin fines de lucro, todo partió a través de las redes sociales, pero en la actualidad es casi imposible dar abasto a la demanda a través de las redes sociales.</p>
-      </div>
-      <div class="col-lg-8 col-md-12">
-          <div class="row">
-              <div class="col-md-4 mb-5">
-                  <h5 class="text-info mb-4">Nuestrar Redes</h5>
-                  <p><i class="fa fa-map-marker-alt mr-2"></i>Av. Vicuña Mackenna 4917, San Joaquín, Región Metropolitana</p>
-                  <p><i class="fa fa-phone-alt mr-2"></i>+569 12345678</p>
-                  <p><i class="fa fa-envelope mr-2"></i>grandesamigos@empresa.com</p>
-                  <div class="d-flex justify-content-start mt-4">
-                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
-                  </div>
-              </div>
-              <div class="col-md-4 mb-5">
-                  <h5 class="text-info mb-4">Links</h5>
-                  <div class="d-flex flex-column justify-content-start">
-                      <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                      <a class="text-dark mb-2" href="Login.html"><i class="fa fa-angle-right mr-2"></i>Login</a>
-                      <a class="text-dark mb-2" href="registrar.html"><i class="fa fa-angle-right mr-2"></i>Registrate</a>
-                      <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
-                  </div>
-              </div>
-              <div class="col-md-4 mb-5">
-                  <h5 class="text-info mb-4">Fundación</h5>
-                  <p>*todos los clientes que estén suscritos se les otorgará un 5% de descuento en el total de la venta*</p>
-                  <form action="">
-                      <div class="form-group">
-                          <input type="text" class="form-control border-0" placeholder="Tu nombre" required="required" />
-                      </div>
-                      <div class="form-group">
-                          <input type="email" class="form-control border-0" placeholder="Tu email" required="required" />
-                      </div>
-                      <div>
-                          <button class="btn btn-lg btn-info btn-block border-0" type="submit">Suscribete</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-<div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
-  <div class="row">
-      <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-          <p class="m-0 text-white">
-              &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
-          </p>
-      </div>
-      <div class="col-md-6 text-center text-md-right">
-          <ul class="nav d-inline-flex">
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">Privacy</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">Terms</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">FAQs</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</div>
-<!-- Final Footer -->
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-info back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-<!-- script     -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <!--- Mis scripts -->
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var Nombre;
+        var Marca;
+        var Envase;
+        var Etapa;
+        var Duracion;
+        var Precio;
+        var ModoDeUso;
+        var InformacionAdicional;
+
+        $("#btnAgregarProducto").click(function(e){
+            e.preventDefault(); //que no se actualice la pantalla
+            Nombre = $("#inputNombre").val();
+            Marca = $("#inputMarca").val();
+            Envase = $("#inputEnvase").val();
+            Etapa = $("#inputEtapa").val();
+            Duracion = $("#inputDuracion").val();
+            Precio = $("#inputPrecio").val();
+            ModoDeUso = $("#inputModoDeUso").val();
+            InformacionAdicional = $("#inputInformacionAdicional").val();
+            resultado = validar_login(Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional);
+
+            resultado2 = validar_login2(Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional);
+
+            if(!resultado2){
+                console.log("error en ingresar los datos");
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'error en ingresar los datos',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                return;
+            }
+
+            console.log(resultado);
+
+
+            ssssssssssssssssssssssssssss
+        });
+
+        // //funcion normal
+        // function validar_login(Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional){
+        //     if (email == 'ernesto@correo.cl' && pass == '123'){
+        //         return "Correcto";
+        //     } else{
+        //         return "Correo o Password incorrecto";
+        //     }
+        // }
+
+        // //funcion tipo flecha
+        // validar_login2 = (Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional) => {
+        //     if (email != 'ernesto@correo.cl' || pass != '123'){
+        //         return false;
+        //     }
+        //     return true;
+        // }
+    
+
+    </script>
+
+
+  </body>
 </html>
