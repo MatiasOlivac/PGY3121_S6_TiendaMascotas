@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+    <link href="styloAdmin.css" rel="stylesheet" />
 
     <!-- logotipo -->
     <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
@@ -45,7 +45,7 @@
         <div class="dropdown-menu">
           <a class="dropdown-item active" href="AdminProducto.html">Tabla productos</a>
           <a class="dropdown-item" href="#">Clientes</a>
-          <a class="dropdown-item" href="#">Compras</a>
+          <a class="dropdown-item" href="#">Ventas</a>
         </div>
       </li>
     </ul>
@@ -55,95 +55,101 @@
           <li class="nav-item">
             <a class="nav-link mr-4 text-dark" href="Login.html">Cerrar Sesion</a>
           </li>
-          <li class="nav-item">
-            <a class="bi bi-person text-dark" href="#"></a>
-          </li>
       </ul>
   </nav>
 </nav>
 <!-- Fin navbar -->
 
-<div class="container">
-
-    <!-- Inicio registro Producto -->
-    <div class="row justify-content-md-center mt-4">
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Registro de Productos</h5>
-
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="inputNombre">Nombre</label>
-                    <input type="text" class="form-control" id="inputNombre">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputMarca">Marca</label>
-                    <input type="text" class="form-control" id="inputMarca">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputEnvase">Envase</label>
-                    <input type="text" class="form-control" id="inputEnvase">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputEtapa">Etapa</label>
-                    <input type="text" class="form-control" id="inputEtapa">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputDuracion">Duración</label>
-                    <input type="text" class="form-control" id="inputDuracion">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputPrecio">Precio</label>
-                    <input type="text" class="form-control" id="inputPrecio">
-                  </div>
-                </div>
-                <div class="input-group mt-4">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" for="inputModoDeUso" id="inputModoDeUso">Modo de uso</span>
-                    </div>
-                    <textarea class="form-control" aria-label="With textarea"></textarea>
-                </div>
-
-                <div class="input-group mt-4">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" for="inputInformacionAdicional" id="inputInformacionAdicional">Información adicional </span>
-                    </div>
-                    <textarea class="form-control" aria-label="With textarea"></textarea>
-                </div>
-
-              <a id="btnAgregarProducto" class="btn btn-primary mt-4">Registrar</a>
-              <a id="btnEditarProductoTabla" class="btn btn-success mt-4">Editar</a>
-              <a id="btnCancelarEdicion" class="btn btn-secondary mt-4">Cancelar</a>
+<div class="container mt-5">
+  <!-- Inicio registro Producto -->
+    <div class="row justify-content-md-center">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Registro de Productos</h5>
+            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+              <div class="fileinput-new thumbnail img-no-padding" style="max-width: 200px; max-height: 200px;">
+                <img src="src/image_placeholder.jpg" alt="...">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail img-no-padding" style="max-width: 370px; max-height: 250px;"></div>
+              <div>
+                <span class="btn btn-outline-default btn-round btn-file"><span class="fileinput-new" id="ImagenProducto">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                <a href="#paper-kit" class="btn btn-link btn-danger fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+              </div>
             </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputNombre">Nombre</label>
+                  <input type="text" class="form-control" id="inputNombre">
+                  <input type="text" class="form-control" id="inputIdProducto" hidden>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputMarca">Marca</label>
+                  <input type="text" class="form-control" id="inputMarca">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputEnvase">Envase</label>
+                  <input type="text" class="form-control" id="inputEnvase">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputEtapa">Etapa</label>
+                  <input type="text" class="form-control" id="inputEtapa">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputDuracion">Duración</label>
+                  <input type="text" class="form-control" id="inputDuracion">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputPrecio">Precio</label>
+                  <input type="text" class="form-control" id="inputPrecio">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputModoDeUso">Modo De Uso</label>
+                  <textarea class="form-control" aria-label="With textarea" id="inputModoDeUso"></textarea>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputInformacionAdicional">Información adicional</label>
+                  <textarea class="form-control" aria-label="With textarea" id="inputInformacionAdicional"></textarea>
+                </div>
+              </div>
+
+            <a id="btnAgregarProducto" class="btn btn-primary">Registrar</a>
+            <a id="btnEditarProducto" class="btn btn-success">Editar</a>
           </div>
         </div>
       </div>
-    <!-- Fin registro productos -->
 
-    <!-- Inicio tabla productos -->
-      <div class="row mt-4">
-        <div class="col-sm-12">
-          <div class="card" style="height: 100%;">
-            <div class="card-body">
+  <div class="row mt-4 mb-4">
+    <div class="col-sm-12">
+      <div class="card" style="height: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">Listado Productos</h5>
 
-              <h5 class="card-title">Listado de Productos</h5>
-
-              <div class="table-responsive">
-                <table class="table" id="tablaProductos">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Marca</th>
-                      <th scope="col">Envase</th>
-                      <th scope="col">Etapa</th>
-                      <th scope="col">Duración</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Modo de uso</th>
-                      <th scope="col">Información adicional</th>
-                    </tr>
-                  </thead>
+    <!-- Tabla de usuarios -->
+            <div class="table-responsive">
+              <table class="table" id="tablaProductos">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Envase</th>
+                    <th scope="col">Etapa</th>
+                    <th scope="col">Duración</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Modo de uso</th>
+                    <th scope="col">Información adicional</th>
+                  </tr>
+                </thead>
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
@@ -157,8 +163,8 @@
                       <td>Prohibido su uso en la alimentación de rumiantes. Uso exclusivo para alimentación animal.</td>
                       <td>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                          <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
                         </div>
                       </td>
                     </tr>
@@ -169,7 +175,7 @@
           </div>
         </div>
       </div>
-    <!-- Fin tabla productos -->
+    <!-- Fin registro productos -->
 
     </div>
 
@@ -178,73 +184,126 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
-    <!--- Mis scripts -->
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--- Mis scripts -->
+    <script> 
 
-    <script>
-        var Nombre;
-        var Marca;
-        var Envase;
-        var Etapa;
-        var Duracion;
-        var Precio;
-        var ModoDeUso;
-        var InformacionAdicional;
+    // Agregar productos
+    $("#btnAgregarProducto").click(function(e){
+        e.preventDefault(); //que no se actualice la pantalla
+        var Nombre = $("#inputNombre").val();
+        var Marca = $("#inputMarca").val();
+        var Envase = $("#inputEnvase").val();
+        var Etapa = $("#inputEtapa").val();
+        var Duracion = $("#inputDuracion").val();
+        var Precio = $("#inputPrecio").val();
+        var ModoDeUso = $("#inputModoDeUso").val();
+        var InformacionAdicional = $("#inputInformacionAdicional").val();
+        var ImagenProducto =$("ImagenProducto").var();
 
-        $("#btnAgregarProducto").click(function(e){
-            e.preventDefault(); //que no se actualice la pantalla
-            Nombre = $("#inputNombre").val();
-            Marca = $("#inputMarca").val();
-            Envase = $("#inputEnvase").val();
-            Etapa = $("#inputEtapa").val();
-            Duracion = $("#inputDuracion").val();
-            Precio = $("#inputPrecio").val();
-            ModoDeUso = $("#inputModoDeUso").val();
-            InformacionAdicional = $("#inputInformacionAdicional").val();
-            resultado = validar_login(Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional);
-
-            resultado2 = validar_login2(Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional);
-
-            if(!resultado2){
-                console.log("error en ingresar los datos");
-
-                Swal.fire({
-                    icon: 'error',
-                    title: 'error en ingresar los datos',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-
-                return;
-            }
-
-            console.log(resultado);
+        let fila = `<tr>
+                            <th scope="row">${ultimoId()}</th>
+                            <td>${Nombre}</td>
+                            <td>${Marca}</td>
+                            <td>${Envase}</td>
+                            <td>${Etapa}</td>
+                            <td>${Duracion}</td>
+                            <td>${Precio}</td>
+                            <td>${ModoDeUso}</td>
+                            <td>${InformacionAdicional}</td>
+                            <td>${ImagenProducto}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+            
+           $("#tablaProductos").append(fila);
+        })
+    
 
 
-            ssssssssssssssssssssssssssss
+        function ultimoId(){
+            let ultimoId = $("#tablaProductos tr:last th").text();
+            return parseInt(ultimoId)+1;
+        }
+
+       // borrar linea
+        $(".btnEliminarProducto").click(function(e){
+            e.preventDefault();
+            //console.log('btnEliminarUsuario');
+            $(this).closest('tr').remove();
+        })
+
+        //editar usuario de la tabla
+        $(".btnEditarProducto").click(function(e){
+            e.preventDefault();
+            var idProducto = $(this).closest('tr').find('th').text();
+            var producto = $(this).closest('tr').find('td');
+
+            var Nombre = producto.eq(0).text();
+            var Marca = producto.eq(1).text();
+            var Envase = producto.eq(2).text();
+            var Etapa = producto.eq(3).text();
+            var Duracion = producto.eq(4).text();
+            var Precio = producto.eq(5).text();
+            var ModoDeUso = producto.eq(6).text();
+            var InformacionAdicional = producto.eq(6).text();
+
+            $("#inputNombre").val(Nombre);
+            $("#inputMarca").val(Marca);
+            $("#inputEnvase").val(Envase);
+            $("#inputApellidoMaterno").val(Etapa);
+            $("#inputDuracion").val(Duracion);
+            $("#inputPrecio").val(Precio);
+            $("#inputModoDeUso").val(ModoDeUso);
+            $("#inputInformacionAdicional").val(InformacionAdicional);
+            $("#inputIdProducto").val(idProducto);
+
         });
 
-        // //funcion normal
-        // function validar_login(Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional){
-        //     if (email == 'ernesto@correo.cl' && pass == '123'){
-        //         return "Correcto";
-        //     } else{
-        //         return "Correo o Password incorrecto";
-        //     }
-        // }
+        //boton editar del formulario
+        $("#btnEditarProductoTabla").click(function(){
+          var Nombre = $("#inputNombre").val();
+          var Marca = $("#inputMarca").val();
+          var Envase = $("#inputEnvase").val();
+          var Etapa = $("#inputEtapa").val();
+          var Duracion = $("#inputDuracion").val();
+          var Precio = $("#inputPrecio").val();
+          var ModoDeUso = $("#inputModoDeUso").val();
+          var InformacionAdicional = $("#inputInformacionAdicional").val();
 
-        // //funcion tipo flecha
-        // validar_login2 = (Nombre, Marca, Envase, Etapa, Duracion, Precio, ModoDeUso, InformacionAdicional) => {
-        //     if (email != 'ernesto@correo.cl' || pass != '123'){
-        //         return false;
-        //     }
-        //     return true;
-        // }
-    
+          var idProducto = $("#inputIdProducto").val();
+
+            let fila = `<tr>
+                            <th scope="row">${idProducto}</th>
+                            <td>${Nombre}</td>
+                            <td>${Marca}</td>
+                            <td>${Envase}</td>
+                            <td>${Etapa}</td>
+                            <td>${Duracion}</td>
+                            <td>${Precio}</td>
+                            <td>${ModoDeUso}</td>
+                            <td>${InformacionAdicional}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+
+        //eliminar la fila que seleccione
+        $(`#tablaProductos tr th:contains(${idProducto})`).closest('tr').remove();
+
+        $("#tablaProductos").append(fila);
+
+        });
+
 
     </script>
 
-
-  </body>
 </html>
