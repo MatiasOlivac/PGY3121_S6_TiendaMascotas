@@ -79,7 +79,7 @@
             </div>
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputNombre">Nombre</label>
+                  <label for="inputNombre">Nombre(*)</label>
                   <input type="text" class="form-control" id="inputNombre">
                   <input type="text" class="form-control" id="inputIdProducto" hidden>
                 </div>
@@ -123,7 +123,7 @@
               </div>
 
             <a id="btnAgregarProducto" class="btn btn-primary">Registrar</a>
-            <a id="btnEditarProducto" class="btn btn-success">Editar</a>
+            <a id="btnEditarProductoTabla" class="btn btn-success">Editar</a>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
               <table class="table" id="tablaProductos">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Marca</th>
                     <th scope="col">Envase</th>
@@ -191,7 +191,6 @@
 
     // Agregar productos
     $("#btnAgregarProducto").click(function(e){
-        e.preventDefault(); //que no se actualice la pantalla
         var Nombre = $("#inputNombre").val();
         var Marca = $("#inputMarca").val();
         var Envase = $("#inputEnvase").val();
@@ -221,9 +220,10 @@
             
            $("#tablaProductos").append(fila);
            $('#btnEditarProductoTabla').hide();
-
+           e.preventDefault(); //que no se actualice la pantalla
            limpiarFormulario();
-           
+           console.log('btnAgregarProducto');
+
         });
     
 
@@ -236,12 +236,12 @@
        // borrar linea
         $(".btnEliminarProducto").click(function(e){
             e.preventDefault();
-            //console.log('btnEliminarUsuario');
+            console.log('btnEliminarUsuario');
             $(this).closest('tr').remove();
             
-        })
+        });
 
-        //editar usuario de la tabla
+        //editar producto de la tabla
         $(".btnEditarProducto").click(function(e){
             e.preventDefault();
             var idProducto = $(this).closest('tr').find('th').text();
@@ -267,6 +267,7 @@
             $("#inputIdProducto").val(idProducto);
             
             $('#btnEditarProductoTabla').show();
+            console.log('btnEditarProducto');
         });
 
         //boton editar del formulario
@@ -304,7 +305,7 @@
 
         $("#tablaProductos").append(fila);
 
-      
+        console.log('btnEditarProducto');
 
         });
 
