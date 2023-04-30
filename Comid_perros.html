@@ -23,7 +23,7 @@
   
 <!-- Navbar_Perros -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
-  <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+  <a class="navbar-brand" href="index.html"><img src="src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,21 +33,21 @@
         <a class="nav-link" href="index.html">Inicio </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           Productos
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item active" href="Perros.html">Perros</a>
+          <a class="dropdown-item" href="Perros.html">Perros</a>
           <a class="dropdown-item" href="Gatos.html">Gatos</a>
           <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
         </div>   
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           Tipo de productos
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item bg-white text-dark" href="Comid_perros.html">Comida</a>
+          <a class="dropdown-item active bg-white text-dark" href="Comid_perros.html">Comida</a>
           <a class="dropdown-item bg-white text-dark" href="Meds_perros.html">Medicamentos</a>
           <a class="dropdown-item bg-white text-dark" href="Accs_perros.html">Accesorios</a>
         </div>
@@ -99,44 +99,56 @@
 <div class="d-flex justify-content-around m-5">
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro1.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro1.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Nath Puppy Mini sabor pollo & arroz café alimento para perros</h5>
           <p class="card-text"> Alimento para cachorros mini con sabor a pollo y arroz marrón</p>
           <h5 class="card-text "> $4.990</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>          
+          <!-- ETIQUETA DESCUENTO -->
+          <div class="discount-badge"><span id="etiqueta_descuento" style="background-color: rgb(235, 0, 41); color: rgb(255, 255, 255);">-35% </span></div>
       </div>
   </div>
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro2.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro2.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Proplan Adulto Razas Medianas (Ex Complete) alimento para perro</h5>
           <p class="card-text"> Para perros adultos de raza mediana</p>
           <h5 class="card-text "> $26.990</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
+          <!-- ETIQUETA DESCUENTO -->
+          <div class="discount-badge"><span id="etiqueta_descuento" style="background-color: rgb(235, 0, 41); color: rgb(255, 255, 255);">-15% </span></div>
       </div>
   </div>
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro3.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro3.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Royal Canin adulto Mini Adult alimento para perro</h5>
           <p class="card-text"> Perros adultos de raza pequeña.</p>
           <h5 class="card-text "> $51.905</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
+          <!-- ETIQUETA DESCUENTO -->
+          <div class="discount-badge"><span id="etiqueta_descuento" style="background-color: rgb(235, 0, 41); color: rgb(255, 255, 255);">-5% </span></div>
       </div>
   </div>
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro4.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro4.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Royal Canin adulto maxi adult 15 KG alimento para perro
         </h5>
           <p class="card-text"> CPerros adultos de raza grande.
         </p>
           <h5 class="card-text "> $77.235</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
+          <!-- ETIQUETA DESCUENTO -->
+          <div class="discount-badge"><span id="etiqueta_descuento" style="background-color: rgb(235, 0, 41); color: rgb(255, 255, 255);">-5% </span></div>
       </div>
   </div>
 
@@ -145,46 +157,50 @@
 <div class="d-flex justify-content-around m-5">
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro5.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro5.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Taste Of The Wild Pacific Stream alimento para perro</h5>
           <p class="card-text"> Comida Holística Para Perros Adultos</p>
           <h5 class="card-text "> $24.990</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro6.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro6.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Dogxtreme Adult Chicken & Rice alimento para perro</h5>
           <p class="card-text"> Elaborado para perros adultos de cualquier raza, a base de pollo
 
         </p>
           <h5 class="card-text "> $14.990</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
   <div class="card m-2 " style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro7.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro7.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Bravery Salmon Adult alimento para perro</h5>
           <p class="card-text"> Alimento completo para perros adultos de razas medianas y grandes
         </p>
           <h5 class="card-text "> $23.700</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
   <div class="card m-2" style="width: 18rem;">
-      <img src="/src/img_Perro/Imagen_comida_perro8.JPG" calss="card-img-top" alt="Libro1">
+      <img src="src/img_Perro/Imagen_comida_perro8.JPG" calss="card-img-top" alt="Libro1">
       <div class="card-body">
           <h5 class="card-title">Taste Of The Wild High Prairie alimento para perro</h5>
           <p class="card-text"> Alimento super premium elaborado a base de carne de bisonte
         </p>
           <h5 class="card-text "> $24.990</h5>
-          <button class="btn btn-warning btn-sm">Agregar</button>
+          <button class="btn btn-success btn-sm">+</button>
+          <button class="btn btn-danger btn-sm">-</button>
       </div>
   </div>
 
@@ -258,31 +274,7 @@
       </div>
   </div>
 </div>
-<div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
-  <div class="row">
-      <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-          <p class="m-0 text-white">
-              &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
-          </p>
-      </div>
-      <div class="col-md-6 text-center text-md-right">
-          <ul class="nav d-inline-flex">
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">Privacy</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">Terms</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="#">FAQs</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</div>
+
 <!-- Final Footer -->
 
 <!-- Back to Top -->

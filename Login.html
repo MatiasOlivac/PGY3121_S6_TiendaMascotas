@@ -23,7 +23,7 @@
 
 <!-- Navbar_Login-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
-    <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+    <a class="navbar-brand" href="index.html"><img src="src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -84,19 +84,19 @@
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
                                 <label for="email_login" class="text-dark">Correo:</label><br>
-                                <input type="email" class="form-control" id="email_login" placeholder="Ingrese su correo aquí" required>
+                                <input type="email" class="form-control" id="input_Email" placeholder="Ingrese su correo aquí" required>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-dark">Contraseña:</label><br>
-                                <input type="password" class="form-control" id="pass_login" placeholder="Ingrese su contraseña aquí" required>
+                                <input type="password" class="form-control" id="input_Password" placeholder="Ingrese su contraseña aquí" required>
                             </div>
                             <div class="form-group">
-                                <label for="remember-me" class="text-dark"><span>Recordar datos</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md mt-3 px-5" value="Iniciar">
+                                <input type="submit" name="submit" class="btn btn-info btn-md mt-3 px-5" value="Ingresar" id="btn_enviar">
+                                <a href="registrar.html" class="btn btn-outline-info mt-3 px-5">Registrarse</a>
                             </div>
                             <div id="register-link" class="text-right">
 
-                                <a href="registrar.html" class="btn btn-outline-info">Registrarse</a>
+                                
                             </div>
                         </form>
                     </div>
@@ -157,36 +157,59 @@
         </div>
     </div>
   </div>
-  <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
-    <div class="row">
-        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-            <p class="m-0 text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
-            </p>
-        </div>
-        <div class="col-md-6 text-center text-md-right">
-            <ul class="nav d-inline-flex">
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Privacy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Terms</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">FAQs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
+
   <!-- Final Footer -->
     
 <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+
+     <!-- sweetalert2 -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ <script>
+     var email;
+     var pass;
+
+     $("#btn_enviar").click(function(e){
+         e.preventDefault(); //que no se actualice la pantalla
+         email = $("#input_Email").val();
+         pass = $("#input_Password").val();
+         resultado = validar_login(email,pass);
+
+         if(!resultado){
+             console.log("correo o contraseña incorrecta");
+
+             Swal.fire({
+                 icon: 'error',
+                 title: 'correo o contraseña incorrecta',
+                 showConfirmButton: false,
+                 timer: 1500
+             });
+
+             return;
+         }
+
+         $(location).attr('href','index.html'); //agrega funcionalidad href
+
+         console.log(resultado);
+
+     });
+
+     //funcion normal
+     function validar_login(email, pass){
+         if (email == 'nuevo@correo.cl' && pass == '123'){
+             return "Correcto";
+         } else{
+             return "Correo o Password incorrecto";
+         }
+     }
+
+
+
+
+ </script> 
 </body>
 </html>
