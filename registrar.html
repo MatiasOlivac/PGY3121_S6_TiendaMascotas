@@ -1,132 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
-    
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Google Web Fonts(footer) -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
-    <!-- Font Awesome(footer) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--- Mis estilos -->
 
-<!-- Navbar_Registrar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
-  <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Inicio </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Productos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item active" href="Perros.html">Perros</a>
-          <a class="dropdown-item" href="Gatos.html">Gatos</a>
-          <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
-        </div>   
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Tipo de productos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item bg-white text-dark" href="Comid_perros.html">Comida</a>
-          <a class="dropdown-item bg-white text-dark" href="Meds_perros.html">Medicamentos</a>
-          <a class="dropdown-item bg-white text-dark" href="Accs_perros.html">Accesorios</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+
+    <title>Página Principal</title>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
+      <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link mr-4 text-light" href="Login.html">Login</a>
+            <a class="nav-link" href="index.html">Inicio </a>
           </li>
-          <li class="nav-item active">
-            <a class="bi bi-cart4 text-light" href="carrito.html"></a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item active" href="Perros.html">Perros</a>
+              <a class="dropdown-item" href="Gatos.html">Gatos</a>
+              <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
+            </div>   
           </li>
-      </ul>
-    </div>    
-  </nav>  
-</nav>
-
-<!-- Regitrar -->
-<div class="d-flex justify-content-center m-4">
-  <form>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputAddress">Nombre</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Alan">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputAddress">Apellidos</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Brito">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Correo</label>
-          <input type="email" class="form-control " placeholder="Ej: Tuemail@gmail.com" id="inputEmail4">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Contraseña</label>
-          <input type="password" class="form-control" id="inputPassword4">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputAddress">Dirección 1</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Tu casa #1234">
-      </div>
-      <div class="form-group">
-        <label for="inputAddress">Número de celular</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="ej: +569 12345678">
-      </div>
-      <div class="form-row">
-          <div class="form-group col-md-4">
-              <label for="inputState">Región</label>
-              <select id="inputState" class="form-control">
-                <option selected>Elegir</option>
-                <option>Arica</option>
-                <option>Antofagasta</option>
-                <option>Atacama y Coquimbo</option>
-                <option>Valparaiso</option>
-                <option>O'Higgins</option>
-                <option>Santiago</option>
-              </select>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Tipo de productos
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item bg-white text-dark" href="Comid_perros.html">Comida</a>
+              <a class="dropdown-item bg-white text-dark" href="Meds_perros.html">Medicamentos</a>
+              <a class="dropdown-item bg-white text-dark" href="Accs_perros.html">Accesorios</a>
             </div>
+          </li>
+        </ul>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link mr-4 text-light" href="Login.html">Login</a>
+              </li>
+              <li class="nav-item active">
+                <a class="bi bi-cart4 text-light" href="carrito.html"></a>
+              </li>
+          </ul>
+        </div>    
+      </nav>  
+    </nav>
+    
+    <!-- Registrar -->
+    <div class="container">
 
-        <div class="form-group col-md-6">
-          <label for="inputCity">Comuna</label>
-          <input type="text" class="form-control" id="inputCity">
+        <div class="row justify-content-md-center border-dark">
+            <div class="col-sm-6">
+              <div class="card m-2 border border-primary">
+                <div class="card-body">
+                  <h5 class="card-title">Registro de Usuarios</h5>
+          
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputPrimerNombre">Primer Nombre</label>
+                      <input type="text" class="form-control border border-success" id="inputPrimerNombre">
+                      <input type="text" class="form-control" id="inputIdUsuario" hidden>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputSegundoNombre">Segundo Nombre</label>
+                      <input type="text" class="form-control" id="inputSegundoNombre">
+                    </div>
+                  </div>
+          
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputApellidoPaterno">Apellido Paterno</label>
+                      <input type="text" class="form-control" id="inputApellidoPaterno">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputApellidoMaterno">Apellido Materno</label>
+                      <input type="text" class="form-control" id="inputApellidoMaterno">
+                    </div>
+                  </div>
+          
+                  <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputApellidoPaterno">Rut</label>
+                            <input type="text" class="form-control" id="inputRut">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputApellidoMaterno">Contraseña</label>
+                            <input type="text" class="form-control" id="inputContraseña">
+                        </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputApellidoPaterno">Correo</label>
+                        <input type="text" class="form-control" id="inputCorreo">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputApellidoMaterno">Comuna</label>
+                        <input type="text" class="form-control" id="inputComuna">
+                    </div>
+              </div>
+          
+                  <div class="form-group">
+                    <label for="inputDireccion">Dirección</label>
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Mi casa 1234">
+                  </div>
+          
+                  <a id="btnAgregarUsuario" class="btn btn-primary">Registrar</a>
+                  <a id="btnEditarUsuarioTabla" class="btn btn-success">Editar</a>
+                </div>
+            </div>
         </div>
+    </div>
         
-      </div>
-      <div class="form-group">
-        
-      </div>
-      <button type="submit" class="btn btn-info m-2">Registrar</button>
-    </form>
-</div>
 
-<!-- Footer -->
+      </div>
+
+
+      <div class="row mt-4">
+        <div class="col-sm-12">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+
+              <h5 class="card-title">Listado de Usuarios</h5>
+
+              <!-- Tabla de usuarios -->
+              <div class="table-responsive">
+                <table class="table" id="tablaUsuarios">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Primer Nombre</th>
+                      <th scope="col">Segundo Nombre</th>
+                      <th scope="col">Apellido Paterno</th>
+                      <th scope="col">Apellido Materno</th>
+                      <th scope="col">Rut</th>
+                      <th scope="col">Contraseña</th>
+                      <th scope="col">Correo</th>
+                      <th scope="col">Comuna</th>
+                      <th scope="col">Dirección</th>
+                      <th scope="col">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Alan</td>
+                      <td>Larry</td>
+                      <td>Brito</td>
+                      <td>Delgado</td>
+                      <td>12345678-2</td>
+                      <td>******</td>
+                      <td>alaluf@duocuc.cl</td>
+                      <td>La Florida</td>
+                      <td>Su casa #123, La Florida</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Maria</td>
+                      <td>Thornton</td>
+                      <td>Campos</td>
+                      <td>Asencio</td>
+                      <td>78945625-2</td>
+                      <td>******</td>
+                      <td>alaluf@duocuc.cl</td>
+                      <td>La Pintana</td>
+                      <td>Su casa #123, La Pintana</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Eustaquio</td>
+                      <td>Onofre</td>
+                      <td>Clavero</td>
+                      <td>Sancho</td>
+                      <td>31458927-3</td>
+                      <td>******</td>
+                      <td>euono@duocuc.cl</td>
+                      <td>San Ramón</td>
+                      <td>Su casa #123, San Ramón</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
   <div class="row pt-5">
       <div class="col-lg-4 col-md-12 mb-5">
@@ -202,12 +300,142 @@
 </div>
 <!-- Final Footer -->
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-info back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-<!-- script     -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-</body>
+    
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--- Mis scripts -->
+    <script> 
+
+        //funcionalidad para agregar los usuarios a la tabla
+        $("#btnAgregarUsuario").click(function(e){
+            e.preventDefault();
+
+            var primer_nombre = $("#inputPrimerNombre").val();
+            var segundo_nombre = $("#inputSegundoNombre").val();
+            var apellido_paterno = $("#inputApellidoPaterno").val();
+            var apellido_materno = $("#inputApellidoMaterno").val();
+            var rut = $("#inputRut").val();
+            var contraseña = $("#inputContraseña").val();
+            var correo = $("#inputCorreo").val();
+            var comuna = $("#inputComuna").val();
+            var direccion = $("#inputDireccion").val();
+
+
+            let fila = `<tr>
+                            <th scope="row">${ultimoId()}</th>
+                            <td>${primer_nombre}</td>
+                            <td>${segundo_nombre}</td>
+                            <td>${apellido_paterno}</td>
+                            <td>${apellido_materno}</td>
+                            <td>${rut}</td>
+                            <td>${contraseña}</td>
+                            <td>${correo}</td>
+                            <td>${comuna}</td>
+                            <td>${direccion}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+            
+           $("#tablaUsuarios").append(fila);
+        })
+    
+
+
+        function ultimoId(){
+            let ultimoId = $("#tablaUsuarios tr:last th").text();
+            return parseInt(ultimoId)+1;
+        }
+
+       // borrar linea
+        $(".btnEliminarUsuario").click(function(e){
+            e.preventDefault();
+            $(this).closest('tr').remove();
+        })
+
+        //editar usuario de la tabla
+        $(".btnEditarusuario").click(function(e){
+            e.preventDefault();
+            var idUsuario = $(this).closest('tr').find('th').text();
+            var usuario = $(this).closest('tr').find('td');
+
+            var primer_nombre = usuario.eq(0).text();
+            var segundo_nombre = usuario.eq(1).text();
+            var apellido_paterno = usuario.eq(2).text();
+            var apellido_materno = usuario.eq(3).text();
+            var rut = usuario.eq(4).text();
+            var contraseña = usuario.eq(5).text();
+            var correo = usuario.eq(6).text();
+            var comuna = usuario.eq(7).text();
+            var direccion = usuario.eq(8).text();
+
+            $("#inputPrimerNombre").val(primer_nombre);
+            $("#inputSegundoNombre").val(segundo_nombre);
+            $("#inputApellidoPaterno").val(apellido_paterno);
+            $("#inputApellidoMaterno").val(apellido_materno);
+            $("#inputRut").val(rut);
+            $("#inputContraseña").val(contraseña);
+            $("#inputCorreo").val(correo);
+            $("#inputComuna").val(comuna);
+            $("#inputDireccion").val(direccion);
+            $("#inputIdUsuario").val(idUsuario);
+            
+
+        });
+
+        //boton editar del formulario
+        $("#btnEditarUsuarioTabla").click(function(){
+            var primer_nombre = $("#inputPrimerNombre").val();
+            var segundo_nombre = $("#inputSegundoNombre").val();
+            var apellido_paterno = $("#inputApellidoPaterno").val();
+            var apellido_materno = $("#inputApellidoMaterno").val();
+            var rut = $("#inputRut").val();
+            var contraseña = $("#inputContraseña").val();
+            var correo = $("#inputCorreo").val();
+            var comuna = $("#inputComuna").val();
+            var direccion = $("#inputDireccion").val();
+            var idUsuario = $("#inputIdUsuario").val();
+
+            let fila = `<tr>
+                            <th scope="row">${idUsuario}</th>
+                            <td>${primer_nombre}</td>
+                            <td>${segundo_nombre}</td>
+                            <td>${apellido_paterno}</td>
+                            <td>${apellido_materno}</td>
+                            <td>${rut}</td>
+                            <td>${contraseña}</td>
+                            <td>${correo}</td>
+                            <td>${comuna}</td>
+                            <td>${direccion}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+
+        //eliminar la fila que seleccione
+        $(`#tablaUsuarios tr th:contains(${idUsuario})`).closest('tr').remove();
+
+        $("#tablaUsuarios").append(fila);
+
+        });
+
+
+
+
+    </script>
+
+
+
+
+  </body>
 </html>
