@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="styloAdmin.css" rel="stylesheet" />
+
+  <!-- logotipo -->
+  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+
+  <!--    Fonts and icons     -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Ingresar Productos</title>
+</head>
+
+<body>
+
+  <!-- Navbar_AdminProducto-->
+  <nav class="navbar navbar-expand-lg border-bottom text-dark">
+    <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Usuarios
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Administrar Usuarios</a>
+            <a class="dropdown-item" href="AdminDonaciones.html">Visualizar Donaciones</a>
+            <a class="dropdown-item" href="AdminRoles.html">Roles</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Productos
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item active" href="AdminProducto.html">Ingreso de Productos</a>
+            <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
+            <a class="dropdown-item" href="AdminVentas.html">Ventas</a>
+            <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <nav class="navbar navbar-expand-lg">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link mr-4 text-dark" href="/Login.html">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </nav>
+  </nav>
+  <!-- Fin navbar -->
+
+
+  <!-- Inicio registro Productos -->
+  <div class="container mt-5">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Registro de Productos</h5>
+            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+              <div class="fileinput-new thumbnail img-no-padding" style="max-width: 200px; max-height: 200px;">
+                <img src="/src/image_placeholder.jpg" alt="..." style="max-width: 200px; max-height: 200px;">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail img-no-padding"
+                style="max-width: 370px; max-height: 250px;"></div>
+              <div>
+                <span class="btn btn-outline-default btn-round btn-file"><span class="fileinput-new"
+                    id="ImagenProducto">Seleccionar </span><span class="fileinput-exists">Imagen</span><input
+                    type="file" name="..."></span>
+                <a href="#paper-kit" class="btn btn-link btn-danger fileinput-exists" data-dismiss="fileinput"><i
+                    class="fa fa-times"></i> Remove</a>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputNombre">Nombre(*)</label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese el nombre" required>
+                <!-- <input type="text" class="form-control" id="inputIdProducto" hidden> -->
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputMarca">Marca</label>
+                <input type="text" class="form-control" id="inputMarca">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputEnvase">Envase</label>
+                <input type="text" class="form-control" id="inputEnvase">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputEtapa">Etapa</label>
+                <input type="text" class="form-control" id="inputEtapa">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputDuracion">Duración</label>
+                <input type="text" class="form-control" id="inputDuracion">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputPrecio">Precio</label>
+                <input type="number" class="form-control" id="inputPrecio">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="inputModoDeUso">Modo De Uso</label>
+                <textarea class="form-control" aria-label="With textarea" id="inputModoDeUso"></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="inputInformacionAdicional">Información adicional</label>
+                <textarea class="form-control" aria-label="With textarea" id="inputInformacionAdicional"></textarea>
+              </div>
+            </div>
+            <a id="btnAgregarProducto" class="btn btn-primary">Registrar</a>
+            <a id="btnModificarProducto" class="btn btn-primary">Modificar</a>
+            <a id="btnCancelarEditar" class="btn btn-success">Cancelar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Fin Registro Productos -->
+
+      <!-- Inicio Tabla Productos -->
+      <div class="row mt-4 mb-4">
+        <div class="col-sm-12">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+              <h5 class="card-title">Listado Productos</h5>
+              <div class="table-responsive">
+                <table class="table" id="tablaProductos">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Envase</th>
+                      <th scope="col">Etapa</th>
+                      <th scope="col">Duración</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Modo de uso</th>
+                      <th scope="col">Información adicional</th>
+                      <th scope="col">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Alimento Seco Salmón para Gato Bolsa 8 Kg</td>
+                      <td>Master Cat</td>
+                      <td>Bolsa 8 Kg</td>
+                      <td>Adulto</td>
+                      <td>12 Meses</td>
+                      <td>25.490</td>
+                      <td>Deposite Master Cat en un pocillo limpio y seco.</td>
+                      <td>Prohibido su uso en la alimentación de rumiantes. Uso exclusivo para alimentación animal.</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarProducto"><i
+                              class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarProducto"><i
+                              class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Tabla productos -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+      integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- sweetalert2 -->
+
+    <!--- Mis scripts -->
+    <script>
+
+
+
+      //botones invisibles
+      $('#btnCancelarEditar').hide();
+      $('#btnModificarProducto').hide();
+      
+      // Agregar productos
+      $("#btnAgregarProducto").click(function (e) {
+        var Nombre = $("#inputNombre").val();
+        var Marca = $("#inputMarca").val();
+        var Envase = $("#inputEnvase").val();
+        var Etapa = $("#inputEtapa").val();
+        var Duracion = $("#inputDuracion").val();
+        var Precio = $("#inputPrecio").val();
+        var ModoDeUso = $("#inputModoDeUso").val();
+        var InformacionAdicional = $("#inputInformacionAdicional").val();
+
+        let fila = `<tr>
+                            <th scope="row">${ultimoId()}</th>
+                            <td>${Nombre}</td>
+                            <td>${Marca}</td>
+                            <td>${Envase}</td>
+                            <td>${Etapa}</td>
+                            <td>${Duracion}</td>
+                            <td>${Precio}</td>
+                            <td>${ModoDeUso}</td>
+                            <td>${InformacionAdicional}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+
+        $("#tablaProductos").append(fila);
+        e.preventDefault(); //que no se actualice la pantalla
+        limpiarFormulario();
+        Swal.fire(
+          'Producto Ingresado!',
+          'Presione "ok" para continuar.',
+          'success'); //mensaje de ingreso correcto
+        console.log('btnAgregarProducto');
+        $('#btnCancelarEditar').hide();
+
+      });
+
+      //boton CANCELAR EDICION
+      $("#btnCancelarEditar").click(function () {
+        limpiarFormulario();
+        $('#btnCancelarEditar').hide();
+        $('#btnModificarProducto').hide();
+        $('#btnAgregarProducto').show();
+      });
+
+
+      function ultimoId() {
+        let ultimoId = $("#tablaProductos tr:last th").text();
+        return parseInt(ultimoId) + 1;
+      };
+
+      //botón BORRAR
+      $("#tablaProductos").on("click", ".btnEliminarProducto", function (e) {
+        e.preventDefault();
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+          title: 'Estás seguro que lo quieres eliminar?.',
+          text: "El producto se eliminará permanentemente!.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si, Eliminar!.',
+          cancelButtonText: 'No, Cancelar!.',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $(this).closest('tr').remove();
+            swalWithBootstrapButtons.fire(
+              'Producto eliminado!.',
+              'Los datos fueron borrados :( .',
+              'success'
+            )
+          } else if (
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelado.',
+              'El producto está a salvo! :D .',
+              'error'
+            )
+          }
+        });
+      });
+
+      // editar producto de la tabla
+      $("#tablaProductos").on("click", ".btnEditarProducto", function (e) {
+        e.preventDefault();
+        var idProducto = $(this).closest('tr').find('th').text();
+        var producto = $(this).closest('tr').find('td');
+
+        var Nombre = producto.eq(0).text();
+        var Marca = producto.eq(1).text();
+        var Envase = producto.eq(2).text();
+        var Etapa = producto.eq(3).text();
+        var Duracion = producto.eq(4).text();
+        var Precio = producto.eq(5).text();
+        var ModoDeUso = producto.eq(6).text();
+        var InformacionAdicional = producto.eq(6).text();
+
+        $("#inputNombre").val(Nombre);
+        $("#inputMarca").val(Marca);
+        $("#inputEnvase").val(Envase);
+        $("#inputEtapa").val(Etapa);
+        $("#inputDuracion").val(Duracion);
+        $("#inputPrecio").val(Precio);
+        $("#inputModoDeUso").val(ModoDeUso);
+        $("#inputInformacionAdicional").val(InformacionAdicional);
+        $("#inputIdProducto").val(idProducto);
+
+        $('#btnCancelarEditar').show();
+        $('#btnModificarProducto').show();
+        $('#btnAgregarProducto').hide();
+        console.log('btnEditarProducto');
+        
+      });
+
+      
+      //boton editar del formulario
+      $("#btnModificarProducto").click(function () {
+        var Nombre = $("#inputNombre").val();
+        var Marca = $("#inputMarca").val();
+        var Envase = $("#inputEnvase").val();
+        var Etapa = $("#inputEtapa").val();
+        var Duracion = $("#inputDuracion").val();
+        var Precio = $("#inputPrecio").val();
+        var ModoDeUso = $("#inputModoDeUso").val();
+        var InformacionAdicional = $("#inputInformacionAdicional").val();
+        var idProducto = $("#inputIdProducto").val();
+
+        let fila = `<tr>
+                            <th scope="row">${idProducto}</th>
+                            <td>${Nombre}</td>
+                            <td>${Marca}</td>
+                            <td>${Envase}</td>
+                            <td>${Etapa}</td>
+                            <td>${Duracion}</td>
+                            <td>${Precio}</td>
+                            <td>${ModoDeUso}</td>
+                            <td>${InformacionAdicional}</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                              <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+                              <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                        </tr>`
+        //eliminar la fila que seleccione
+        $(`#tablaProductos tr :contains(${idProducto})`).closest('tr').remove();
+
+        $("#tablaProductos").append(fila);
+        limpiarFormulario();
+        $('#btnCancelarEditar').hide();
+        $('#btnModificarProducto').hide();
+        $('#btnAgregarProducto').show();
+        
+        console.log('btnEditarProducto');
+      });
+
+
+
+
+      //limpiar formulario
+      function limpiarFormulario() {
+        $("#inputNombre").val('');
+        $("#inputMarca").val('');
+        $("#inputEnvase").val('');
+        $("#inputEtapa").val('');
+        $("#inputDuracion").val('');
+        $("#inputPrecio").val('');
+        $("#inputModoDeUso").val('');
+        $("#inputInformacionAdicional").val('');
+        $("#inputIdProducto").val('');
+      };
+
+
+      //cargar imagen
+      !function (u) {
+        "use strict";
+        var i = "Microsoft Internet Explorer" == window.navigator.appName,
+          n = function (e, t) {
+            if (this.$element = u(e),
+              this.options = u.extend({},
+                n.DEFAULTS, t),
+              this.$input = this.$element.find(":file"),
+              0 !== this.$input.length) { this.name = this.$input.attr("name") || t.name, this.$hidden = this.$element.find('input[type=hidden][name="' + this.name + '"]'), 0 === this.$hidden.length && (this.$hidden = u('<input type="hidden">').insertBefore(this.$input)), this.$preview = this.$element.find(".fileinput-preview"); var i = this.$preview.css("height"); "inline" !== this.$preview.css("display") && "0px" !== i && "none" !== i && this.$preview.css("line-height", i), this.original = { exists: this.$element.hasClass("fileinput-exists"), preview: this.$preview.html(), hiddenVal: this.$hidden.val() }, this.listen(), this.reset() }
+          }; n.DEFAULTS = { clearName: !0 }, n.prototype.listen = function () { this.$input.on("change.bs.fileinput", u.proxy(this.change, this)), u(this.$input[0].form).on("reset.bs.fileinput", u.proxy(this.reset, this)), this.$element.find('[data-trigger="fileinput"]').on("click.bs.fileinput", u.proxy(this.trigger, this)), this.$element.find('[data-dismiss="fileinput"]').on("click.bs.fileinput", u.proxy(this.clear, this)) }, n.prototype.verifySizes = function (e) {
+            if (void 0 === this.options.maxSize) return !0; var t = parseFloat(this.options.maxSize);
+            if (t !== this.options.maxSize) return !0; for (var i = 0; i < e.length; i++) {
+              var n = void 0 !== e[i].size ? e[i].size : null;
+              if (null !== n && t < (n = n / 1e3 / 1e3)) return !1
+            } return !0
+          }, n.prototype.change = function (e) {
+            var l = void 0 === e.target.files ? e.target && e.target.value ? [{ name: e.target.value.replace(/^.+\\/, "") }] : [] : e.target.files; if (e.stopPropagation(), 0 === l.length) return this.clear(), void this.$element.trigger("clear.bs.fileinput"); if (!this.verifySizes(l)) return this.$element.trigger("max_size.bs.fileinput"), this.clear(), void this.$element.trigger("clear.bs.fileinput"); this.$hidden.val(""), this.$hidden.attr("name", ""), this.$input.attr("name", this.name); var h = l[0]; if (0 < this.$preview.length && (void 0 !== h.type ? h.type.match(/^image\/(gif|png|jpeg|svg\+xml)$/) : h.name.match(/\.(gif|png|jpe?g|svg)$/i)) && "undefined" != typeof FileReader) { var p = this, t = new FileReader, f = this.$preview, o = this.$element; t.onload = function (e) { var t = u("<img>"); if (t[0].src = e.target.result, l[0].result = e.target.result, o.find(".fileinput-filename").text(h.name), "none" != f.css("max-height")) { var i = parseInt(f.css("max-height"), 10) || 0, n = parseInt(f.css("padding-top"), 10) || 0, s = parseInt(f.css("padding-bottom"), 10) || 0, r = parseInt(f.css("border-top"), 10) || 0, a = parseInt(f.css("border-bottom"), 10) || 0; t.css("max-height", i - n - s - r - a) } f.html(t), p.options.exif && p.setImageTransform(t, h), o.addClass("fileinput-exists").removeClass("fileinput-new"), o.trigger("change.bs.fileinput", l) }, t.readAsDataURL(h) } else {
+              var i = h.name, n = this.$element.find(".fileinput-filename");
+              1 < l.length && (i = u.map(l, function (e) { return e.name }).join(", ")), n.text(i), this.$preview.text(h.name), this.$element.addClass("fileinput-exists").removeClass("fileinput-new"), this.$element.trigger("change.bs.fileinput")
+            }
+          }, n.prototype.setImageTransform = function (n, e) {
+            var s = this, r = new FileReader;
+            r.onload = function (e) { var t = new DataView(r.result), i = s.getImageExif(t); i && s.resetOrientation(n, i) }, r.readAsArrayBuffer(e)
+          }, n.prototype.getImageExif = function (e) { if (65496 != e.getUint16(0, !1)) return -2; for (var t = e.byteLength, i = 2; i < t;) { var n = e.getUint16(i, !1); if (i += 2, 65505 == n) { if (1165519206 != e.getUint32(i += 2, !1)) return -1; var s = 18761 == e.getUint16(i += 6, !1); i += e.getUint32(i + 4, s); var r = e.getUint16(i, s); i += 2; for (var a = 0; a < r; a++)if (274 == e.getUint16(i + 12 * a, s)) return e.getUint16(i + 12 * a + 8, s) } else { if (65280 != (65280 & n)) break; i += e.getUint16(i, !1) } } return -1 }, n.prototype.resetOrientation = function (s, r) {
+            var a = new Image; a.onload = function () {
+              var e = a.width, t = a.height, i = document.createElement("canvas"), n = i.getContext("2d"); switch (-1 < [5, 6, 7, 8].indexOf(r) ? (i.width = t, i.height = e) : (i.width = e, i.height = t), r) {
+                case 2: n.transform(-1, 0, 0, 1, e, 0); break; case 3: n.transform(-1, 0, 0, -1, e, t); break; case 4: n.transform(1, 0, 0, -1, 0, t); break; case 5: n.transform(0, 1, 1, 0, 0, 0); break; case 6: n.transform(0, 1, -1, 0, t, 0); break; case 7: n.transform(0, -1, -1, 0, t, e); break; case 8: n.transform(0, -1, 1, 0, 0, e);
+                  break; default: n.transform(1, 0, 0, 1, 0, 0)
+              }n.drawImage(a, 0, 0), s.attr("src", i.toDataURL())
+            }, a.src = s.attr("src")
+          }, n.prototype.clear = function (e) { if (e && e.preventDefault(), this.$hidden.val(""), this.$hidden.attr("name", this.name), this.options.clearName && this.$input.attr("name", ""), i) { var t = this.$input.clone(!0); this.$input.after(t), this.$input.remove(), this.$input = t } else this.$input.val(""); this.$preview.html(""), this.$element.find(".fileinput-filename").text(""), this.$element.addClass("fileinput-new").removeClass("fileinput-exists"), void 0 !== e && (this.$input.trigger("change"), this.$element.trigger("clear.bs.fileinput")) }, n.prototype.reset = function () { this.clear(), this.$hidden.val(this.original.hiddenVal), this.$preview.html(this.original.preview), this.$element.find(".fileinput-filename").text(""), this.original.exists ? this.$element.addClass("fileinput-exists").removeClass("fileinput-new") : this.$element.addClass("fileinput-new").removeClass("fileinput-exists"), this.$element.trigger("reseted.bs.fileinput") }, n.prototype.trigger = function (e) { this.$input.trigger("click"), e.preventDefault() };
+        var e = u.fn.fileinput;
+        u.fn.fileinput = function (i) {
+          return this.each(function () {
+            var e = u(this), t = e.data("bs.fileinput");
+            t || e.data("bs.fileinput",
+              t = new n(this, i)), "string" == typeof i && t[i]()
+          })
+        },
+          u.fn.fileinput.Constructor = n, u.fn.fileinput.noConflict = function () {
+            return u.fn.fileinput = e,
+              this
+          },
+          u(document).on("click.fileinput.data-api",
+            '[data-provides="fileinput"]', function (e) {
+              var t = u(this); if (!t.data("bs.fileinput")) {
+                t.fileinput(t.data());
+                var i = u(e.target).closest('[data-dismiss="fileinput"],[data-trigger="fileinput"]');
+                0 < i.length && (e.preventDefault(), i.trigger("click.bs.fileinput"))
+              }
+            })
+      }(window.jQuery);
+
+    </script>
+
+</html>

@@ -18,6 +18,9 @@ body {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.conter{
+    background-color: gainsboro;
+}
 #inputAddress{
     margin-left: 5px;
     margin-right: 20px;
