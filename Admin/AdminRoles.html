@@ -1,75 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link href="styloAdmin.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="styloAdmin.css" rel="stylesheet" />
 
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+  <!-- logotipo -->
+  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+  <!-- logotipo -->
+  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-    <!-- Fonts and icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Administrar Roles</title>
-  </head>
-  <body>
+  <title>Administrar Roles</title>
+</head>
 
-    <!-- Navbar_AdminProducto-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-light border-bottom text-dark">
-  <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Usuarios
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Administrar Usuarios</a>
-          <a class="dropdown-item" href="AdminDonaciones.html">Visualizar Donaciones</a>
-          <a class="dropdown-item active" href="AdminRoles.html">Roles</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Productos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="AdminProducto.html">Ingreso de Productos</a>
-          <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
-          <a class="dropdown-item" href="AdminVentas.html">Ventas</a>
-          <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link mr-4 text-dark" href="/Login.html">Cerrar Sesion</a>
-          </li>
+<body>
+
+  <!-- Navbar_AdminProducto-->
+  <nav class="navbar navbar-expand-lg border-bottom text-dark">
+    <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+    <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse"
+      data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Usuarios
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Administrar Usuarios</a>
+            <a class="dropdown-item" href="AdminDonaciones.html">Visualizar Donaciones</a>
+            <a class="dropdown-item" href="AdminRoles.html">Roles</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Productos
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="AdminProducto.html">Ingreso de Productos</a>
+            <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
+            <a class="dropdown-item" href="AdminVentas.html">Ventas</a>
+            <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
+          </div>
+        </li>
       </ul>
+    </div>
+    <nav class="navbar navbar-expand-lg">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link mr-4 text-dark" href="/Login.html">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </nav>
   </nav>
-</nav>
-<!-- Fin navbar -->
+  <!-- Fin navbar -->
 
+  <!-- Inicio registro Productos -->
+  <div class="container mt-5">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-9">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">ADMINISTRAR ROL</h5>
+            <div class="form-row">
+              <div class="form-group col-m-4 mt-1">
+                <label for="inputNombre">Usuario</label>
+                <input type="text" class="form-control" id="inputNombreRol" placeholder="Ingrese el nombre" required>
+              </div>
+              <div class="input-group col-md-3 ml-4">
+                <div class="">
+                  <p class="card-title"> Tipo de Rol</p>
+                  <select class="custom-select" id="inputUsuarioRol">
+                    <option selected>Seleccione...</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Usuario">Usuario</option>>
+                  </select>
+                </div>
+              </div>
+              <div class="col-5 m-2">
+                <a id="btnAgregarUsuarioRol" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
+              </div>
+            </div>
+            <div class="row mt-4 mb-4">
+              <div class="col-sm-12">
+                <div class="card" style="height: 100%;">
+                  <div class="card-body">
+                    <h5 class="card-title">Lista Usuarios</h5>
+                    <div class="table-responsive">
+                      <table class="table" id="tablaRol">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">rol</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Apolo</td>
+                            <td>Administrador</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                                    class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                                    class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Matias</td>
+                            <td>Administrador</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                                    class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                                    class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Gabriel</td>
+                            <td>Administrador</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                                    class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                                    class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+                            <td>Leonardo</td>
+                            <td>Administrador</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                                    class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                                    class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">5</th>
+                            <td>Alex</td>
+                            <td>Administrador</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                                    class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                                    class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">6</th>
+                            <td>Ernesto</td>
+                            <td>Usuario</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                                    class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                                    class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin Registro Productos -->
+
+  <!-- Inicio Tabla Productos -->
+
+  <!-- Fin Tabla productos -->
 
 </body>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+  integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
+<script>
+  // Agregar productos
+  $("#btnAgregarUsuarioRol").click(function (e) {
+    var Nombre = $("#inputNombreRol").val();
+    var Rol = $("#inputUsuarioRol").val();
+
+    let fila = `<tr>
+                        <th scope="row">${ultimoId()}</th>
+                        <td>${Nombre}</td>
+                        <td>${Rol}</td>
+                        <td>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
+                              class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
+                              class="fa-solid fa-trash"></i></button>
+                          </div>
+                        </td>
+                    </tr>`;
+
+    $("#tablaRol").append(fila);
+    e.preventDefault(); //que no se actualice la pantalla
+    limpiarFormulario();
+    Swal.fire(
+      'Cliente Ingresado!',
+      'Presione "ok" para continuar.',
+      'success'); //mensaje de ingreso correcto
+  });
+
+  function ultimoId() {
+    let ultimoId = $("#tablaRol tr:last th").text();
+    return parseInt(ultimoId) + 1;
+  };
+
+  //botón BORRAR
+  $("#tablaRol").on("click", ".btnEliminarUsuarioRol", function (e) {
+    e.preventDefault();
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Desea eliminar al usuario?.',
+      text: "Se eliminará del registro.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Eliminar!.',
+      cancelButtonText: 'No, Cancelar!.',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $(this).closest('tr').remove();
+        swalWithBootstrapButtons.fire(
+          'Usuario eliminado!.',
+          'presione ok para finalizar.',
+          'success'
+        )
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado.',
+          'El producto está a salvo! :D .',
+          'error'
+        )
+      }
+    })
+  });
+
+</script>
 
 </html>

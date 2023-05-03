@@ -27,7 +27,7 @@
   <!-- Navbar_AdminProducto-->
   <nav class="navbar navbar-expand-lg border-bottom text-dark">
     <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -214,7 +214,7 @@
       //botones invisibles
       $('#btnCancelarEditar').hide();
       $('#btnModificarProducto').hide();
-      
+
       // Agregar productos
       $("#btnAgregarProducto").click(function (e) {
         var Nombre = $("#inputNombre").val();
@@ -306,7 +306,7 @@
               'error'
             )
           }
-        });
+        })
       });
 
       // editar producto de la tabla
@@ -338,23 +338,47 @@
         $('#btnModificarProducto').show();
         $('#btnAgregarProducto').hide();
         console.log('btnEditarProducto');
-        
+
       });
 
-      
+
       //boton editar del formulario
       $("#btnModificarProducto").click(function () {
-        var Nombre = $("#inputNombre").val();
-        var Marca = $("#inputMarca").val();
-        var Envase = $("#inputEnvase").val();
-        var Etapa = $("#inputEtapa").val();
-        var Duracion = $("#inputDuracion").val();
-        var Precio = $("#inputPrecio").val();
-        var ModoDeUso = $("#inputModoDeUso").val();
-        var InformacionAdicional = $("#inputInformacionAdicional").val();
-        var idProducto = $("#inputIdProducto").val();
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
 
-        let fila = `<tr>
+        swalWithBootstrapButtons.fire({
+          title: 'Seguro que desea modificar?.',
+          text: "Una vez aceptado, no se podrá volver atrás.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si, MODIFICAR.',
+          cancelButtonText: 'CANCELAR.',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $(this).closest('tr').remove();
+            swalWithBootstrapButtons.fire(
+              'PROCESO EXITOSO!.',
+              'Los datos fueron modificados.',
+              'success'
+            )
+            var Nombre = $("#inputNombre").val();
+            var Marca = $("#inputMarca").val();
+            var Envase = $("#inputEnvase").val();
+            var Etapa = $("#inputEtapa").val();
+            var Duracion = $("#inputDuracion").val();
+            var Precio = $("#inputPrecio").val();
+            var ModoDeUso = $("#inputModoDeUso").val();
+            var InformacionAdicional = $("#inputInformacionAdicional").val();
+            var idProducto = $("#inputIdProducto").val();
+
+            let fila = `<tr>
                             <th scope="row">${idProducto}</th>
                             <td>${Nombre}</td>
                             <td>${Marca}</td>
@@ -371,15 +395,28 @@
                               </div>
                             </td>
                         </tr>`
-        //eliminar la fila que seleccione
-        $(`#tablaProductos tr :contains(${idProducto})`).closest('tr').remove();
+            //eliminar la fila que seleccione
+            $(`#tablaProductos tr :contains(${idProducto})`).closest('tr').remove();
 
-        $("#tablaProductos").append(fila);
-        limpiarFormulario();
+            $("#tablaProductos").append(fila);
+            limpiarFormulario();
+            $('#btnCancelarEditar').hide();
+            $('#btnModificarProducto').hide();
+            $('#btnAgregarProducto').show();
+          } else if (
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelado.',
+              'Vuelva a revisar los datos',
+              'error'
+            )
+          }
+        })
         $('#btnCancelarEditar').hide();
         $('#btnModificarProducto').hide();
         $('#btnAgregarProducto').show();
-        
+
         console.log('btnEditarProducto');
       });
 

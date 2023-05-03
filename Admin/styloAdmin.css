@@ -6,13 +6,13 @@ nav {
 }
 
 .dropdown-menu{
-    background-color: #cdceddf4;
+    background-color: #e3eff7f7;
 }
 
 /* fondo */
 body {
-    background: rgb(117,137,203);
-    background: linear-gradient(189deg, rgba(117,137,203,0.8436624649859944) 0%, rgba(0,168,255,0.5495448179271709) 100%);
+    background: rgb(135,187,200);
+    background: linear-gradient(189deg, rgba(135,187,200,0.59156162464986) 0%, rgba(163,209,231,0.5495448179271709) 100%);
 }
 
 
@@ -111,8 +111,10 @@ body {
     border-radius: 4px
 }
 
-.fileinput-exists .fileinput-new,
-.fileinput-new .fileinput-exists {
+.fileinput-exists 
+.fileinput-new,
+.fileinput-new 
+.fileinput-exists {
     display: none
 }
 
