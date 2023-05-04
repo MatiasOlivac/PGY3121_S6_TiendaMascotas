@@ -83,6 +83,7 @@
               <div class="form-group col-m-4 mt-1">
                 <label for="inputNombre">Usuario</label>
                 <input type="text" class="form-control" id="inputNombreRol" placeholder="Ingrese el nombre" required>
+                <input type="text" class="form-control" id="inputIdUsuarioRol" hidden>
               </div>
               <div class="input-group col-md-3 ml-4">
                 <div class="">
@@ -96,6 +97,7 @@
               </div>
               <div class="col-5 m-2">
                 <a id="btnAgregarUsuarioRol" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
+                <a id="btnModificarUsuarioRol" class="btn btn-info col-md-4 mt-1 mt-4">Confirmar</a>
               </div>
             </div>
             <div class="row mt-4 mb-4">
@@ -120,10 +122,8 @@
                             <td>Administrador</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                                    class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                                    class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                           </tr>
@@ -133,10 +133,8 @@
                             <td>Administrador</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                                    class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                                    class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                           </tr>
@@ -146,10 +144,8 @@
                             <td>Administrador</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                                    class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                                    class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                           </tr>
@@ -159,10 +155,8 @@
                             <td>Administrador</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                                    class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                                    class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                           </tr>
@@ -172,10 +166,8 @@
                             <td>Administrador</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                                    class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                                    class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                           </tr>
@@ -185,10 +177,8 @@
                             <td>Usuario</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                                    class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                                    class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                           </tr>
@@ -214,13 +204,19 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-  integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+
+$('#btnModificarUsuarioRol').hide();
+
   // Agregar productos
   $("#btnAgregarUsuarioRol").click(function (e) {
     var Nombre = $("#inputNombreRol").val();
@@ -232,10 +228,8 @@
                         <td>${Rol}</td>
                         <td>
                           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-info btnEditarUsuarioRol"><i
-                              class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i
-                              class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                           </div>
                         </td>
                     </tr>`;
@@ -292,6 +286,96 @@
       }
     })
   });
+
+
+  //Editar Usuario
+  $("#tablaRol").on("click", ".btnEditarUsuarioRol", function (e) {
+        // $('#btnAgregarUsuarioRol').hide();
+        // $('#btnModificarUsuarioRol').show();
+        e.preventDefault();
+        var idUsuarioRol = $(this).closest('tr').find('th').text();
+        var UsuarioRol = $(this).closest('tr').find('td');
+
+        var Nombre = producto.eq(0).text();
+        var Rol = producto.eq(1).text();
+
+        $("#inputNombreRol").val(Nombre);
+        $("#inputUsuarioRol").val(Rol);
+        $("#inputIdUsuarioRol").val(idUsuarioRol);
+        
+      });
+
+    //modificar usuario
+      $("#btnModificarUsuarioRol").click(function () {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+          title: 'Seguro que desea modificar?.',
+          text: "Una vez aceptado, no se podrá volver atrás.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si, MODIFICAR.',
+          cancelButtonText: 'CANCELAR.',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+              'PROCESO EXITOSO!.',
+              'Los datos fueron modificados.',
+              'success'
+            )
+            var Nombre = $("#inputNombreRol").val();
+            var Rol = $("#inputUsuarioRol").val();
+            var idProducto = $("#inputIdUsuarioRol").val();
+
+            let fila = `<tr>
+                            <th scope="row">${idUsuarioRol}</th>
+                            <td>${Nombre}</td>
+                            <td>${Rol}</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                              <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+                              <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                        </tr>`
+            //eliminar la fila que seleccione
+            $(`#tablaRol tr :contains(${idUsuarioRol})`).closest('tr').remove();
+            $("#tablaRol").append(fila);
+            limpiarFormulario();
+
+          } else if (
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelado.',
+              'Vuelva a revisar los datos',
+              'error'
+            )
+          }
+        })
+
+      });
+
+
+
+
+      //limpiar formulario
+      function limpiarFormulario() {
+        $("#inputNombreRol").val('');
+        $("#inputUsuarioRol").val('');
+        $("#inputIdUsuarioRol").val('');
+      };
+
+
+
+
 
 </script>
 
