@@ -81,44 +81,33 @@
             <h5 class="card-title">ADMINISTRAR ROL</h5>
             <div class="form-row">
               <div class="form-group col-m-4 mt-1">
-                <label for="inputNombre">Usuario</label>
-                <input type="text" class="form-control" id="inputNombreRol" placeholder="Ingrese el nombre" required>
+                <label for="inputNombreRoles">Tipo de Rol</label>
+                <input type="text" class="form-control" id="inputNombreRol" placeholder="Ingrese nombre del rol" required>
                 <input type="text" class="form-control" id="inputIdUsuarioRol" hidden>
-              </div>
-              <div class="input-group col-md-3 ml-4">
-                <div class="">
-                  <p class="card-title"> Tipo de Rol</p>
-                  <select class="custom-select" id="inputUsuarioRol">
-                    <option selected>Seleccione...</option>
-                    <option value="Administrador">Administrador</option>
-                    <option value="Usuario">Usuario</option>>
-                  </select>
-                </div>
               </div>
               <div class="col-5 m-2">
                 <a id="btnAgregarUsuarioRol" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
                 <a id="btnModificarUsuarioRol" class="btn btn-info col-md-4 mt-1 mt-4">Confirmar</a>
+                <a id="btnCancelarEditarRol" class="btn btn-danger col-md-4 mt-1 mt-4">Cancelar</a>
               </div>
             </div>
             <div class="row mt-4 mb-4">
               <div class="col-sm-12">
                 <div class="card" style="height: 100%;">
                   <div class="card-body">
-                    <h5 class="card-title">Lista Usuarios</h5>
+                    <h5 class="card-title">Roles</h5>
                     <div class="table-responsive">
                       <table class="table" id="tablaRol">
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col"></th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">rol</th>
                             <th scope="col">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <th scope="row">1</th>
-                            <td>Apolo</td>
                             <td>Administrador</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -129,8 +118,7 @@
                           </tr>
                           <tr>
                             <th scope="row">2</th>
-                            <td>Matias</td>
-                            <td>Administrador</td>
+                            <td>Usuario</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
@@ -140,41 +128,7 @@
                           </tr>
                           <tr>
                             <th scope="row">3</th>
-                            <td>Gabriel</td>
-                            <td>Administrador</td>
-                            <td>
-                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Leonardo</td>
-                            <td>Administrador</td>
-                            <td>
-                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>Alex</td>
-                            <td>Administrador</td>
-                            <td>
-                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">6</th>
-                            <td>Ernesto</td>
-                            <td>Usuario</td>
+                            <td>Vendedor</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
@@ -216,16 +170,15 @@ crossorigin="anonymous"></script>
 <script>
 
 $('#btnModificarUsuarioRol').hide();
+$('#btnCancelarEditarRol').hide();
 
   // Agregar productos
   $("#btnAgregarUsuarioRol").click(function (e) {
-    var Nombre = $("#inputNombreRol").val();
-    var Rol = $("#inputUsuarioRol").val();
+    var NombreRol = $("#inputNombreRol").val();
 
     let fila = `<tr>
                         <th scope="row">${ultimoId()}</th>
-                        <td>${Nombre}</td>
-                        <td>${Rol}</td>
+                        <td>${NombreRol}</td>
                         <td>
                           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
@@ -296,13 +249,15 @@ $('#btnModificarUsuarioRol').hide();
         var idUsuarioRol = $(this).closest('tr').find('th').text();
         var UsuarioRol = $(this).closest('tr').find('td');
 
-        var Nombre = producto.eq(0).text();
-        var Rol = producto.eq(1).text();
+        var NombreRol = UsuarioRol.eq(0).text();
 
-        $("#inputNombreRol").val(Nombre);
-        $("#inputUsuarioRol").val(Rol);
+        $("#inputNombreRol").val(NombreRol);
         $("#inputIdUsuarioRol").val(idUsuarioRol);
-        
+
+        $('#btnModificarUsuarioRol').show();
+        $('#btnCancelarEditarRol').show();
+        $('#btnAgregarUsuarioRol').hide();
+
       });
 
     //modificar usuario
@@ -330,18 +285,16 @@ $('#btnModificarUsuarioRol').hide();
               'Los datos fueron modificados.',
               'success'
             )
-            var Nombre = $("#inputNombreRol").val();
-            var Rol = $("#inputUsuarioRol").val();
-            var idProducto = $("#inputIdUsuarioRol").val();
+            var NombreRol = $("#inputNombreRol").val();
+            var idUsuarioRol = $("#inputIdUsuarioRol").val();
 
             let fila = `<tr>
                             <th scope="row">${idUsuarioRol}</th>
-                            <td>${Nombre}</td>
-                            <td>${Rol}</td>
+                            <td>${NombreRol}</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                              <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
-                              <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+                              <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                              <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                               </div>
                             </td>
                         </tr>`
@@ -349,6 +302,10 @@ $('#btnModificarUsuarioRol').hide();
             $(`#tablaRol tr :contains(${idUsuarioRol})`).closest('tr').remove();
             $("#tablaRol").append(fila);
             limpiarFormulario();
+
+            $('#btnModificarUsuarioRol').hide();
+            $('#btnCancelarEditarRol').hide();
+            $('#btnAgregarUsuarioRol').show();
 
           } else if (
             result.dismiss === Swal.DismissReason.cancel
@@ -361,15 +318,23 @@ $('#btnModificarUsuarioRol').hide();
           }
         })
 
+
       });
 
+
+      //boton CANCELAR EDICION
+      $("#btnCancelarEditarRol").click(function () {
+        limpiarFormulario();
+        $('#btnCancelarEditarRol').hide();
+        $('#btnModificarUsuarioRol').hide();
+        $('#btnAgregarUsuarioRol').show();
+      });
 
 
 
       //limpiar formulario
       function limpiarFormulario() {
         $("#inputNombreRol").val('');
-        $("#inputUsuarioRol").val('');
         $("#inputIdUsuarioRol").val('');
       };
 
