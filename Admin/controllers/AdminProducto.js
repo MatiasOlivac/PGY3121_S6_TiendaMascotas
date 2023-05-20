@@ -6,7 +6,7 @@ const app = express();
 //http://estilow3b.com/metodos-http-post-get-put-delete/
 
 module.exports.buscar_todo = app.get('/', (request, response) => {  
-    const sql = "SELECT ID_PRODUCTO, NOMBRE, VALOR, STOCK, ID_ESPECIE, ID_PROMOCION, IMAGEN FROM PRODUCTOS";
+    const sql = "SELECT ID_PRODUCTOS, NOMBRE, VALOR, STOCK, IMAGEN, PROMOCIONES_ID_PROMOCIONES, ESPECIES_ID_ESPECIES FROM PRODUCTOS";
     connection.query(sql, (error, results) => {
         if (error) throw error;
         if (results.length > 0) {
@@ -18,21 +18,21 @@ module.exports.buscar_todo = app.get('/', (request, response) => {
 });
 
 module.exports.actualizar = app.patch('/', (req, res) => {
-    const { id, nombre, valor, stock, id_especie, id_promocion, imagen } = req.body;
-    const sql = "UPDATE PRODUCTOS SET NOMBRE, VALOR, STOCK, ID_ESPECIE, ID_PROMOCION, IMAGEN = ? WHERE ID_PRODUCTO = ?";
-    const values = [nombre, valor, stock, id_especie, id_promocion, imagen, id];
+    const {ID_PRODUCTOS, NOMBRE, VALOR, STOCK, IMAGEN, PROMOCIONES_ID_PROMOCIONES, ESPECIES_ID_ESPECIES } = req.body;
+    const sql = "UPDATE PRODUCTOS SET NOMBRE = ?, VALOR = ?, STOCK = ?, IMAGEN = ?, PROMOCIONES_ID_PROMOCIONES = ?, ESPECIES_ID_ESPECIES = ? WHERE ID_PRODUCTOS = ?";
+    const values = [ NOMBRE, VALOR, STOCK, IMAGEN, PROMOCIONES_ID_PROMOCIONES, ESPECIES_ID_ESPECIES, ID_PRODUCTOS ];
 
     connection.query(sql, values, (error, results) => {
         if (error) throw error;
-        res.send(`PRODUCTOS con id ${id} actualizado correctamente`);
+        res.send(`PRODUCTOS con id ${ID_PRODUCTOS} actualizado correctamente`);
     });
 });
 
 //metodo post PRODUCTOS
 module.exports.agregar = app.post('/', (req, res) => {
-    const { nombre } = req.body;
-    const sql = "INSERT INTO PRODUCTOS (NOMBRE, VALOR, STOCK, ID_ESPECIE, ID_PROMOCION, IMAGEN, estado) VALUES (?, ?)";
-    const values = [nombre, 1];
+    const { NOMBRE, VALOR, STOCK, IMAGEN, PROMOCIONES_ID_PROMOCIONES, ESPECIES_ID_ESPECIES } = req.body;
+    const sql = "INSERT INTO PRODUCTOS ( NOMBRE, VALOR, STOCK, IMAGEN, PROMOCIONES_ID_PROMOCIONES, ESPECIES_ID_ESPECIES) VALUES (?,?,?,?,?,?)";
+    const values = [ NOMBRE, VALOR, STOCK, IMAGEN, PROMOCIONES_ID_PROMOCIONES, ESPECIES_ID_ESPECIES ];
 
     connection.query(sql, values, (error, results) => {
         if (error) throw error;
@@ -40,15 +40,15 @@ module.exports.agregar = app.post('/', (req, res) => {
     });
 });
 
-module.exports.eliminar = app.put('/', (request, response) => {
-    const { id } = request.body;
-    const sql = "UPDATE PRODUCTOS WHERE ID_PRODUCTO = ?";
-    connection.query(sql, id, (error, results) => {
+module.exports.eliminar = app.delete('/', (request, response) => {
+    const { ID_PRODUCTOS } = request.body;
+    const sql = "DELETE FROM PRODUCTOS WHERE ID_PRODUCTOS = ?";
+    connection.query(sql, ID_PRODUCTOS, (error, results) => {
       if (error) throw error;
       if (results.affectedRows > 0) {
-        response.status(200).send(`PRODUCTOS con id ${id} eliminado correctamente`);
+        response.status(200).send(`PRODUCTOS con id ${ID_PRODUCTOS} eliminado correctamente`);
       } else {
-        response.status(404).send(`PRODUCTOS con id ${id} no encontrado`);
+        response.status(404).send(`PRODUCTOS con id ${ID_PRODUCTOS} no encontrado`);
       }
     });
 });
