@@ -127,9 +127,9 @@
                 
               <div class="form-group col-md-6">
                 <label for="inputEspecieProductos">ESPECIE</label>
+
                 <select id="inputEspecieProducto" class="form-control">
-                  <option selected>Seleccione...</option>
-                  <option></option>
+                  <option value="" selected>Seleccione...</option>
                 </select>
               </div>
 
@@ -220,8 +220,32 @@
 
   <!-- sweetalert2 -->
 
+  <!-- COMUNES -->
+  <script> src="Admin/assets/js/comunes.js" </script>
+
   <!--- Mis scripts -->
   <script>
+
+    //buscar las especies en la api
+    $(documnet).ready(function() {
+
+      $.ajax({
+        url: `${API_URL}/Especie`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+          $.each(data, function(index,value){
+            $('#inputEspecieProducto').append(`<option id=${value.ID_ESPECIE} value="${value.NOMBRE}"> 
+              ${value.NOMBRE}
+              </option>`)
+
+          })
+
+
+        }
+      })
+
+    });
 
 
 
