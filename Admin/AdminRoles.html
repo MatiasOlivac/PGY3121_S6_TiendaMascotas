@@ -104,38 +104,6 @@
                             <th scope="col">Acciones</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Administrador</td>
-                            <td>
-                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Usuario</td>
-                            <td>
-                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Vendedor</td>
-                            <td>
-                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -167,10 +135,37 @@ crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- COMUNES -->
-<script> src="assets/js/comunes.js" </script>
+<script src="assets/js/comunes.js" ></script>
 
 
 <script>
+
+//buscar los roles en la api
+$(document).ready(function() {
+
+$.ajax({
+  url: `${API_URL}/roles`,
+  type: 'GET',
+  dataType: 'json',
+  success: function(data){
+    $.each(data, function(index,value){
+      $('#tablaRol').append(`<tr>
+                        <th scope="row"> ${value.ID_ROL} </th>
+                        <td> ${value.NOMBRE} </td>
+                        <td>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
+                          </div>
+                        </td>
+                    </tr>`)
+    })
+
+  }
+})
+
+});
+
 
 
 //botones invisibles

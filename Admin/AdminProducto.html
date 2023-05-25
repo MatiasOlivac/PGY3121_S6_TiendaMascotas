@@ -118,18 +118,12 @@
             </div>
 
             <div class="form-row">
-
-              <!-- <div class="form-group col-md-4">
-                <label for="inputEspecieProductos">ESPECIE</label>
-                <input type="number" class="form-control" id="inputEspecieProducto" placeholder="Ingrese especie">
-              </div> -->
-
                 
               <div class="form-group col-md-6">
                 <label for="inputEspecieProductos">ESPECIE</label>
 
                 <select id="inputEspecieProducto" class="form-control">
-                  <option value="" selected>Seleccione...</option>
+                  <option selected>Seleccione...</option>
                 </select>
               </div>
 
@@ -138,15 +132,8 @@
                 <label for="inputPromocionProductos">PROMOCION</label>
                 <select id="inputPromocionProducto" class="form-control">
                   <option selected>Seleccione...</option>
-                  <option></option>
                 </select>
               </div>
-            
-
-              <!-- <div class="form-group col-md-4">
-                <label for="inputPromocionProductos">PROMOCION</label>
-                <input type="number" class="form-control" id="inputPromocionProducto" placeholder="Ingrese promocion">
-              </div> -->
 
             </div>
 
@@ -175,29 +162,12 @@
                       <th scope="col">NOMBRE</th>
                       <th scope="col">VALOR</th>
                       <th scope="col">STOCK</th>
-                      <th scope="col">ESPECIE</th>
                       <th scope="col">PROMOCION</th>
+                      <th scope="col">ESPECIE</th>
+                      <th scope="col">IMAGEN</th>
                       <th scope="col">ACCIONES</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Alimento Seco Salmón para Gato Bolsa 8 Kg</td>
-                      <td>16990</td>
-                      <td>4</td>
-                      <td>1</td>
-                      <td>1</td>
-                      <td>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-success btnEditarProducto"><i
-                              class="fa-solid fa-pencil"></i></button>
-                          <button type="button" class="btn btn-danger btnEliminarProducto"><i
-                              class="fa-solid fa-trash"></i></button>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
                 </table>
               </div>
             </div>
@@ -221,13 +191,13 @@
   <!-- sweetalert2 -->
 
   <!-- COMUNES -->
-  <script> src="Admin/assets/js/comunes.js" </script>
+  <script src="assets/js/comunes.js" ></script>
 
   <!--- Mis scripts -->
   <script>
 
     //buscar las especies en la api
-    $(documnet).ready(function() {
+    $(document).ready(function() {
 
       $.ajax({
         url: `${API_URL}/Especie`,
@@ -235,9 +205,65 @@
         dataType: 'json',
         success: function(data){
           $.each(data, function(index,value){
-            $('#inputEspecieProducto').append(`<option id=${value.ID_ESPECIE} value="${value.NOMBRE}"> 
+            $('#inputEspecieProducto').append(`<option ${value.ID_ESPECIE} ${value.NOMBRE}"> 
               ${value.NOMBRE}
               </option>`)
+
+          })
+
+
+        }
+      })
+
+    });
+
+    //buscar las promociones en la api
+    $(document).ready(function() {
+
+      $.ajax({
+        url: `${API_URL}/Promociones`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+          $.each(data, function(index,value){
+            $('#inputPromocionProducto').append(`<option ${value.ID_PROMOCIONES} ${value.NOMBRE}"> 
+              ${value.NOMBRE}
+              </option>`)
+
+          })
+
+
+        }
+      })
+
+    });
+
+    //buscar los productos en la api
+    $(document).ready(function() {
+
+      $.ajax({
+        url: `${API_URL}/AdminProducto`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+          $.each(data, function(index,value){
+            $('#tablaProductos').append(`<tr>
+                            <th scope="row">${value.ID_PRODUCTOS}</th>
+                            <td>${value.NOMBRE}</td>
+                            <td>${value.VALOR}</td>
+                            <td>${value.STOCK}</td>
+                            <td>${value.PROMOCIONES_ID_PROMOCIONES}</td>
+                            <td>${value.ESPECIES_ID_ESPECIES}</td>
+                            <td>${value.IMAGEN}</td>
+                            <td>
+                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarProducto"><i
+                                  class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarProducto"><i
+                                  class="fa-solid fa-trash"></i></button>
+                              </div>
+                            </td>
+                        </tr>`)
 
           })
 
@@ -260,14 +286,16 @@
       var Stock = $("#inputStockProducto").val();
       var Especie = $("#inputEspecieProducto").val();
       var Promocion = $("#inputPromocionProducto").val();
+      var Imagen = $("#ImagenProducto").val();
 
       let fila = `<tr>
                             <th scope="row">${ultimoId()}</th>
                             <td>${Nombre}</td>
                             <td>${Valor}</td>
                             <td>${Stock}</td>
-                            <td>${Especie}</td>
                             <td>${Promocion}</td>
+                            <td>${Especie}</td>
+                            <td>${Imagen}</td>
                             <td>
                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-success btnEditarProducto"><i
@@ -449,6 +477,7 @@
       $("#inputEspecieProducto").val('');
       $("#inputPromocionProducto").val('');
       $("#inputIdProducto").val('');
+      $("#ImagenProducto").val('');
     };
 
 
