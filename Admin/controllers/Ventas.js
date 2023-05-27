@@ -4,8 +4,8 @@ const connection = require('../config/config');
 const app = express();
 
 // Obtener todas las ventas
-app.get('/', (request, response) => {
-    const sql = "SELECT * FROM VENTAS";
+module.exports.buscar_todo = app.patch('/', (request, response) => {
+    const sql = "SELECT ID_VENTA, FECHA, ESTADO, HORA, ID_USUARIO FROM VENTAS";
     connection.query(sql, (error, results) => {
         if (error) throw error;
         if (results.length > 0) {
@@ -17,7 +17,7 @@ app.get('/', (request, response) => {
 });
 
 // Actualizar una venta
-app.patch('/', (req, res) => {
+module.exports.actualizar('/', (req, res) => {
     const { id, fecha, estado, hora, id_usuario } = req.body;
     const sql = "UPDATE VENTAS SET FECHA = ?, ESTADO = ?, HORA = ?, ID_USUARIO = ? WHERE ID_VENTA = ?";
     const values = [fecha, estado, hora, id_usuario, id];
@@ -29,7 +29,7 @@ app.patch('/', (req, res) => {
 });
 
 // Agregar una nueva venta
-app.post('/', (req, res) => {
+module.exports.agregar = app.post('/', (req, res) => {
     const { id, fecha, estado, hora, id_usuario } = req.body;
     const sql = "INSERT INTO VENTAS (ID_VENTA, FECHA, ESTADO, HORA, ID_USUARIO) VALUES (?, ?, ?, ?, ?)";
     const values = [id, fecha, estado, hora, id_usuario];
@@ -41,7 +41,7 @@ app.post('/', (req, res) => {
 });
 
 // Eliminar una venta
-app.put('/', (request, response) => {
+module.exports.eliminar = app.put('/', (request, response) => {
     const { id } = request.body;
     const sql = "DELETE FROM VENTAS WHERE ID_VENTA = ?";
     connection.query(sql, id, (error, results) => {
