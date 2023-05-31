@@ -200,7 +200,10 @@
 //buscar las promociones en la api
   $(document).ready(function() {
 
+    getProductos();
+    getEspecies();
     getPromociones();
+
 
   }); 
 
@@ -208,7 +211,7 @@
 //buscar las especies en la api
   getEspecies = () =>{
     $.ajax({
-      url: `${API_URL}/Especies`,
+      url: `${API_URL}/Especie`,
       type: 'GET',
       dataType: 'json',
       success: function(data){
@@ -240,7 +243,7 @@
 
 
 //buscar los productos en la api
-  $(document).ready(function() {
+  getProductos = () =>{
     $.ajax({
       url: `${API_URL}/AdminProducto`,
       type: 'GET',
@@ -253,8 +256,8 @@
                 <td>${value.NOMBRE}</td>
                 <td>${value.VALOR}</td>
                 <td>${value.STOCK}</td>
-                <td>${value.PROMOCIONES_ID_PROMOCIONES}</td>
-                <td>${value.ESPECIES_ID_ESPECIES}</td>
+                <td>${value.NOMBRE_PROMOCION}</td>
+                <td>${value.NOMBRE_ESPECIE}</td>
                 <td>${value.IMAGEN}</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -268,7 +271,7 @@
         })
       }
     })
-  });
+  };
 
 
 
@@ -277,43 +280,83 @@
   $('#btnModificarProducto').hide();
 
 
-// Agregar productos
-  $("#btnAgregarProducto").click(function (e) {
-    var Nombre = $("#inputNombreProducto").val();
-    var Valor = $("#inputValorProducto").val();
-    var Stock = $("#inputStockProducto").val();
-    var Especie = $("#inputEspecieProducto").val();
-    var Promocion = $("#inputPromocionProducto").val();
-    var Imagen = $("#ImagenProducto").val();
+//añadir usuario a la lista con jquery
+$(document).on('click', '#btnAgregarProducto', function(){
 
-    let fila = `<tr>
-                          <th scope="row">${ultimoId()}</th>
-                          <td>${Nombre}</td>
-                          <td>${Valor}</td>
-                          <td>${Stock}</td>
-                          <td>${Promocion}</td>
-                          <td>${Especie}</td>
-                          <td>${Imagen}</td>
-                          <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                              <button type="button" class="btn btn-success btnEditarProducto"><i
-                                class="fa-solid fa-pencil"></i></button>
-                              <button type="button" class="btn btn-danger btnEliminarProducto"><i
-                                class="fa-solid fa-trash"></i></button>
-                            </div>
-                          </td>
-                      </tr>`;
+var NOMBRE = $('#inputNombreProducto').val();
+var VALOR = $("#inputValorProducto").val();
+var STOCK = $("#inputStockProducto").val();
+var ESPECIE = $("#inputEspecieProducto").val();
+var PROMOCION = $("#inputPromocionProducto").val();
+var IMAGEN = $("#ImagenProducto").val();
+
+  $.ajax({
+      url: `${API_URL}/AdminProducto`,
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+          NOMBRE: NOMBRE,
+          VALOR: VALOR,
+          STOCK: STOCK,
+          IMAGEN: IMAGEN,
+          ESPECIES_ID_ESPECIES: ESPECIE,
+          PROMOCIONES_ID_PROMOCIONES: PROMOCION
+      })
+      ,
       
-    $("#tablaProductos").append(fila);
-    e.preventDefault(); //que no se actualice la pantalla
-    limpiarFormulario();
-    Swal.fire(
-      'Producto Ingresado!',
-      'Presione "ok" para continuar.',
-      'success'); //mensaje de ingreso correcto
-    console.log('btnAgregarProducto');
-    $('#btnCancelarEditar').hide();
-  });
+      success: function(respuesta){
+          console.log(respuesta);
+      }
+
+  })
+Swal.fire(
+  'Producto Ingresado!',
+  'Presione "ok" para continuar.',
+  'success'); //mensaje de ingreso correcto
+  $('#btnCancelarEditar').hide();
+  limpiarFormulario();
+  actualizarTabla();
+});
+
+
+
+// // Agregar productos
+//   $("#btnAgregarProducto").click(function (e) {
+//     var Nombre = $("#inputNombreProducto").val();
+//     var Valor = $("#inputValorProducto").val();
+//     var Stock = $("#inputStockProducto").val();
+//     var Especie = $("#inputEspecieProducto").val();
+//     var Promocion = $("#inputPromocionProducto").val();
+//     var Imagen = $("#ImagenProducto").val();
+
+//     let fila = `<tr>
+//                           <th scope="row">${ultimoId()}</th>
+//                           <td>${Nombre}</td>
+//                           <td>${Valor}</td>
+//                           <td>${Stock}</td>
+//                           <td>${Promocion}</td>
+//                           <td>${Especie}</td>
+//                           <td>${Imagen}</td>
+//                           <td>
+//                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+//                               <button type="button" class="btn btn-success btnEditarProducto"><i
+//                                 class="fa-solid fa-pencil"></i></button>
+//                               <button type="button" class="btn btn-danger btnEliminarProducto"><i
+//                                 class="fa-solid fa-trash"></i></button>
+//                             </div>
+//                           </td>
+//                       </tr>`;
+      
+//     $("#tablaProductos").append(fila);
+//     e.preventDefault(); //que no se actualice la pantalla
+//     limpiarFormulario();
+//     Swal.fire(
+//       'Producto Ingresado!',
+//       'Presione "ok" para continuar.',
+//       'success'); //mensaje de ingreso correcto
+//     console.log('btnAgregarProducto');
+//     $('#btnCancelarEditar').hide();
+//   });
 
 
 //botón BORRAR

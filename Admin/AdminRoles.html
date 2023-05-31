@@ -189,7 +189,7 @@ $('#btnCancelarEditarRol').hide();
     var NOMBRE = $('#inputNombreRol').val();
 
       $.ajax({
-          url: API_URL+'/roles',
+          url: `${API_URL}/roles`,
           type: 'POST',
           contentType: 'application/json',
           data: JSON.stringify({
