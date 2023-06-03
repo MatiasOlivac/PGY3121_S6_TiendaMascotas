@@ -81,7 +81,7 @@
             <div class="form-row">
               <div class="form-group col-m-4 mt-1">
                 <label for="inputNombreRoles">Tipo de Rol</label>
-                <input type="text" class="form-control" id="inputNombreRol" placeholder="Ingrese nombre del rol" required>
+                <input type="text" class="form-control" id="inputNombreRol" required>
                 <input type="text" class="form-control" id="inputIdUsuarioRol" hidden>
               </div>
               <div class="col-5 m-2">
@@ -161,11 +161,12 @@ crossorigin="anonymous"></script>
           $.each(data, function(index,value){
             $('#tablaRol').append(
                           `<tr>
-                              <th scope="row"> ${value.ID_ROL} </th>
-                              <td> ${value.NOMBRE == null ? "" : value.NOMBRE} </td>
+                              <th scope="row"> ${ultimoId()} </th>
+                              <td> ${value.NOMBRE == null ? "" : value.NOMBRE} 
+                                <input type="hidden" name="id_rol" value="${value.ID_ROL}">
+                                </td>
                               <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                  <input type="hidden" value="${value.NOMBRE}">
                                   <button type="button" class="btn btn-info btnEditarUsuarioRol"><i class="fa-solid fa-pencil"></i></button>
                                   <button type="button" class="btn btn-danger btnEliminarUsuarioRol"><i class="fa-solid fa-trash"></i></button>
                                 </div>
@@ -216,7 +217,11 @@ $('#btnCancelarEditarRol').hide();
 //entregar ultimo id
   ultimoId = () =>{
     let ultimoId = $("#tablaRol tr:last th").text();
-    return parseInt(ultimoId) + 1;
+    let value = parseInt(ultimoId) + 1;
+    if (isNaN(value)){
+      value=1
+    }
+    return value;
   };
 
   
@@ -240,17 +245,21 @@ $('#btnCancelarEditarRol').hide();
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        var idUsuarioRol = $(this).closest('tr').find('th').text();
+        var idUsuarioRol = $(this).closest('tr').find('td');
+        var id_rol = idUsuarioRol.eq(0).find('input').val();
+        console.log(id_rol)
+        
 
         $.ajax({
           url: `${API_URL}/roles`,
           type: 'DELETE',
           dataType: 'json',
           data: {
-            ID_ROL : idUsuarioRol
+            ID_ROL : id_rol
         },
         success: function(respuesta){
             console.log('Usuario Eliminado')
+            actualizarTabla();
         }
 
     })
@@ -273,6 +282,7 @@ $('#btnCancelarEditarRol').hide();
   });
 
 
+
 //Editar Usuario
   $("#tablaRol").on("click", ".btnEditarUsuarioRol", function (e) {
         // $('#btnAgregarUsuarioRol').hide();
@@ -281,7 +291,7 @@ $('#btnCancelarEditarRol').hide();
         var idUsuarioRol = $(this).closest('tr').find('th').text();
         var NOMBRE = $(this).closest('tr').find('td');
 
-        var NombreRol = NOMBRE.eq(0).text();
+        var NombreRol = NOMBRE.eq(0).text().trim();
 
         $("#inputNombreRol").val(NombreRol);
         $("#inputIdUsuarioRol").val(idUsuarioRol);
@@ -296,64 +306,31 @@ $('#btnCancelarEditarRol').hide();
 
 //modificar usuario
   $("#btnModificarUsuarioRol").click(function () {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
+    let nombre = $("#inputNombreRol").val();
+    let id_rol = $("#inputIdUsuarioRol").val();
+    
+    console.log(nombre)
+    console.log(id_rol)
 
-    swalWithBootstrapButtons.fire({
-      title: 'Seguro que desea modificar?.',
-      text: "Una vez aceptado, no se podrá volver atrás.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, MODIFICAR.',
-      cancelButtonText: 'CANCELAR.',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        var NOMBRE = $("#inputNombreRol").val()
-
-        $.ajax({
+    $.ajax({
           url: `${API_URL}/roles`,
           type: 'PATCH',
           contentType: 'application/json',
+          crossDomain: true,
           data: JSON.stringify({
-            NOMBRE : NOMBRE
+              NOMBRE : nombre,
+              ID_ROL : id_rol
           }),
-        });
-
-        actualizarTabla();
-        limpiarFormulario();
-        $('#btnModificarUsuarioRol').hide();
-        $('#btnCancelarEditarRol').hide();
-        $('#btnAgregarUsuarioRol').show();
-
-
-
-        swalWithBootstrapButtons.fire(
-          'PROCESO EXITOSO!.',
-          'Los datos fueron modificados.',
-          'success'
-        )
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado.',
-          'Vuelva a revisar los datos',
-          'error'
-        )
-      }
-    })
-
-
+          success: function(respuesta){
+              console.log("modificado");
+              limpiarFormulario();
+              actualizarTabla();
+              $('#btnCancelarEditarRol').hide();
+              $('#btnModificarUsuarioRol').hide();
+              $('#btnAgregarUsuarioRol').show();
+          }
+      })
   });
-
-
 
       //boton CANCELAR EDICION
       $("#btnCancelarEditarRol").click(function () {
