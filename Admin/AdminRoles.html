@@ -214,7 +214,7 @@ $('#btnCancelarEditarRol').hide();
 
 
 //entregar ultimo id
-  function ultimoId() {
+  ultimoId = () =>{
     let ultimoId = $("#tablaRol tr:last th").text();
     return parseInt(ultimoId) + 1;
   };
@@ -315,23 +315,19 @@ $('#btnCancelarEditarRol').hide();
     }).then((result) => {
       if (result.isConfirmed) {
 
-        var NOMBRE = $("#inputNombreRol").val();
+        var NOMBRE = $("#inputNombreRol").val()
 
-          $.ajax({
-              url: `${API_URL}/roles`,
-              type: 'PATCH',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                NOMBRE: NOMBRE
-              }),
-              success: function(respuesta){
-                  console.log('Usuario Modificado');
-                  actualizarTabla();
-                  limpiarFormulario();
-              }
-            })
+        $.ajax({
+          url: `${API_URL}/roles`,
+          type: 'PATCH',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            NOMBRE : NOMBRE
+          }),
+        });
 
-
+        actualizarTabla();
+        limpiarFormulario();
         $('#btnModificarUsuarioRol').hide();
         $('#btnCancelarEditarRol').hide();
         $('#btnAgregarUsuarioRol').show();
