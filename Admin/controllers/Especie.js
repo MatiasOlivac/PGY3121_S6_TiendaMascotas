@@ -6,7 +6,7 @@ const app = express();
 //http://estilow3b.com/metodos-http-post-get-put-delete/
 
 //metodo GET ESPECIES
-module.exports.buscar_todoEspecies = app.get('/', (request, response) => {  
+module.exports.buscar_todo = app.get('/', (request, response) => {  
     const sql = "SELECT ID_ESPECIES, NOMBRE FROM ESPECIES";
     connection.query(sql, (error, results) => {
         if (error) throw error;
@@ -19,7 +19,7 @@ module.exports.buscar_todoEspecies = app.get('/', (request, response) => {
 });
 
 //metodo PATCH ESPECIES
-module.exports.actualizarEspecies = app.patch('/', (req, res) => {
+module.exports.actualizar = app.patch('/', (req, res) => {
     const { id_especie, nombre } = req.body;
     const sql = "UPDATE ESPECIES SET NOMBRE = ? WHERE ID_ESPECIES = ?";
     const values = [nombre];
