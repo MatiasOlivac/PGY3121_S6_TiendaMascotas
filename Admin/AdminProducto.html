@@ -280,7 +280,7 @@
   $('#btnModificarProducto').hide();
 
 
-//añadir usuario a la lista con jquery
+//añadir Producto a la lista con jquery
 $(document).on('click', '#btnAgregarProducto', function(){
 
 var NOMBRE = $('#inputNombreProducto').val();
@@ -313,6 +313,7 @@ Swal.fire(
   'Producto Ingresado!',
   'Presione "ok" para continuar.',
   'success'); //mensaje de ingreso correcto
+  
   $('#btnCancelarEditar').hide();
   limpiarFormulario();
   actualizarTabla();
