@@ -22,7 +22,7 @@
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>Ventas</title>
+  <title>Despachos</title>
 </head>
 
 <body>
@@ -59,8 +59,8 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="AdminProducto.html">Ingreso de Productos</a>
               <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
-              <a class="dropdown-item active" href="AdminVentas.html">Ventas</a>
-              <a class="dropdown-item" href="AdminDespacho.html">Despachos</a>
+              <a class="dropdown-item" href="AdminVentas.html">Ventas</a>
+              <a class="dropdown-item active" href="AdminDespacho.html">Despachos</a>
               <a class="dropdown-item" href="AdminSeguimiento.html">Seguimiento</a>
               <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
             </div>
@@ -78,23 +78,23 @@
   <!-- Fin navbar -->
 
 
-<!-- AdminVentas -->
+<!-- AdminDespachos -->
 <div class="container">
 
   <div class="row justify-content-md-center border-dark">
       <div class="col-sm-6">
         <div class="card m-2 border border-primary">
           <div class="card-body">
-            <h5 class="card-title">Registro de Ventas</h5>
+            <h5 class="card-title">Registro de Despachos</h5>
     
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputPrimerNombre">Id Producto</label>
-                <input type="text" class="form-control border border-success" id="inputIdProducto">
+                <label for="inputPrimerNombre">Id Venta</label>
+                <input type="text" class="form-control border border-success" id="inputIdVenta">
                 <input type="text" class="form-control" id="inputIdusuario" hidden>
               </div>
               <div class="form-group col-md-6">
-                <label for="inputSegundoNombre">Fecha</label>
+                <label for="inputSegundoNombre">Fecha Despacho</label>
                 <input type="text" class="form-control" placeholder="dd/mm/aa" id="inputFecha">
               </div>
             </div>
@@ -102,13 +102,8 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputApellidoPaterno">Estado</label>
-                <input type="text" class="form-control" placeholder="Bodega/Despachado" id="inputEstado">
+                <input type="text" class="form-control" placeholder="Bodega/Despachado/Demora" id="inputEstado">
               </div>
-              <div class="form-group col-md-6">
-                <label for="inputApellidoMaterno">Id Usuario</label>
-                <input type="text" class="form-control" id="inputidUsuario">
-              </div>
-            </div>
     
             <div class="form-row">
                   <div class="form-group col-md-6">
@@ -119,7 +114,7 @@
 
         </div>
           <div class="btn-group btn-group-sm m-2 " role="group" aria-label="Basic example">
-            <a id="btnAgregarUsuario" class="btn btn-primary w-25">Registrar</a>
+            <a id="btnAgregarDespacho" class="btn btn-primary w-25">Registrar</a>
             
           </div>
       </div>
@@ -136,19 +131,19 @@
     <div class="card" style="height: 100%;">
       <div class="card-body">
 
-        <h5 class="card-title">Listado de Ventas</h5>
+        <h5 class="card-title">Listado de Despachos</h5>
 
-        <!-- Tabla de usuarios -->
+        <!-- Tabla de Despachos -->
         <div class="table-responsive">
-          <table class="table" id="tablaUsuarios">
+          <table class="table" id="tablaDespachos">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id Producto</th>
+                <th scope="col">Id Venta</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Estado</th>
-                <th scope="col">Id Usuario</th>
                 <th scope="col">Hora</th>
+                <th scope="col">Nro Seguimiento</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -163,8 +158,8 @@
                 
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="btn btn-success btnEditarDespacho"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btnEliminarDespacho"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </td>
               </tr>
@@ -177,8 +172,8 @@
                 <td>15:42</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="btn btn-success btnEditarDespacho"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btnEliminarDespacho"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </td>
               </tr>
@@ -191,8 +186,8 @@
                 <td>13:05</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="btn btn-success btnEditarDespacho"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btnEliminarDespacho"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </td>
               </tr>
@@ -215,35 +210,42 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!--- Mis scripts -->
 <script> 
+ function generateRandomNumber() {
+    // Genera un número aleatorio entre 0 y 100
+    var aleatorio = Math.round(Math.random()*10);
 
-    //funcionalidad para agregar los usuarios a la tabla
-    $("#btnAgregarUsuario").click(function(e){
+    // Asigna el número aleatorio al input
+    document.getElementById('randomNumberInput').value = randomNumber;
+  }
+
+    //funcionalidad para agregar los Despachos a la tabla
+    $("#btnAgregarDespacho").click(function(e){
         e.preventDefault();
 
-        var idProducto = $("#inputIdProducto").val();
+        var idVenta = $("#inputIdVenta").val();
         var fecha = $("#inputFecha").val();
         var estado = $("#inputEstado").val();
-        var idUsuario = $("#inputidUsuario").val();
         var hora = $("#inputHora").val();
+        var randomNumber = Math.round(Math.random()* 1000);
         
 
 
         let fila = `<tr>
                         <th scope="row">${ultimoId()}</th>
-                        <td>${idProducto}</td>
+                        <td>${idVenta}</td>
                         <td>${fecha}</td>
                         <td>${estado}</td>
-                        <td>${idUsuario}</td>
                         <td>${hora}</td>
+                        <td>${randomNumber}</td>
                         <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-success btnEditarDespacho"><i class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarDespacho"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>`;
         
-       $("#tablaUsuarios").append(fila);
+       $("#tablaDespachos").append(fila);
     })
 
 
@@ -254,13 +256,14 @@
     }
 
    // borrar linea
-    $(".btnEliminarUsuario").click(function(e){
+    $(".btnEliminarDespacho").click(function(e){
         e.preventDefault();
         $(this).closest('tr').remove();
     })
 
+   
     //editar usuario de la tabla
-    $(".btnEditarusuario").click(function(e){
+    $(".btnEditarDespacho").click(function(e){
         e.preventDefault();
         var idVenta = $(this).closest('tr').find('th').text();
         var venta = $(this).closest('tr').find('td');
@@ -268,26 +271,25 @@
         var idProducto = venta.eq(0).text();
         var fecha = venta.eq(1).text();
         var estado = venta.eq(2).text();
-        var idUsuario = venta.eq(3).text();
-        var hora = venta.eq(4).text();
+        var hora = venta.eq(3).text();
+        var randomNumber = randomNumber.eq(4).text();
         
 
-        $("#inputIdProducto").val(idProducto);
+        $("#inputIdVenta").val(idProducto);
         $("#inputFecha").val(fecha);
         $("#inputEstado").val(estadoo);
-        $("#inputidUsuario").val(idUsuario);
         $("#inputHora").val(hora);
+        $("#randonNumberInput").val(randomNumber);
         
         
 
     });
 
     //boton editar del formulario
-    $("#btnEditarUsuarioTabla").click(function(){
-        var idProducto = $("#inputIdProducto").val();
+    $("#btnEditarDespachoTabla").click(function(){
+        var idVenta = $("#inputIdVenta").val();
         var fecha = $("#inputFecha").val();
         var estado = $("#inputEstado").val();
-        var idUsuario = $("#inputidUsuario").val();
         var hora = $("#inputHora").val();
 
         let fila = `<tr>
@@ -303,8 +305,8 @@
                         <td>${direccion}</td>
                         <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-success btnEditarDespacho"><i class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarDespacho"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>`;
