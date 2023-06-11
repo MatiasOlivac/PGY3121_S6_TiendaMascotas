@@ -247,8 +247,8 @@ $('#btnCancelarEditarRol').hide();
       if (result.isConfirmed) {
         var idUsuarioRol = $(this).closest('tr').find('td');
         var id_rol = idUsuarioRol.eq(0).find('input').val();
-        console.log(id_rol)
-        
+        console.log(id_rol);
+        console.log(idUsuarioRol);
 
         $.ajax({
           url: `${API_URL}/roles`,
@@ -274,7 +274,7 @@ $('#btnCancelarEditarRol').hide();
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado.',
-          'El producto está a salvo! :D .',
+          'El Usuario está a salvo! :D .',
           'error'
         )
       }

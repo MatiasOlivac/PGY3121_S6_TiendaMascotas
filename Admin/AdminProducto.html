@@ -99,9 +99,8 @@
 
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="inputNombres">NOMBRE</label>
-                <input type="text" class="form-control" id="inputNombreProducto" placeholder="Ingrese el nombre"
-                  required>
+                <label for="inputNombreProductos">NOMBRE</label>
+                <input type="text" class="form-control" id="inputNombreProducto" placeholder="Ingrese el nombre" required>
                 <input type="text" class="form-control" id="inputIdProducto" hidden>
               </div>
 
@@ -122,16 +121,16 @@
               <div class="form-group col-md-6">
                 <label for="inputEspecieProductos">ESPECIE</label>
 
-                <select id="inputEspecieProducto" class="form-control">
-                  <option selected>Seleccione...</option>
+                <select id="inputEspecieProducto" class="form-control" title="-- Seleccionar --">
+                  <option value="" selected>-- Seleccionar --</option>
                 </select>
               </div>
 
 
               <div class="form-group col-md-6">
                 <label for="inputPromocionProductos">PROMOCION</label>
-                <select id="inputPromocionProducto" class="form-control">
-                  <option selected>Seleccione...</option>
+                <select id="inputPromocionProducto" class="form-control" title="-- Seleccionar --">
+                  <option value="" selected>-- Seleccionar --</option>
                 </select>
               </div>
 
@@ -168,6 +167,9 @@
                       <th scope="col">ACCIONES</th>
                     </tr>
                   </thead>
+                  <tbody>
+
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -216,8 +218,8 @@
       dataType: 'json',
       success: function(data){
         $.each(data, function(index,value){
-          $('#inputEspecieProducto').append(`<option ${value.ID_ESPECIES} ${value.NOMBRE}"> 
-            ${value.NOMBRE}
+          $('#inputEspecieProducto').append(`<option ${value.ID_ESPECIES}"> 
+            ${value.ID_ESPECIES}. ${value.NOMBRE}
             </option>`)
         })
       }
@@ -233,8 +235,8 @@
       dataType: 'json',
       success: function(data){
         $.each(data, function(index,value){
-          $('#inputPromocionProducto').append(`<option ${value.ID_PROMOCIONES} ${value.NOMBRE}"> 
-            ${value.NOMBRE}
+          $('#inputPromocionProducto').append(`<option ${value.ID_PROMOCIONES}"> 
+            ${value.ID_PROMOCIONES}. ${value.NOMBRE}
             </option>`)
         })
       }
@@ -252,8 +254,9 @@
         $.each(data, function(index,value){
           $('#tablaProductos').append(
             `<tr>
-                <th scope="row">${value.ID_PRODUCTOS}</th>
-                <td>${value.NOMBRE}</td>
+                <th scope="row">${ultimoId()}</th>
+                <td> ${value.NOMBRE == null ? "" : value.NOMBRE} 
+                                <input type="hidden" name="id_rol" value="${value.ID_PRODUCTOS}">
                 <td>${value.VALOR}</td>
                 <td>${value.STOCK}</td>
                 <td>${value.NOMBRE_PROMOCION}</td>
@@ -286,9 +289,10 @@ $(document).on('click', '#btnAgregarProducto', function(){
 var NOMBRE = $('#inputNombreProducto').val();
 var VALOR = $("#inputValorProducto").val();
 var STOCK = $("#inputStockProducto").val();
+var IMAGEN = $("#ImagenProducto").val();
 var ESPECIE = $("#inputEspecieProducto").val();
 var PROMOCION = $("#inputPromocionProducto").val();
-var IMAGEN = $("#ImagenProducto").val();
+
 
   $.ajax({
       url: `${API_URL}/AdminProducto`,
@@ -306,62 +310,27 @@ var IMAGEN = $("#ImagenProducto").val();
       
       success: function(respuesta){
           console.log(respuesta);
+          
+          $('#btnCancelarEditar').hide();
+          limpiarFormulario();
+          actualizarTabla();
       }
 
   })
+  $('#btnCancelarEditar').hide();
+  limpiarFormulario();
+  actualizarTabla();
 Swal.fire(
   'Producto Ingresado!',
   'Presione "ok" para continuar.',
   'success'); //mensaje de ingreso correcto
   
-  $('#btnCancelarEditar').hide();
-  limpiarFormulario();
-  actualizarTabla();
 });
 
 
 
-// // Agregar productos
-//   $("#btnAgregarProducto").click(function (e) {
-//     var Nombre = $("#inputNombreProducto").val();
-//     var Valor = $("#inputValorProducto").val();
-//     var Stock = $("#inputStockProducto").val();
-//     var Especie = $("#inputEspecieProducto").val();
-//     var Promocion = $("#inputPromocionProducto").val();
-//     var Imagen = $("#ImagenProducto").val();
-
-//     let fila = `<tr>
-//                           <th scope="row">${ultimoId()}</th>
-//                           <td>${Nombre}</td>
-//                           <td>${Valor}</td>
-//                           <td>${Stock}</td>
-//                           <td>${Promocion}</td>
-//                           <td>${Especie}</td>
-//                           <td>${Imagen}</td>
-//                           <td>
-//                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-//                               <button type="button" class="btn btn-success btnEditarProducto"><i
-//                                 class="fa-solid fa-pencil"></i></button>
-//                               <button type="button" class="btn btn-danger btnEliminarProducto"><i
-//                                 class="fa-solid fa-trash"></i></button>
-//                             </div>
-//                           </td>
-//                       </tr>`;
-      
-//     $("#tablaProductos").append(fila);
-//     e.preventDefault(); //que no se actualice la pantalla
-//     limpiarFormulario();
-//     Swal.fire(
-//       'Producto Ingresado!',
-//       'Presione "ok" para continuar.',
-//       'success'); //mensaje de ingreso correcto
-//     console.log('btnAgregarProducto');
-//     $('#btnCancelarEditar').hide();
-//   });
-
-
 //botón BORRAR
-  $("#tablaProductos").on("click", ".btnEliminarProducto", function (e) {
+  $(document).on("click", ".btnEliminarProducto", function (e) {
     e.preventDefault();
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -381,18 +350,36 @@ Swal.fire(
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        $(this).closest('tr').remove();
+        var IdProducto = $(this).closest('tr').find('td');
+        var prod_id = IdProducto.eq(0).find('input').val();
+        console.log(IdProducto);
+        console.log(prod_id);
+
+
+        $.ajax({
+          url: `${API_URL}/AdminProducto`,
+          type: 'DELETE',
+          dataType: 'json',
+          data: {
+            ID_PRODUCTOS : prod_id
+        },
+        success: function(respuesta){
+            console.log('Producto Eliminado')
+        }
+        
+    })
         swalWithBootstrapButtons.fire(
           'Producto eliminado!.',
-          'Los datos fueron borrados :( .',
+          'presione ok para finalizar.',
           'success'
         )
+        actualizarTabla();
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado.',
-          'El producto está a salvo! :D .',
+          'El Producto está a salvo! :D .',
           'error'
         )
       }
@@ -406,108 +393,174 @@ Swal.fire(
     var idProducto = $(this).closest('tr').find('th').text();
     var producto = $(this).closest('tr').find('td');
 
-    var Nombre = producto.eq(0).text();
-    var Valor = producto.eq(1).text();
-    var Stock = producto.eq(2).text();
-    var Especie = producto.eq(3).text();
-    var Promocion = producto.eq(4).text();
+    var Nombre = producto.eq(0).text().trim();
+    var Valor = producto.eq(1).text().trim();
+    var Stock = producto.eq(2).text().trim();
+    var Promocion = producto.eq(3).find('input').val();
+    var Especie = producto.eq(4).find('input').val();
+    var Imagen = producto.eq(5).text().trim();
 
     $("#inputNombreProducto").val(Nombre);
     $("#inputValorProducto").val(Valor);
     $("#inputStockProducto").val(Stock);
-    $("#inputEspecieProducto").val(Especie);
     $("#inputPromocionProducto").val(Promocion);
+    $("#inputEspecieProducto").val(Especie);
+    $("#ImagenProducto").val(Imagen);
     $("#inputIdProducto").val(idProducto);
 
     $('#btnCancelarEditar').show();
     $('#btnModificarProducto').show();
     $('#btnAgregarProducto').hide();
-    console.log('btnEditarProducto');
+
 
   });
 
 
-//boton editar del formulario
-  $("#btnModificarProducto").click(function () {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
+// //boton editar del formulario
+//   $("#btnModificarProducto").click(function () {
+//     const swalWithBootstrapButtons = Swal.mixin({
+//       customClass: {
+//         confirmButton: 'btn btn-success',
+//         cancelButton: 'btn btn-danger'
+//       },
+//       buttonsStyling: false
+//     })
 
-    swalWithBootstrapButtons.fire({
-      title: 'Seguro que desea modificar?.',
-      text: "Una vez aceptado, no se podrá volver atrás.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, MODIFICAR.',
-      cancelButtonText: 'CANCELAR.',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'PROCESO EXITOSO!.',
-          'Los datos fueron modificados.',
-          'success'
-        )
-        var Nombre = $("#inputNombreProducto").val();
-        var Valor = $("#inputValorProducto").val();
-        var Stock = $("#inputStockProducto").val();
-        var Especie = $("#inputEspecieProducto").val();
-        var Promocion = $("#inputPromocionProducto").val();
-        var idProducto = $("#inputIdProducto").val();
+//     swalWithBootstrapButtons.fire({
+//       title: 'Seguro que desea modificar?.',
+//       text: "Una vez aceptado, no se podrá volver atrás.",
+//       icon: 'warning',
+//       showCancelButton: true,
+//       confirmButtonText: 'Si, MODIFICAR.',
+//       cancelButtonText: 'CANCELAR.',
+//       reverseButtons: true
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         swalWithBootstrapButtons.fire(
+//           'PROCESO EXITOSO!.',
+//           'Los datos fueron modificados.',
+//           'success'
+//         )
+//         var Nombre = $("#inputNombreProducto").val();
+//         var Valor = $("#inputValorProducto").val();
+//         var Stock = $("#inputStockProducto").val();
+//         var nombre_Especie = $("#inputEspecieProducto option:selected").text();
+//         var Especie = $("#inputEspecieProducto").val();
+//         var nombre_Promocion = $("#inputPromocionProducto option:selected").text();
+//         var Promocion = $("#inputPromocionProducto").val();
+//         var idProducto = $("#inputIdProducto").val();
+//         var Imagen = $("#ImagenProducto").val();
 
-        let fila = `<tr>
-                          <th scope="row">${idProducto}</th>
-                          <td>${Nombre}</td>
-                          <td>${Valor}</td>
-                          <td>${Stock}</td>
-                          <td>${Especie}</td>
-                          <td>${Promocion}</td>
-                          <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                          </td>
-                      </tr>`
+//         let fila = `<tr>
+//                           <th scope="row">${ultimoId()}</th>
+//                           <td>${Nombre}</td>
+//                           <td>${Valor}</td>
+//                           <td>${Stock}</td>
+//                           <td>${nombre_Especie}
+//                             <input type="hidden" name="Especie" value="${Especie}">
+//                             </td>
+//                           <td>${nombre_Promocion}
+//                             <input type="hidden" name="Promocion" value="${Promocion}"
+//                             </td>
+//                           <td>${Imagen}</td>
+//                           <td>
+//                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+//                             <button type="button" class="btn btn-success btnEditarProducto"><i class="fa-solid fa-pencil"></i></button>
+//                             <button type="button" class="btn btn-danger btnEliminarProducto"><i class="fa-solid fa-trash"></i></button>
+//                             </div>
+//                           </td>
+//                       </tr>`
 
-        //eliminar la fila que seleccione
-        $(`#tablaProductos tr :contains(${idProducto})`).closest('tr').remove();
+//         //eliminar la fila que seleccione
+//         $(`#tablaProductos tr :contains(${idProducto})`).closest('tr').remove();
 
-        $("#tablaProductos").append(fila);
+//         $("#tablaProductos").append(fila);
+//         limpiarFormulario();
+//         $('#btnCancelarEditar').hide();
+//         $('#btnModificarProducto').hide();
+//         $('#btnAgregarProducto').show();
+//       } else if (
+//         result.dismiss === Swal.DismissReason.cancel
+//       ) {
+//         swalWithBootstrapButtons.fire(
+//           'Cancelado.',
+//           'Vuelva a revisar los datos',
+//           'error'
+//         )
+//       }
+//     })
+//   });
+
+//modificar usuario
+$("#btnModificarProducto").click(function () {
+    let Nombre = $("#inputNombreProducto").val();
+    let Valor = $("#inputValorProducto").val();
+    let Stock = $("#inputStockProducto").val();
+    let Imagen = $("#ImagenProducto").val();
+    let Promocion = $("#inputPromocionProducto").val();
+    let Especie = $("#inputEspecieProducto").val();
+    let idProducto = $("#inputIdProducto").val();
+    
+    console.log(Nombre);
+    console.log(Valor);
+    console.log(Stock);
+    console.log(Especie);
+    console.log(Promocion);
+    console.log(Imagen);
+    console.log(idProducto);
+
+
+    $.ajax({
+          url: `${API_URL}/AdminProducto`,
+          type: 'PATCH',
+          contentType: 'application/json',
+          crossDomain: true,
+          data: JSON.stringify({
+              NOMBRE : Nombre,
+              VALOR : Valor,
+              STOCK : Stock,
+              IMAGEN : Imagen,
+              PROMOCIONES_ID_PROMOCIONES : Promocion,
+              ESPECIES_ID_ESPECIES : Especie,
+              ID_PRODUCTOS : idProducto
+          }),
+          success: function(respuesta){
+              console.log("modificado");
+              limpiarFormulario();
+              actualizarTabla();
+              $('#btnCancelarEditar').hide();
+              $('#btnModificarProducto').hide();
+              $('#btnAgregarProducto').show();
+          }
+      })
+  });
+
+      //boton CANCELAR EDICION
+      $("#btnCancelarEditar").click(function () {
         limpiarFormulario();
         $('#btnCancelarEditar').hide();
         $('#btnModificarProducto').hide();
         $('#btnAgregarProducto').show();
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado.',
-          'Vuelva a revisar los datos',
-          'error'
-        )
-      }
-    })
-  });
+      });
 
 
-//boton CANCELAR EDICION
-  $("#btnCancelarEditar").click(function () {
-    limpiarFormulario();
-    $('#btnCancelarEditar').hide();
-    $('#btnModificarProducto').hide();
-    $('#btnAgregarProducto').show();
-  });
 
-
-//encontrar ultimo id
-  function ultimoId() {
+//entregar ultimo id
+ultimoId = () =>{
     let ultimoId = $("#tablaProductos tr:last th").text();
-    return parseInt(ultimoId) + 1;
+    let value = parseInt(ultimoId) + 1;
+    if (isNaN(value)){
+      value=1
+    }
+    return value;
+  };
+
+//actualizar
+  function actualizarTabla() {
+    $('#tablaProductos tbody').empty();
+    getProductos();
+    getEspecies();
+    getPromociones();
   };
 
 
@@ -516,10 +569,10 @@ Swal.fire(
     $("#inputNombreProducto").val('');
     $("#inputValorProducto").val('');
     $("#inputStockProducto").val('');
+    $("#ImagenProducto").val('');
     $("#inputEspecieProducto").val('');
     $("#inputPromocionProducto").val('');
     $("#inputIdProducto").val('');
-    $("#ImagenProducto").val('');
   };
 
 
