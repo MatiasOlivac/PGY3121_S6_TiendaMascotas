@@ -434,8 +434,46 @@
 
     </script>
 
+      <!-- Comunes -->
+    <script src="Admin/assets/js/comunes.js"></script>
+
+    <script>
+
+      //Agregar usuario a la lista
+
+      $(document).on('click', '#btnAgregarUsuario', function(){
+        var PRIMER_NOMBRE = $('#inputPimerNombre').val();
+        var SEGUNDO_NOMBRE = $('#inputSegundoNombre').val();
+        var APELLIDO_PATERNO = $('#inputApellidoPaterno').val();
+        var APELLIDO_MATERNO = $('#inputApellidoMaterno').val();
+        var RUT = $('#inputRut').val();
+        var CONTRASEÑA = $('#InputContraseña').val();
+        var CORREO = $('#inputCorreo').val();
+        var COMUNA = $('#inputComuna').val();
+        var DIRECCION = $('#inputDireccion').val();
+
+          $.ajax({
+            url: `${API_URL}/registrar`,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+
+              RUT: RUT,
+              NOMBRE: NOMBRE,
+              AP_PATERNO: AP_PATERNO,
+              AP_MATERNO: AP_MATERNO,
+               
+
+            })
 
 
+          })
+      })
+
+    
+
+
+    </script>
 
   </body>
 </html>
