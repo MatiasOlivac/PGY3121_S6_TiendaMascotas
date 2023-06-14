@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link href="styloAdmin.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="styloAdmin.css" rel="stylesheet" />
 
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+  <!-- logotipo -->
+  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+  <!-- logotipo -->
+  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-    <!-- Fonts and icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Administrar Roles</title>
-  </head>
-  <body>
+  <title>Seguimiento</title>
+</head>
 
-    <!-- Navbar_AdminProducto-->
-    <nav class="navbar navbar-expand-lg border-bottom text-dark">
+<body>
+
+  <!-- Navbar_AdminProducto-->
+  <nav class="navbar navbar-expand-lg border-bottom text-dark">
+    <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+    <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse" <nav
+      class="navbar navbar-expand-lg border-bottom text-dark">
       <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
-      <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -38,7 +47,7 @@
             </a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Administrar Usuarios</a>
-              <a class="dropdown-item active" href="AdminDonaciones.html">Visualizar Donaciones</a>
+              <a class="dropdown-item" href="AdminDonaciones.html">Visualizar Donaciones</a>
               <a class="dropdown-item" href="AdminRoles.html">Roles</a>
             </div>
           </li>
@@ -52,7 +61,7 @@
               <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
               <a class="dropdown-item" href="AdminVentas.html">Ventas</a>
               <a class="dropdown-item" href="AdminDespacho.html">Despachos</a>
-              <a class="dropdown-item" href="AdminSeguimiento.html">Seguimiento</a>
+              <a class="dropdown-item active" href="AdminSeguimiento.html">Seguimiento</a>
               <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
             </div>
           </li>
@@ -65,33 +74,35 @@
           </li>
         </ul>
       </nav>
-    </nav>
-<!-- Fin navbar -->
+  </nav>
+  <!-- Fin navbar -->
 
+
+<!-- AdminDespachos -->
 <div class="container">
 
   <div class="row justify-content-md-center border-dark">
       <div class="col-sm-6">
         <div class="card m-2 border border-primary">
           <div class="card-body">
-            <h5 class="card-title">Registro de Donaciones</h5>
+            <h5 class="card-title">Seguimientos</h5>
     
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputPrimerNombre">Id Donacion</label>
-                <input type="text" class="form-control border border-success" id="inputIdDonacion">
+                <label for="inputPrimerNombre">Id Producto</label>
+                <input type="text" class="form-control border border-success" id="inputIdProducto">
                 <input type="text" class="form-control" id="inputIdusuario" hidden>
               </div>
               <div class="form-group col-md-6">
-                <label for="inputSegundoNombre">Fecha</label>
+                <label for="inputSegundoNombre">Fecha Despacho</label>
                 <input type="text" class="form-control" placeholder="dd/mm/aa" id="inputFecha">
               </div>
             </div>
     
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputApellidoPaterno">Monto</label>
-                <input type="text" class="form-control" placeholder="$ CLP" id="inputmonto">
+                <label for="inputApellidoPaterno">Estado</label>
+                <input type="text" class="form-control" placeholder="Bodega/Despachado/Demora" id="inputEstado">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputApellidoMaterno">Id Usuario</label>
@@ -99,7 +110,12 @@
               </div>
             </div>
     
-            
+            <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="inputApellidoPaterno">Hora</label>
+                      <input type="text" class="form-control" placeholder="hh/mm" id="inputHora">
+                  </div>
+            </div>
 
         </div>
           <div class="btn-group btn-group-sm m-2 " role="group" aria-label="Basic example">
@@ -120,30 +136,30 @@
     <div class="card" style="height: 100%;">
       <div class="card-body">
 
-        <h5 class="card-title">Listado de Donaciones</h5>
+        <h5 class="card-title">Listado de Despachos</h5>
 
-        <!-- Tabla de usuarios -->
+        <!-- Tabla de Despachos -->
         <div class="table-responsive">
           <table class="table" id="tablaUsuarios">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id Donacion</th>
+                <th scope="col">Id Producto</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Monto</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Id Usuario</th>
-                
+                <th scope="col">Hora</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>002727</td>
-                <td>22/02/2023</td>
-                <td>$5.000</td>
+                <td>002526</td>
+                <td>21/04/2023</td>
+                <td>Despachado</td>
                 <td>1213</td>
-                
+                <td>17:59</td>
                 
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -154,10 +170,11 @@
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>002928</td>
-                <td>18/04/2023</td>
-                <td>$3.000</td>
-                <td>1215</td>
+                <td>002533</td>
+                <td>28/04/2023</td>
+                <td>Despachado</td>
+                <td>1221</td>
+                <td>15:42</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
@@ -167,11 +184,11 @@
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>002928</td>
-                <td>06/04/2023</td>
-                <td>$10.000</td>
+                <td>002556</td>
+                <td>06/05/2023</td>
+                <td>Bodega</td>
                 <td>1218</td>
-                
+                <td>13:05</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
@@ -187,14 +204,11 @@
     </div>
   </div>
 </div>
+<!-- Final Footer -->
 
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
 
 <!-- sweetalert2 -->
@@ -206,21 +220,21 @@
     $("#btnAgregarUsuario").click(function(e){
         e.preventDefault();
 
-        var idDonacion = $("#inputIdDonacion").val();
+        var idProducto = $("#inputIdProducto").val();
         var fecha = $("#inputFecha").val();
-        var monto = $("#inputMonto").val();
+        var estado = $("#inputEstado").val();
         var idUsuario = $("#inputidUsuario").val();
-        
+        var hora = $("#inputHora").val();
         
 
 
         let fila = `<tr>
                         <th scope="row">${ultimoId()}</th>
-                        <td>${idDonacion}</td>
+                        <td>${idProducto}</td>
                         <td>${fecha}</td>
-                        <td>${monto}</td>
+                        <td>${estado}</td>
                         <td>${idUsuario}</td>
-                        
+                        <td>${hora}</td>
                         <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
@@ -251,18 +265,18 @@
         var idVenta = $(this).closest('tr').find('th').text();
         var venta = $(this).closest('tr').find('td');
 
-        var idDonacion = venta.eq(0).text();
+        var idProducto = venta.eq(0).text();
         var fecha = venta.eq(1).text();
-        var monto = venta.eq(2).text();
+        var estado = venta.eq(2).text();
         var idUsuario = venta.eq(3).text();
-        
+        var hora = venta.eq(4).text();
         
 
-        $("#inputIdDonacion").val(idDonacion);
+        $("#inputIdProducto").val(idProducto);
         $("#inputFecha").val(fecha);
-        $("#inputEstado").val(monto);
+        $("#inputEstado").val(estadoo);
         $("#inputidUsuario").val(idUsuario);
-        
+        $("#inputHora").val(hora);
         
         
 
@@ -270,18 +284,23 @@
 
     //boton editar del formulario
     $("#btnEditarUsuarioTabla").click(function(){
-        var idDonacion = $("#inputIdProducto").val();
+        var idProducto = $("#inputIdProducto").val();
         var fecha = $("#inputFecha").val();
-        var monto = $("#inputEstado").val();
+        var estado = $("#inputEstado").val();
         var idUsuario = $("#inputidUsuario").val();
-        
+        var hora = $("#inputHora").val();
 
         let fila = `<tr>
-                        <th scope="row">${idDonacion}</th>
-                        <td>${fecha}</td>
-                        <td>${monto}</td>
-                        <td>${idUsuario}</td>
-                        
+                        <th scope="row">${idUsuario}</th>
+                        <td>${primer_nombre}</td>
+                        <td>${segundo_nombre}</td>
+                        <td>${apellido_paterno}</td>
+                        <td>${apellido_materno}</td>
+                        <td>${rut}</td>
+                        <td>${contraseña}</td>
+                        <td>${correo}</td>
+                        <td>${comuna}</td>
+                        <td>${direccion}</td>
                         <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
@@ -301,7 +320,13 @@
 
 
 </script>
+
+
+
+
+
 </body>
+
 
 
 
