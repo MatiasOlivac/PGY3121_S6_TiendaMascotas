@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promociones</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="UserPromocion.js"></script>
+</head>
+<body>
+  <h1>Promociones</h1>
+
+  <form id="promoForm">
+    <label for="fechaInicio">Fecha de inicio:</label>
+    <input type="date" id="fechaInicio" required><br>
+	<label for="monto">Monto:</label>
+    <input type="number" id="monto" required><br>
+   
+
+    <label for="descuento">Porcentaje de descuento:</label>
+    <input type="number" id="descuento" required><br>
+
+    <button type="submit">Agregar promoción</button>
+  </form>
+
+  <h2>Promociones existentes:</h2>
+  <table id="tablaPromocion">
+    <thead>
+      <tr>
+        <th>Índice</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha de término</th>
+        <th>Descuento</th>
+        <th>Monto</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <div id="editarSuscripcion" style="display: none;">
+    <h2>Editar Suscripción</h2>
+    <form id="editarForm">
+      <label for="monto">Monto mensual a donar:</label>
+      <input type="number" id="monto" required><br>
+  
+      <button type="submit">Guardar</button>
+      <button type="button" id="cancelarEdicion">Cancelar</button>
+    </form>
+  </div>
+</body>
+</html>
