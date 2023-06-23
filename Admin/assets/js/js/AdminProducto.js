@@ -10,37 +10,39 @@
 
 
 //buscar las especies en la api
-  getEspecies = () =>{
+  getEspecies = () => {
     $.ajax({
       url: `${API_URL}/Especie`,
       type: 'GET',
       dataType: 'json',
-      success: function(data){
-        $.each(data, function(index,value){
-          $('#inputEspecieProducto').append(`<option ${value.ID_ESPECIES}"> 
-            ${value.ID_ESPECIES}. ${value.NOMBRE}
-            </option>`)
-        })
+      success: function(data) {
+        $.each(data, function(index, value) {
+          //llenar el select comunas
+          $("#inputEspecieProducto").append(`<option id="${value.ID_ESPECIES}" value="${value.ID_ESPECIES}">${value.NOMBRE}</option>`);
+        });
+
       }
-    })
-  };
+    });
+  }
+
 
 
 //buscar las promociones en la api
-  getPromociones = () =>{
+  getPromociones = () => {
     $.ajax({
       url: `${API_URL}/Promociones`,
       type: 'GET',
       dataType: 'json',
-      success: function(data){
-        $.each(data, function(index,value){
-          $('#inputPromocionProducto').append(`<option ${value.ID_PROMOCIONES}"> 
-            ${value.ID_PROMOCIONES}. ${value.NOMBRE}
-            </option>`)
-        })
+      success: function(data) {
+        $.each(data, function(index, value) {
+          //llenar el select comunas
+          $("#inputPromocionProducto").append(`<option id="${value.ID_PROMOCIONES}" value="${value.ID_PROMOCIONES}">${value.NOMBRE}</option>`);
+        });
+
       }
-    })
-  };
+    });
+  }
+
 
 
 //buscar los productos en la api
@@ -58,8 +60,14 @@
                                 <input type="hidden" name="id_rol" value="${value.ID_PRODUCTOS}">
                 <td>${value.VALOR}</td>
                 <td>${value.STOCK}</td>
-                <td>${value.NOMBRE_PROMOCION}</td>
-                <td>${value.NOMBRE_ESPECIE}</td>
+                <td>
+                ${value.NOMBRE_PROMOCION}
+                <input type="hidden" name="id_promocion" id="id_promocion" value="${value.PROMOCIONES_ID_PROMOCIONES}">
+                </td>
+                <td>
+                ${value.NOMBRE_ESPECIE}
+                <input type="hidden" name="id_especie" id="id_especie" value="${value.ESPECIES_ID_ESPECIES}">
+                </td>
                 <td>${value.IMAGEN}</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -82,50 +90,58 @@
   $('#btnModificarProducto').hide();
 
 
-//añadir Producto a la lista con jquery
-$(document).on('click', '#btnAgregarProducto', function(){
 
-var NOMBRE = $('#inputNombreProducto').val();
-var VALOR = $("#inputValorProducto").val();
-var STOCK = $("#inputStockProducto").val();
-var IMAGEN = $("#inputImagenProducto").val();
-var ESPECIE = $("#inputEspecieProducto").val();
-var PROMOCION = $("#inputPromocionProducto").val();
-
-
-  $.ajax({
+//funcionalidad para agregar los usuarios a la tabla
+  $("#btnAgregarProducto").click(function (e) {
+    e.preventDefault();
+  
+    var NOMBRE = $('#inputNombreProducto').val();
+    var VALOR = $("#inputValorProducto").val();
+    var STOCK = $("#inputStockProducto").val();
+    var IMAGEN = $("#inputImagenProducto").val();
+    var ESPECIE = $("#inputEspecieProducto").val();
+    var PROMOCION = $("#inputPromocionProducto").val();
+  
+    var productoData = {
+      NOMBRE: NOMBRE,
+      VALOR: VALOR,
+      STOCK: STOCK,
+      IMAGEN: IMAGEN,
+      ESPECIES_ID_ESPECIES: ESPECIE,
+      PROMOCIONES_ID_PROMOCIONES: PROMOCION
+    };
+  
+    $.ajax({
       url: `${API_URL}/AdminProducto`,
       type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({
-          NOMBRE: NOMBRE,
-          VALOR: VALOR,
-          STOCK: STOCK,
-          IMAGEN: IMAGEN,
-          ESPECIES_ID_ESPECIES: ESPECIE,
-          PROMOCIONES_ID_PROMOCIONES: PROMOCION
-      })
-      ,
-      
-      success: function(respuesta){
-          console.log(respuesta);
-          
-          $('#btnCancelarEditar').hide();
+      //ataType: 'json',
+      data: productoData,
+      success: function (response) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'Producto registrado correctamente.'
+        }).then(() => {
+          // Limpiar los campos del formulario
           limpiarFormulario();
-          actualizarTabla();
-      }
-
-  })
-  $('#btnCancelarEditar').hide();
-  limpiarFormulario();
-  actualizarTabla();
-Swal.fire(
-  'Producto Ingresado!',
-  'Presione "ok" para continuar.',
-  'success'); //mensaje de ingreso correcto
   
-});
+          // desaparecer boton
+          $('#btnCancelarEditar').hide();
 
+          // Actualizar la tabla de usuarios
+          actualizarTabla();
+
+        });
+      },
+      error: function (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo registrar el producto. Por favor, intenta nuevamente.'
+        });
+      }
+    });
+  });
 
 
 //botón BORRAR
@@ -185,88 +201,107 @@ Swal.fire(
     })
   });
 
-
-// editar producto de la tabla
-  $("#tablaProductos").on("click", ".btnEditarProducto", function (e) {
+//editar producto de la tabla
+  $(document).on('click', '.btnEditarProducto', function (e) {
     e.preventDefault();
-    var idProducto = $(this).closest('tr').find('th').text();
+    // Obtener los datos del producto desde la fila de la tabla
     var producto = $(this).closest('tr').find('td');
-
+    
+    var idProducto = producto.eq(0).find('input').val();
     var Nombre = producto.eq(0).text().trim();
-    var Valor = producto.eq(1).text().trim();
-    var Stock = producto.eq(2).text().trim();
+    var Valor = producto.eq(1).text();
+    var Stock = producto.eq(2).text();
     var Promocion = producto.eq(3).find('input').val();
     var Especie = producto.eq(4).find('input').val();
-    var Imagen = producto.eq(5).text().trim();
+    var Imagen = producto.eq(5).text();
 
+    $("#inputIdProducto").val(idProducto);
     $("#inputNombreProducto").val(Nombre);
     $("#inputValorProducto").val(Valor);
     $("#inputStockProducto").val(Stock);
     $("#inputPromocionProducto").val(Promocion);
     $("#inputEspecieProducto").val(Especie);
     $("#inputImagenProducto").val(Imagen);
-    $("#inputIdProducto").val(idProducto);
 
-    $('#btnCancelarEditar').show();
-    $('#btnModificarProducto').show();
-    $('#btnAgregarProducto').hide();
-
-
-  });
-
-
-//modificar usuario
-$("#btnModificarProducto").click(function () {
-    let Nombre = $("#inputNombreProducto").val();
-    let Valor = $("#inputValorProducto").val();
-    let Stock = $("#inputStockProducto").val();
-    let Imagen = $("#inputImagenProducto").val();
-    let Promocion = $("#inputPromocionProducto").val();
-    let Especie = $("#inputEspecieProducto").val();
-    let idProducto = $("#inputIdProducto").val();
-    
+    console.log(idProducto);
     console.log(Nombre);
     console.log(Valor);
     console.log(Stock);
-    console.log(Especie);
     console.log(Promocion);
-    console.log(Imagen);
-    console.log(idProducto);
+    console.log(Especie);
+    
+  // esconder botones 
+    $('#btnCancelarEditar').show();
+    $('#btnModificarProducto').show();
+    $('#btnAgregarProducto').hide();        
+
+  });
+  
+  // Botón editar del formulario
+  $("#btnModificarProducto").click(function (e) {
+
+    // Obtener los datos del formulario
+    var idProducto = $("#inputIdProducto").val();
+    var Nombre = $("#inputNombreProducto").val();
+    var Valor = $("#inputValorProducto").val();
+    var Stock = $("#inputStockProducto").val();
+    var Imagen = $("#inputImagenProducto").val();
+    var Promocion = $("#inputPromocionProducto").val();
+    var Especie = $("#inputEspecieProducto").val();
 
 
+    // Crear el objeto con los datos del usuario
+    var ProductoData = {
+      ID_PRODUCTOS: idProducto,
+      NOMBRE: Nombre,
+      VALOR: Valor,
+      STOCK: Stock,
+      IMAGEN: Imagen,
+      PROMOCIONES_ID_PROMOCIONES: Promocion,
+      ESPECIES_ID_ESPECIES: Especie
+    };
+
+  // Enviar la solicitud de actualización
     $.ajax({
-          url: `${API_URL}/AdminProducto`,
-          type: 'PATCH',
-          contentType: 'application/json',
-          crossDomain: true,
-          data: JSON.stringify({
-              NOMBRE : Nombre,
-              VALOR : Valor,
-              STOCK : Stock,
-              IMAGEN : Imagen,
-              PROMOCIONES_ID_PROMOCIONES : Promocion,
-              ESPECIES_ID_ESPECIES : Especie,
-              ID_PRODUCTOS : idProducto
-          }),
-          success: function(respuesta){
-              console.log("modificado");
-              limpiarFormulario();
-              actualizarTabla();
-              $('#btnCancelarEditar').hide();
-              $('#btnModificarProducto').hide();
-              $('#btnAgregarProducto').show();
-          }
-      })
+      url: `${API_URL}/AdminProducto`,
+      type: 'PATCH',
+      data: ProductoData,
+      success: function (response) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: response
+        }).then(() => {
+          // Limpiar los campos del formulario
+          limpiarFormulario();
+
+          // Actualizar la tabla de producto
+          $("#tablaProductos").empty(); // Vaciar la tabla
+          getProductos(); // Volver a cargar los usuarios
+          // desaparecer botones
+          $('#btnCancelarEditar').hide();
+          $('#btnModificarProducto').hide();
+          $('#btnAgregarProducto').show();
+        });
+      },
+      error: function (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo actualizar el producto. Por favor, intenta nuevamente.'
+        });
+      }
+    });
   });
 
-      //boton CANCELAR EDICION
-      $("#btnCancelarEditar").click(function () {
-        limpiarFormulario();
-        $('#btnCancelarEditar').hide();
-        $('#btnModificarProducto').hide();
-        $('#btnAgregarProducto').show();
-      });
 
+//boton CANCELAR EDICION
+  $("#btnCancelarEditar").click(function () {
+    limpiarFormulario();
+    $('#btnCancelarEditar').hide();
+    $('#btnModificarProducto').hide();
+    $('#btnAgregarProducto').show();
+  });
 
 
 //entregar ultimo id

@@ -16,9 +16,11 @@ getProductos = () =>{
         $.each(data, function(index,value){
           $('#TablaGato').append(
             `<div class="card mb-3 mt-5 mr-3 ml-3" style="width: 18rem;">
+            <a href="InfoProduct.html">
               <img src="src/img_Gato/comida1.jpg" alt="..." style="width: 18rem; height: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title">${value.NOMBRE}</h5>
+                  <input type="hidden" name="id_rol" value="${value.ID_PRODUCTOS}">
+                  <h5 class="card-title">${value.NOMBRE}</h5></a>
                   <p class="card-text"> $${value.VALOR}</p>
                 </div>
                 <div class="d-flex justify-content-center">
@@ -26,6 +28,7 @@ getProductos = () =>{
                 </div>
             </div>
             `)
+            console.log(value.ID_PRODUCTOS);
         })
       }
     })
