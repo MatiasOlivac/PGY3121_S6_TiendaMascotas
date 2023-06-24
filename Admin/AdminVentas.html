@@ -89,32 +89,34 @@
     
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputPrimerNombre">Id Producto</label>
-                <input type="text" class="form-control border border-success" id="inputIdProducto">
-                <input type="text" class="form-control" id="inputIdusuario" hidden>
+                <label for="inputId_venta">Id Venta</label>
+                <input type="text" class="form-control border border-success" id="inputId_venta">
+                <input type="text" class="form-control" id="inputId_venta" hidden>
               </div>
               <div class="form-group col-md-6">
-                <label for="inputSegundoNombre">Fecha</label>
+                <label for="inputFecha">Fecha</label>
                 <input type="text" class="form-control" placeholder="dd/mm/aa" id="inputFecha">
               </div>
             </div>
     
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputApellidoPaterno">Estado</label>
+                <label for="inputEstado">Estado</label>
                 <input type="text" class="form-control" placeholder="Bodega/Despachado" id="inputEstado">
               </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputHora">Hora</label>
+                    <input type="text" class="form-control" placeholder="hh/mm" id="inputHora">
+                </div>
+
               <div class="form-group col-md-6">
-                <label for="inputApellidoMaterno">Id Usuario</label>
-                <input type="text" class="form-control" id="inputidUsuario">
+                <label for="inputMonto_total_venta">Monto total de la venta</label>
+                <input type="text" class="form-control" id="inputId_venta">
               </div>
             </div>
     
-            <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <label for="inputApellidoPaterno">Hora</label>
-                      <input type="text" class="form-control" placeholder="hh/mm" id="inputHora">
-                  </div>
             </div>
 
         </div>
@@ -138,17 +140,17 @@
 
         <h5 class="card-title">Listado de Ventas</h5>
 
-        <!-- Tabla de usuarios -->
+        <!-- Tabla de Ventas -->
         <div class="table-responsive">
-          <table class="table" id="tablaUsuarios">
+          <table class="table" id="tablaVentas">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id Producto</th>
+                <th scope="col">Id Venta</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Estado</th>
-                <th scope="col">Id Usuario</th>
                 <th scope="col">Hora</th>
+                <th scope="col">Monto total de la venta </th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -163,8 +165,8 @@
                 
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </td>
               </tr>
@@ -177,8 +179,8 @@
                 <td>15:42</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </td>
               </tr>
@@ -191,8 +193,8 @@
                 <td>13:05</td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </td>
               </tr>
@@ -216,103 +218,98 @@
 <!--- Mis scripts -->
 <script> 
 
-    //funcionalidad para agregar los usuarios a la tabla
-    $("#btnAgregarUsuario").click(function(e){
+    //funcionalidad para agregar las Ventas a la tabla
+    $("#btnAgregarVenta").click(function(e){
         e.preventDefault();
 
-        var idProducto = $("#inputIdProducto").val();
-        var fecha = $("#inputFecha").val();
-        var estado = $("#inputEstado").val();
-        var idUsuario = $("#inputidUsuario").val();
-        var hora = $("#inputHora").val();
+        var ID_VENTA = $("#inputId_venta").val();
+        var FECHA = $("#inputFecha").val();
+        var ESTADO = $("#inputEstado").val();
+        var HORA = $("#inputHora").val();
+        var MONTO_TOTAL_VENTA = $("#inputMonto_total_venta").val();
         
 
 
         let fila = `<tr>
                         <th scope="row">${ultimoId()}</th>
-                        <td>${idProducto}</td>
-                        <td>${fecha}</td>
-                        <td>${estado}</td>
-                        <td>${idUsuario}</td>
-                        <td>${hora}</td>
+                        <td>${ID_VENTA}</td>
+                        <td>${FECHA}</td>
+                        <td>${ESTADO}</td>
+                        <td>${HORA}</td>
+                        <td>${MONTO_TOTAL_VENTA}</td>
                         <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>`;
         
-       $("#tablaUsuarios").append(fila);
+       $("#tablaVentas").append(fila);
     })
 
 
 
     function ultimoId(){
-        let ultimoId = $("#tablaUsuarios tr:last th").text();
+        let ultimoId = $("#tablaVentas tr:last th").text();
         return parseInt(ultimoId)+1;
     }
 
    // borrar linea
-    $(".btnEliminarUsuario").click(function(e){
+    $(".btnEliminarVenta").click(function(e){
         e.preventDefault();
         $(this).closest('tr').remove();
     })
 
-    //editar usuario de la tabla
-    $(".btnEditarusuario").click(function(e){
+    //editar Venta de la tabla
+    $(".btnEditarVenta").click(function(e){
         e.preventDefault();
-        var idVenta = $(this).closest('tr').find('th').text();
-        var venta = $(this).closest('tr').find('td');
+        var ID_VENTA = $(this).closest('tr').find('th').text();
+        var ID_VENTA = $(this).closest('tr').find('td');
 
-        var idProducto = venta.eq(0).text();
-        var fecha = venta.eq(1).text();
-        var estado = venta.eq(2).text();
-        var idUsuario = venta.eq(3).text();
-        var hora = venta.eq(4).text();
+        var ID_VENTA = ID_VENTA.eq(0).text();
+        var FECHA = FECHA.eq(1).text();
+        var ESTADO = ESTADO.eq(2).text();
+        var HORA = HORA.eq(3).text();
+        var MONTO_TOTAL_VENTA = MONTO_TOTAL_VENTA.eq(4).text();
         
 
-        $("#inputIdProducto").val(idProducto);
-        $("#inputFecha").val(fecha);
-        $("#inputEstado").val(estadoo);
-        $("#inputidUsuario").val(idUsuario);
-        $("#inputHora").val(hora);
+        $("#inputId_venta").val(ID_VENTA);
+        $("#inputFecha").val(FECHA);
+        $("#inputEstado").val(ESTADO);
+        $("#inputHora").val(HORA);
+        $("#inputMonto_total_venta").val(MONTO_TOTAL_VENTA);
         
         
 
     });
 
     //boton editar del formulario
-    $("#btnEditarUsuarioTabla").click(function(){
-        var idProducto = $("#inputIdProducto").val();
-        var fecha = $("#inputFecha").val();
-        var estado = $("#inputEstado").val();
-        var idUsuario = $("#inputidUsuario").val();
-        var hora = $("#inputHora").val();
+    $("#btnEditarVentaTabla").click(function(){
+        var ID_VENTA = $("#inputId_venta").val();
+        var FECHA = $("#inputFecha").val();
+        var ESTADO = $("#inputEstado").val();
+        var HORA = $("#inputHora").val();
+        var MONTO_TOTAL_VENTA = $("#inputMonto_total_venta").val();
 
         let fila = `<tr>
-                        <th scope="row">${idUsuario}</th>
-                        <td>${primer_nombre}</td>
-                        <td>${segundo_nombre}</td>
-                        <td>${apellido_paterno}</td>
-                        <td>${apellido_materno}</td>
-                        <td>${rut}</td>
-                        <td>${contraseña}</td>
-                        <td>${correo}</td>
-                        <td>${comuna}</td>
-                        <td>${direccion}</td>
+                        <th scope="row">${ID_VENTA}</th>
+                        <td>${FECHA}</td>
+                        <td>${ESTADO}</td>
+                        <td>${HORA}</td>
+                        <td>${MONTO_TOTAL_VENTA}</td>
                         <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>`;
 
     //eliminar la fila que seleccione
-    $(`#tablaUsuarios tr th:contains(${idVenta})`).closest('tr').remove();
+    $(`#tablaVentas tr th:contains(${ID_VENTA})`).closest('tr').remove();
 
-    $("#tablaUsuarios").append(fila);
+    $("#tablaVentas").append(fila);
 
     });
 
@@ -328,7 +325,9 @@
 </body>
 
 
-
+<!-- COMUNES -->
+<script src="assets/js/comunes.js" ></script>
+<script src="assets/js/js/AdminVentas.js"></script>
 
 
 </html>
