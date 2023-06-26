@@ -82,12 +82,24 @@
             <h5 class="card-title">ADMINISTRAR PROMOCIONES</h5>
             <div class="form-row">
               <div class="form-group col-m-4 mt-1">
-                <label for="inputNombrePromocion">Tipo de Promociones</label>
-                <input type="text" class="form-control" id="inputNombrePromocion" required>
+                <label for="inputFecha_inicioPromocion">Fecha de Inicio</label>
+                <input type="date" class="form-control" id="inputFecha_inicioPromocion" required>
+                <input type="date" class="form-control" id="inputIdUsuarioPromocion" hidden>
+                <label for="inputFecha_finPromocion">Fecha de Término</label>
+                <input type="date" class="form-control" id="inputFecha_finPromocion" required>
+                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
+                <label for="inputDescuentoPromocion">Descuento</label>
+                <input type="text" class="form-control" id="inputDescuentoPromocion" required>
+                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
+                <label for="inputEstadoPromocion">Estado</label>
+                <input type="text" class="form-control" id="inputEstadoPromocion" required>
+                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
+                <label for="inputIdProductoPromocion">ID Producto</label>
+                <input type="text" class="form-control" id="inputIdProductoPromocion" required>
                 <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
               </div>
               <div class="col-5 m-2">
-                <a id="btnAgregarUsuarioPromocion" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
+                <a id="btnAgregarPromocion" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
                 <a id="btnModificarPromocion" class="btn btn-info col-md-4 mt-1 mt-4">Confirmar</a>
                 <a id="btnCancelarEditarPromocion" class="btn btn-danger col-md-4 mt-1 mt-4">Cancelar</a>
               </div>
@@ -101,13 +113,16 @@
                       <table class="table" id="tablaRol">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col">ID_PROMOCION</th>
+                            <th scope="col">FECHA_INICIO</th>
+                            <th scope="col">FECHA_FIN</th>
+                            <th scope="col">DESCUENTO</th>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col">ID_PRODUCTO</th>
+                            <th scope="col">NOMBRE</th>
                           </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
                       </table>
                     </div>
@@ -153,32 +168,59 @@ crossorigin="anonymous"></script>
   });
 
 
-  getPromociones = () =>{
-    $(document).ready(function() {
-      $.ajax({
-        url: `${API_URL}/Promocion`,
-        type: 'GET',
-        dataType: 'json',
-        success: function(data){
-          $.each(data, function(index,value){
-            $('#tablaPromocion').append(
-                          `<tr>
-                              <th scope="row"> ${ultimoId()} </th>
-                              <td> ${value.NOMBRE == null ? "" : value.NOMBRE} 
-                                <input type="hidden" name="id_rol" value="${value.ID_PROMOCION}">
-                                </td>
-                              <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                  <button type="button" class="btn btn-info btnEditarPromocion"><i class="fa-solid fa-pencil"></i></button>
-                                  <button type="button" class="btn btn-danger btnEliminarPromocion"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                              </td>
-                          </tr>`)
-          })
-        }
-      })
-    })
-  };
+  getPromociones = () => {
+  $(document).ready(function() {
+    $.ajax({
+      url: `${API_URL}/Promociones`,
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        $.each(data, function(index, value) {
+          // Obtener los datos de la promoción
+          var idPromocion = value.ID_PROMOCION;
+          var fechaInicio = value.FECHA_INICIO;
+          var fechaFin = value.FECHA_FIN;
+          var porcentajeDescuento = value.DESCUENTO;
+          var estado = value.ESTADO;
+          var idProducto = value.ID_PRODUCTO;
+
+          // Realizar consulta a tabla producto
+          $.ajax({
+            url: `${API_URL}/AdminProducto/${idProducto}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(producto) {
+              var precioOriginal = producto.ID_PRODUCTOS;
+              var precioConDescuento = calcularPrecioConDescuento(precioOriginal, porcentajeDescuento);
+
+              // Se Agrega Con el Precio con descuento
+              $('#tablaPromocion tbody').append(
+                `<tr>
+                  <th scope="row">${ultimoId()}</th>
+                  <td>${idPromocion}</td>
+                  <td>${fechaInicio}</td>
+                  <td>${fechaFin}</td>
+                  <td>${porcentajeDescuento}</td>
+                  <td>${estado}</td>
+                  <td>${idProducto}</td>
+                  <td>${precioConDescuento}</td>
+                  <input type="hidden" name="id_rol" value="${idPromocion}">
+                  </td>
+                  <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-info btnEditarPromocion"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn btn-danger btnEliminarPromocion"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>`
+              );
+            }
+          });
+        });
+      }
+    });
+  });
+};
 
 
 //botones invisibles
@@ -188,15 +230,23 @@ $('#btnCancelarEditarPromocion').hide();
 
 //añadir Promocion a la lista con jquery
   $(document).on('click', '#btnAgregarPromocion', function(){
-
-    var NOMBRE = $('#inputNombrePromocion').val();
+        var FECHA_INICIO = $('#inputFecha_InicioPromocion').val();
+        var FECHA_FIN = $('#inputFecha_finPromocion').val();
+        var DESCUENTO = $('#inputDescuentoPromocion').val();
+        var ESTADO = $('#inputEstadoPromocion').val();
+        var ID_PRODUCTO = $('#inputIdProductoPromocion').val();
+        
 
       $.ajax({
-          url: `${API_URL}/Promocion`,
+          url: `${API_URL}/Promociones`,
           type: 'POST',
           contentType: 'application/json',
           data: JSON.stringify({
-              NOMBRE: NOMBRE
+          FECHA_INICIO: FECHA_INICIO,
+          FECHA_FIN: FECHA_FIN,
+          DESCUENTO: DESCUENTO,
+          ESTADO: ESTADO,
+          ID_PRODUCTO: ID_PRODUCTO,
           })
           ,
           
@@ -218,7 +268,7 @@ $('#btnCancelarEditarPromocion').hide();
 
 //entregar ultimo id
   ultimoId = () =>{
-    let ultimoId = $("#tablaPromocion tr:last th").text();
+    let ultimoId = $("#tablaPromocion tbody tr:last th").text();
     let value = parseInt(ultimoId) + 1;
     if (isNaN(value)){
       value=1
@@ -253,7 +303,7 @@ $('#btnCancelarEditarPromocion').hide();
         
 
         $.ajax({
-          url: `${API_URL}/Promocion`,
+          url: `${API_URL}/Promociones`,
           type: 'DELETE',
           dataType: 'json',
           data: {
@@ -286,42 +336,62 @@ $('#btnCancelarEditarPromocion').hide();
 
 
 //Editar Promocion
-  $("#tablaPromocion").on("click", ".btnEditarPromocion", function (e) {
-        // $('#btnAgregarPromocion').hide();
-        // $('#btnModificarPromocion').show();
+  $("#tablaPromocion tbody").on("click", ".btnEditarPromocion", function (e) {
+         $('#btnAgregarPromocion').hide();
+         $('#btnModificarPromocion').show();
         e.preventDefault();
         var idPromocion = $(this).closest('tr').find('th').text();
-        var NOMBRE = $(this).closest('tr').find('td');
-
-        var NombrePromocion = NOMBRE.eq(0).text().trim();
-
-        $("#inputNombrePromocion").val(NombrePromocion);
+        var nombrePromocion = $(this).closest('tr').find('td').eq(0).text().trim();
+        var fechaInicio = $(this).closest('tr').find('td').eq(1).text().trim();
+        var fechaFin = $(this).closest('tr').find('td').eq(2).text().trim();
+        var descuento = $(this).closest('tr').find('td').eq(3).text().trim();
+        var estado = $(this).closest('tr').find('td').eq(4).text().trim();
+        var idProducto = $(this).closest('tr').find('td').eq(5).text().trim();
+        
         $("#inputIdPromocion").val(idPromocion);
-
+        $("#inputNombrePromocion").val(nombrePromocion);
+        $("#inputFecha_inicioPromocion").val(fechaInicio);
+        $("#inputFecha_finPromocion").val(fechaFin);
+        $("#inputDescuentoPromocion").val(descuento);
+        $("#inputEstadoPromocion").val(estado);
+        $("#inputIdProductoPromocion").val(idProducto);
+ 
         $('#btnModificarPromocion').show();
         $('#btnCancelarEditarPromocion').show();
-        $('#btnAgregaPromocion').hide();
-
+        $('#btnAgregarPromocion').hide();
   });
+
 
 
 
 //modificar Promocion
   $("#btnModificarPromocion").click(function () {
-    let nombre = $("#inputNombrePromocion").val();
-    let id_Promocion = $("#inputIdPromocion").val();
+    let fechaInicio = $("#inputFecha_inicioPromocion").val();
+    let fechaFin = $("#inputFecha_finPromocion").val();
+    let descuento = $("#inputDescuentoPromocion").val();
+    let estado = $("#inputEstadoPromocion").val();
+    let idProducto = $("#inputIdProductoPromocion").val();
+    let idPromocion = $("#inputIdPromocion").val();
     
-    console.log(nombre)
-    console.log(id_Promocion)
+    console.log(fechaInicio);
+    console.log(fechaFin);
+    console.log(descuento);
+    console.log(estado);
+    console.log(idProducto);
+    console.log(idPromocion);
 
     $.ajax({
-          url: `${API_URL}/Promocion`,
+          url: `${API_URL}/Promociones`,
           type: 'PATCH',
           contentType: 'application/json',
           crossDomain: true,
           data: JSON.stringify({
-              NOMBRE : nombre,
-              ID_Promocion : id_Promocion
+            FECHA_INICIO: fechaInicio,
+            FECHA_FIN: fechaFin,
+            DESCUENTO: descuento,
+            ESTADO: estado,
+            ID_PRODUCTO: idProducto,
+            ID_PROMOCION: idPromocion
           }),
           success: function(respuesta){
               console.log("modificado");
