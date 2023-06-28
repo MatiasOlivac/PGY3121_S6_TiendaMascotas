@@ -1,6 +1,6 @@
 getVentas = () => {
     $.ajax({
-      url: `${API_URL}/ventas`,
+      url: `${API_URL}/AdminVentas`,
       type: 'GET',
       dataType: 'json',
       success: function (data) {
@@ -51,7 +51,7 @@ $("#btnAgregarVenta").click(function (e) {
     };
   
     $.ajax({
-      url: `${API_URL}/ventas`,
+      url: `${API_URL}/AdminVentas`,
       type: 'POST',
       //ataType: 'json',
       data: ventaData,
@@ -62,13 +62,13 @@ $("#btnAgregarVenta").click(function (e) {
           text: 'Venta registrada correctamente.'
         }).then(() => {
           // Limpiar los campos del formulario
-          $("#inputId_venta").val('');
-          $("#inputFecha").val('');
-          $("#inputEstado").val('');
-          $("#inputHora").val('');
-          $("#inputMonto_total_venta").val('');
+          limpiarFormulario();
+
+           // desaparecer boton
+           $('#btnCancelarEditar').hide();
+
   
-          // Actualizar la tabla de Venetas
+          // Actualizar la tabla de Ventas
           getVentas();
         });
       },
@@ -82,10 +82,7 @@ $("#btnAgregarVenta").click(function (e) {
     });
   });
 
-  function ultimoId(){
-    let ultimoId = $("#tablaVentas tr:last th").text();
-    return parseInt(ultimoId)+1;
-}
+
 
  // borrar linea
  $(document).on('click', '.btnEliminarVenta', function () {
@@ -104,7 +101,7 @@ $("#btnAgregarVenta").click(function (e) {
       if (result.isConfirmed) {
         // Enviar la solicitud de borrado
         $.ajax({
-          url: `${API_URL}/ventas/${ID_VENTA}`,
+          url: `${API_URL}/AdminVentas/${ID_VENTA}`,
           type: 'DELETE',
           success: function (response) {
             // Mostrar mensaje de éxito
@@ -151,7 +148,7 @@ $("#btnAgregarVenta").click(function (e) {
   });
   
   // Botón editar del formulario
-  $(".btnEditarVentaTabla").click(function (e) {
+  $("#btnEditarVentaTabla").click(function (e) {
 
     // Obtener los datos del formulario
     var ID_VENTA = $("#inputId_venta").val();
@@ -171,7 +168,7 @@ $("#btnAgregarVenta").click(function (e) {
 
     // Enviar la solicitud de actualización
     $.ajax({
-      url: `${API_URL}/ventas`,
+      url: `${API_URL}/AdminVentas`,
       type: 'PUT',
       data: ventaData,
       success: function (response) {
@@ -201,3 +198,42 @@ $("#btnAgregarVenta").click(function (e) {
       }
     });
   });
+
+
+//boton CANCELAR EDICION
+$("#btnCancelarEditar").click(function () {
+  limpiarFormulario();
+  $('#btnCancelarEditar').hide();
+  $('#btnEditarVentaTabla').hide();
+  $('#btnAgregarVenta').show();
+});
+
+
+//entregar ultimo id
+ultimoId = () =>{
+  let ultimoId = $("#tablaVentas tr:last th").text();
+  let value = parseInt(ultimoId) + 1;
+  if (isNaN(value)){
+    value=1
+  }
+  return value;
+};
+
+
+//actualizar
+function actualizarTabla() {
+  $('#tablaVentas tbody').empty();
+  getVentas();
+};
+
+
+
+  //limpiar formulario
+  function limpiarFormulario() {
+    $("#inputId_venta").val('');
+          $("#inputFecha").val('');
+          $("#inputEstado").val('');
+          $("#inputHora").val('');
+          $("#inputMonto_total_venta").val('');
+
+  };
