@@ -27,7 +27,7 @@
 
 <body>
 
-  <!-- Navbar_AdminProducto-->
+  <!-- Navbar_AdminVentas-->
   <nav class="navbar navbar-expand-lg border-bottom text-dark">
     <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
     <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse" <nav
@@ -78,7 +78,7 @@
   <!-- Fin navbar -->
 
 
-<!-- AdminVentas -->
+<!-- Inicio Registro de Ventas -->
 <div class="container">
 
   <div class="row justify-content-md-center border-dark">
@@ -122,6 +122,7 @@
         </div>
           <div class="btn-group btn-group-sm m-2 " role="group" aria-label="Basic example">
             <a id="btnAgregarVenta" class="btn btn-primary w-25">Registrar</a>
+            <a id="btnCancelarEditar" class="btn btn-danger mr-4">Cancelar</a>
             
           </div>
       </div>
@@ -130,9 +131,9 @@
   
 
 </div>
+<!-- Fin Registro de Ventas -->
 
-
-
+<!-- Inicio Tabla Ventas -->
 </div><div class="row mt-4">
   <div class="col-sm-12">
     <div class="card" style="height: 100%;">
@@ -155,49 +156,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>002526</td>
-                <td>21/04/2023</td>
-                <td>Despachado</td>
-                <td>1213</td>
-                <td>17:59</td>
                 
-                <td>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>002533</td>
-                <td>28/04/2023</td>
-                <td>Despachado</td>
-                <td>1221</td>
-                <td>15:42</td>
-                <td>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>002556</td>
-                <td>06/05/2023</td>
-                <td>Bodega</td>
-                <td>1218</td>
-                <td>13:05</td>
-                <td>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
-                  </div>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -206,138 +165,25 @@
     </div>
   </div>
 </div>
-<!-- Final Footer -->
+<!-- Fin Tabla Ventas -->
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+  integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <!-- sweetalert2 -->
 
-<!-- sweetalert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!--- Mis scripts -->
-<script> 
-
-    //funcionalidad para agregar las Ventas a la tabla
-    $("#btnAgregarVenta").click(function(e){
-        e.preventDefault();
-
-        var ID_VENTA = $("#inputId_venta").val();
-        var FECHA = $("#inputFecha").val();
-        var ESTADO = $("#inputEstado").val();
-        var HORA = $("#inputHora").val();
-        var MONTO_TOTAL_VENTA = $("#inputMonto_total_venta").val();
-        
-
-
-        let fila = `<tr>
-                        <th scope="row">${ultimoId()}</th>
-                        <td>${ID_VENTA}</td>
-                        <td>${FECHA}</td>
-                        <td>${ESTADO}</td>
-                        <td>${HORA}</td>
-                        <td>${MONTO_TOTAL_VENTA}</td>
-                        <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>`;
-        
-       $("#tablaVentas").append(fila);
-    })
-
-
-
-    function ultimoId(){
-        let ultimoId = $("#tablaVentas tr:last th").text();
-        return parseInt(ultimoId)+1;
-    }
-
-   // borrar linea
-    $(".btnEliminarVenta").click(function(e){
-        e.preventDefault();
-        $(this).closest('tr').remove();
-    })
-
-    //editar Venta de la tabla
-    $(".btnEditarVenta").click(function(e){
-        e.preventDefault();
-        var ID_VENTA = $(this).closest('tr').find('th').text();
-        var ID_VENTA = $(this).closest('tr').find('td');
-
-        var ID_VENTA = ID_VENTA.eq(0).text();
-        var FECHA = FECHA.eq(1).text();
-        var ESTADO = ESTADO.eq(2).text();
-        var HORA = HORA.eq(3).text();
-        var MONTO_TOTAL_VENTA = MONTO_TOTAL_VENTA.eq(4).text();
-        
-
-        $("#inputId_venta").val(ID_VENTA);
-        $("#inputFecha").val(FECHA);
-        $("#inputEstado").val(ESTADO);
-        $("#inputHora").val(HORA);
-        $("#inputMonto_total_venta").val(MONTO_TOTAL_VENTA);
-        
-        
-
-    });
-
-    //boton editar del formulario
-    $("#btnEditarVentaTabla").click(function(){
-        var ID_VENTA = $("#inputId_venta").val();
-        var FECHA = $("#inputFecha").val();
-        var ESTADO = $("#inputEstado").val();
-        var HORA = $("#inputHora").val();
-        var MONTO_TOTAL_VENTA = $("#inputMonto_total_venta").val();
-
-        let fila = `<tr>
-                        <th scope="row">${ID_VENTA}</th>
-                        <td>${FECHA}</td>
-                        <td>${ESTADO}</td>
-                        <td>${HORA}</td>
-                        <td>${MONTO_TOTAL_VENTA}</td>
-                        <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>`;
-
-    //eliminar la fila que seleccione
-    $(`#tablaVentas tr th:contains(${ID_VENTA})`).closest('tr').remove();
-
-    $("#tablaVentas").append(fila);
-
-    });
+  <!-- COMUNES -->
+  <script src="assets/js/comunes.js" ></script>
+  <script src="assets/js/js/AdminVentas.js"></script>
 
 
 
 
-</script>
-
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
-crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- sweetalert2 -->
-
-<!-- COMUNES -->
-<script src="assets/js/comunes.js" ></script>
-<script src="assets/js/js/AdminVentas.js"></script>
-
-
-
-</body>
-
-</html>
+  </html>
