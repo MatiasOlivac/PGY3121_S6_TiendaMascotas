@@ -93,11 +93,11 @@
                             <td>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
+                                      <button id="btnRestarproducto" class="btn btn-outline-secondary" type="button">-</button>
                                     </div>
                                     <input type="text" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+                                        <button  id="btnSumarproducto" class="btn btn-outline-secondary" type="button">+</button>
                                     </div>  
                                 </div>
 
@@ -105,7 +105,7 @@
                             <td>$ 5.000</td>
                             <td>$ 10.000</td>
                             <td>
-                                <button class="btn btn-danger btn-sm">Borrar</button>
+                                <button id="btnEliminarCarrito" class="btn btn-danger btn-sm">Borrar</button>
                             </td>
                         </tr>
                         <tr>
@@ -114,18 +114,18 @@
                             <td>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
+                                      <button id="btnRestarproducto" class="btn btn-outline-secondary" type="button">-</button>
                                     </div>
                                     <input type="text" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+                                        <button  id="btnSumarproducto" class="btn btn-outline-secondary" type="button">+</button>
                                     </div>  
                                 </div>
                             </td>
                             <td>$ 5.000</td>
                             <td>$ 15.000</td>
                             <td>
-                                <button class="btn btn-danger btn-sm">Borrar</button>
+                                <button id="btnEliminarCarrito" class="btn btn-danger btn-sm">Borrar</button>
                             </td>
                         </tr>
                         <tr>
@@ -134,18 +134,18 @@
                             <td>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
+                                      <button id="btnRestarproducto" class="btn btn-outline-secondary" type="button">-</button>
                                     </div>
                                     <input type="text" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+                                        <button id="btnSumarproducto" class="btn btn-outline-secondary" type="button">+</button>
                                     </div>  
                                 </div>
                             </td>
                             <td>$ 5.000</td>
                             <td>$ 5.000</td>
                             <td>
-                                <button class="btn btn-danger btn-sm">Borrar</button>
+                                <button id="btnEliminarCarrito" class="btn btn-danger btn-sm">Borrar</button>
                             </td>
                         </tr>
                         <tr>
@@ -167,7 +167,7 @@
                         <p>Envío: $ 2.000</p>
                         <p>Descuento: $ 2.000</p>
                         <p>Total: $ 30.000</p>
-                        <button id="btnEliminarCarrito" class="btn btn-success btn-block">Pagar</button>
+                        <button id="btnPagarCarrito" class="btn btn-success btn-block">Pagar</button>
                     </div>
                 </div>
             </div>
@@ -222,6 +222,25 @@
    
          // borrar linea
        $(".btnEliminarCarrito").click(function(e){
+           e.preventDefault();
+           $(this).closest('tr').remove();
+       })
+
+       $("#btnSumarproducto").click(function(e) {
+        e.preventDefault();
+    
+        var input = $(this).closest('td').find('input');
+        var placeholderValue = parseInt(input.attr('placeholder'));
+        var currentValue = parseInt(input.val());
+    
+        if (!isNaN(placeholderValue)) {
+            var newValue = currentValue + placeholderValue;
+            input.val(newValue);
+        }
+        });
+
+
+       $(".btnRestarproducto").click(function(e){
            e.preventDefault();
            $(this).closest('tr').remove();
        })
