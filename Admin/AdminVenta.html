@@ -59,7 +59,7 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="AdminProducto.html">Ingreso de Productos</a>
               <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
-              <a class="dropdown-item active" href="AdminVentas.html">Ventas</a>
+              <a class="dropdown-item active" href="AdminVenta.html">Ventas</a>
               <a class="dropdown-item" href="AdminDespacho.html">Despachos</a>
               <a class="dropdown-item" href="AdminSeguimiento.html">Seguimiento</a>
               <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
@@ -78,56 +78,69 @@
   <!-- Fin navbar -->
 
 
-<!-- Inicio Registro de Ventas -->
-<div class="container">
+<!-- Inicio registro Ventas -->
+<div class="container mt-5">
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Registro de Ventas</h5>
 
-  <div class="row justify-content-md-center border-dark">
-      <div class="col-sm-6">
-        <div class="card m-2 border border-primary">
-          <div class="card-body">
-            <h5 class="card-title">Registro de Ventas</h5>
-    
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputId_venta">Id Venta</label>
-                <input type="text" class="form-control border border-success" id="inputId_venta">
-                <input type="text" class="form-control" id="inputId_venta" hidden>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputFecha">Fecha</label>
-                <input type="text" class="form-control" placeholder="dd/mm/aa" id="inputFecha">
-              </div>
-            </div>
-    
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEstado">Estado</label>
-                <input type="text" class="form-control" placeholder="Bodega/Despachado" id="inputEstado">
-              </div>
+          <div class="form-row">
+            <div class="form-group text-center col-md-12">
+              <label for="inputId_venta">ID_VENTA</label>
+              <input type="text" class="form-control" id="inputId_venta" placeholder="Ingrese el Id de la Venta">
+          </div>
+        </div>
 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputHora">Hora</label>
-                    <input type="text" class="form-control" placeholder="hh/mm" id="inputHora">
-                </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputFecha">FECHA</label>
+            <input type="text" class="form-control" placeholder="dd/mm/aa" id="inputFecha">
+          </div>
 
-              <div class="form-group col-md-6">
-                <label for="inputMonto_total_venta">Monto total de la venta</label>
-                <input type="number" class="form-control" id="inputMonto_total_venta" placeholder="Ingrese el valor">
-              </div>
-            </div>
-    
-            </div>
+          <div class="form-group col-md-4">
+            <label for="inputHora">HORA</label>
+            <input type="text" class="form-control" placeholder="hh/mm" id="inputHora">
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="inputEstado">ESTADO</label>
+            <input type="text" class="form-control" placeholder="Bodega" id="inputEstado">
+          </div>
 
         </div>
-          <div class="btn-group btn-group-sm m-2 " role="group" aria-label="Basic example">
-            <a id="btnAgregarVenta" class="btn btn-primary w-25">Registrar</a>
-            <a id="btnCancelarEditar" class="btn btn-danger mr-4">Cancelar</a>
-            
+
+          <div class="form-row">
+              
+            <div class="form-group col-md-6">
+              <label for="inputProducto">PRODUCTO</label>
+              <select id="inputProducto" class="form-control" title="-- Seleccionar --">
+                <option value="" selected>-- Seleccionar --</option>
+              </select>
+            </div>
+
+
+            <div class="form-group col-md-6">
+              <label for="inputCantidad">CANTIDAD</label>
+              <select id="inputCantidad" class="form-control" title="-- Seleccionar --">
+                <option value="" selected>-- Seleccionar --</option>
+              </select>
+            </div>
+
+
           </div>
+
+          <div class="d-flex justify-content-end">
+            <a id="btnAgregarVenta" class="btn btn-success mr-4">Registrar</a>
+            <a id="btnEditarVentaTabla" class="btn btn-info mr-4">Modificar</a>
+            <a id="btnCancelarEditar" class="btn btn-danger mr-4">Cancelar</a>
+          </div>
+
+        </div>
       </div>
-  </div>
-</div>
+    </div>
+    <!-- Fin Registro Productos -->
   
 
 </div>
@@ -149,8 +162,10 @@
                 <th scope="col">#</th>
                 <th scope="col">Id Venta</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Estado</th>
                 <th scope="col">Hora</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
                 <th scope="col">Monto total de la venta </th>
                 <th scope="col">Acciones</th>
               </tr>
@@ -181,7 +196,7 @@
 
   <!-- COMUNES -->
   <script src="assets/js/comunes.js" ></script>
-  <script src="assets/js/js/AdminVentas.js"></script>
+  <script src="assets/js/js/AdminVenta.js"></script>
 
 
 
