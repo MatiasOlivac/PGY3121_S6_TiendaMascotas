@@ -113,7 +113,7 @@
                       <table class="table" id="tablaRol">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">ID_PROMOCION</th>
+                            <th scope="col">ID_PROMOCIONES</th>
                             <th scope="col">FECHA_INICIO</th>
                             <th scope="col">FECHA_FIN</th>
                             <th scope="col">DESCUENTO</th>
@@ -177,7 +177,7 @@ crossorigin="anonymous"></script>
       success: function(data) {
         $.each(data, function(index, value) {
           // Obtener los datos de la promoción
-          var idPromocion = value.ID_PROMOCION;
+          var idPromociones = value.ID_PROMOCIONES;
           var fechaInicio = value.FECHA_INICIO;
           var fechaFin = value.FECHA_FIN;
           var porcentajeDescuento = value.DESCUENTO;
@@ -197,14 +197,14 @@ crossorigin="anonymous"></script>
               $('#tablaPromocion tbody').append(
                 `<tr>
                   <th scope="row">${ultimoId()}</th>
-                  <td>${idPromocion}</td>
+                  <td>${idPromociones}</td>
                   <td>${fechaInicio}</td>
                   <td>${fechaFin}</td>
                   <td>${porcentajeDescuento}</td>
                   <td>${estado}</td>
                   <td>${idProducto}</td>
                   <td>${precioConDescuento}</td>
-                  <input type="hidden" name="id_rol" value="${idPromocion}">
+                  <input type="hidden" name="id_usuario" value="${idPromocion}">
                   </td>
                   <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -297,9 +297,9 @@ $('#btnCancelarEditarPromocion').hide();
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        var idUsuarioRol = $(this).closest('tr').find('td');
-        var id_rol = idUsuarioRol.eq(0).find('input').val();
-        console.log(id_rol)
+        var idUsuario = $(this).closest('tr').find('td');
+        var id_usuario = idUsuario.eq(0).find('input').val();
+        console.log(id_usuario)
         
 
         $.ajax({
@@ -307,7 +307,7 @@ $('#btnCancelarEditarPromocion').hide();
           type: 'DELETE',
           dataType: 'json',
           data: {
-            ID_ROL : id_rol
+            ID_USUARIO : id_usuario
         },
         success: function(respuesta){
             console.log('Promocion Eliminada')
@@ -340,16 +340,16 @@ $('#btnCancelarEditarPromocion').hide();
          $('#btnAgregarPromocion').hide();
          $('#btnModificarPromocion').show();
         e.preventDefault();
-        var idPromocion = $(this).closest('tr').find('th').text();
-        var nombrePromocion = $(this).closest('tr').find('td').eq(0).text().trim();
+        var idPromociones = $(this).closest('tr').find('th').text();
+        var nombrePromociones = $(this).closest('tr').find('td').eq(0).text().trim();
         var fechaInicio = $(this).closest('tr').find('td').eq(1).text().trim();
         var fechaFin = $(this).closest('tr').find('td').eq(2).text().trim();
         var descuento = $(this).closest('tr').find('td').eq(3).text().trim();
         var estado = $(this).closest('tr').find('td').eq(4).text().trim();
         var idProducto = $(this).closest('tr').find('td').eq(5).text().trim();
         
-        $("#inputIdPromocion").val(idPromocion);
-        $("#inputNombrePromocion").val(nombrePromocion);
+        $("#inputIdPromocion").val(idPromociones);
+        $("#inputNombrePromocion").val(nombrePromociones);
         $("#inputFecha_inicioPromocion").val(fechaInicio);
         $("#inputFecha_finPromocion").val(fechaFin);
         $("#inputDescuentoPromocion").val(descuento);
@@ -371,14 +371,14 @@ $('#btnCancelarEditarPromocion').hide();
     let descuento = $("#inputDescuentoPromocion").val();
     let estado = $("#inputEstadoPromocion").val();
     let idProducto = $("#inputIdProductoPromocion").val();
-    let idPromocion = $("#inputIdPromocion").val();
+    let idPromociones = $("#inputIdPromocion").val();
     
     console.log(fechaInicio);
     console.log(fechaFin);
     console.log(descuento);
     console.log(estado);
     console.log(idProducto);
-    console.log(idPromocion);
+    console.log(idPromociones);
 
     $.ajax({
           url: `${API_URL}/Promociones`,
@@ -391,7 +391,7 @@ $('#btnCancelarEditarPromocion').hide();
             DESCUENTO: descuento,
             ESTADO: estado,
             ID_PRODUCTO: idProducto,
-            ID_PROMOCION: idPromocion
+            ID_PROMOCIONES: idPromociones
           }),
           success: function(respuesta){
               console.log("modificado");
