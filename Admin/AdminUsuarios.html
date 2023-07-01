@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--- Mis estilos -->
+
+
+    <title>Página Principal</title>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom ">
+      <a class="navbar-brand" href="index.html"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item active" href="Perros.html">Perros</a>
+              <a class="dropdown-item" href="Gatos.html">Gatos</a>
+              <a class="dropdown-item" href="PequeñosAmigos.html">Pequeños amigos</a>
+            </div>   
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Tipo de productos
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item bg-white text-dark" href="Comid_perros.html">Comida</a>
+              <a class="dropdown-item bg-white text-dark" href="Meds_perros.html">Medicamentos</a>
+              <a class="dropdown-item bg-white text-dark" href="Accs_perros.html">Accesorios</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link mr-4 text-light" href="Login.html">Login</a>
+              </li>
+              <li class="nav-item active">
+                <a class="bi bi-cart4 text-light" href="carrito.html"></a>
+              </li>
+          </ul>
+        </div>    
+      </nav>  
+    </nav>
+    
+    <!-- Registrar -->
+    <div class="container">
+
+        <div class="row justify-content-md-center border-dark">
+            <div class="col-sm-6">
+              <div class="card m-2 border border-primary">
+                <div class="card-body">
+                  <h5 class="card-title">Registro de Usuarios</h5>
+          
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputPrimerNombre">Primer Nombre</label>
+                      <input type="text" class="form-control border border-success" id="inputPrimerNombre">
+                      <input type="text" class="form-control" id="inputIdUsuario" hidden>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputSegundoNombre">Segundo Nombre</label>
+                      <input type="text" class="form-control" id="inputSegundoNombre">
+                    </div>
+                  </div>
+          
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputApellidoPaterno">Apellido Paterno</label>
+                      <input type="text" class="form-control" id="inputApellidoPaterno">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputApellidoMaterno">Apellido Materno</label>
+                      <input type="text" class="form-control" id="inputApellidoMaterno">
+                    </div>
+                  </div>
+          
+                  <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputApellidoPaterno">Rut</label>
+                            <input type="text" class="form-control" id="inputRut">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputApellidoMaterno">Contraseña</label>
+                            <input type="text" class="form-control" id="inputContraseña">
+                        </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputApellidoPaterno">Correo</label>
+                        <input type="text" class="form-control" id="inputCorreo">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputApellidoMaterno">Comuna</label>
+                        <input type="text" class="form-control" id="inputComuna">
+                    </div>
+              </div>
+          
+                  <div class="form-group">
+                    <label for="inputDireccion">Dirección</label>
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Mi casa 1234">
+                  </div>
+          
+                  <a id="btnAgregarUsuario" class="btn btn-primary">Registrar</a>
+                  <a id="btnEditarUsuarioTabla" class="btn btn-success">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+      </div>
+
+
+      <div class="row mt-4">
+        <div class="col-sm-12">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+
+              <h5 class="card-title">Listado de Usuarios</h5>
+
+              <!-- Tabla de usuarios -->
+              <div class="table-responsive">
+                <table class="table" id="tablaUsuarios">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Primer Nombre</th>
+                      <th scope="col">Segundo Nombre</th>
+                      <th scope="col">Apellido Paterno</th>
+                      <th scope="col">Apellido Materno</th>
+                      <th scope="col">Rut</th>
+                      <th scope="col">Contraseña</th>
+                      <th scope="col">Correo</th>
+                      <th scope="col">Comuna</th>
+                      <th scope="col">Dirección</th>
+                      <th scope="col">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Alan</td>
+                      <td>Larry</td>
+                      <td>Brito</td>
+                      <td>Delgado</td>
+                      <td>12345678-2</td>
+                      <td>******</td>
+                      <td>alaluf@duocuc.cl</td>
+                      <td>La Florida</td>
+                      <td>Su casa #123, La Florida</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Maria</td>
+                      <td>Thornton</td>
+                      <td>Campos</td>
+                      <td>Asencio</td>
+                      <td>78945625-2</td>
+                      <td>******</td>
+                      <td>alaluf@duocuc.cl</td>
+                      <td>La Pintana</td>
+                      <td>Su casa #123, La Pintana</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Eustaquio</td>
+                      <td>Onofre</td>
+                      <td>Clavero</td>
+                      <td>Sancho</td>
+                      <td>31458927-3</td>
+                      <td>******</td>
+                      <td>euono@duocuc.cl</td>
+                      <td>San Ramón</td>
+                      <td>Su casa #123, San Ramón</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                          <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+<div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
+  <div class="row pt-5">
+      <div class="col-lg-4 col-md-12 mb-5">
+          <h1 class="mb-3 display-5 text-capitalize text-dark"><span class="text-info">Grandes</span>Amigos</h1>
+          <p class="m-0">Un grupo de amigas comenzó a realizar la venta de productos para mascotas como bandanas, correas e identificaciones, todo esto para ayudar a una fundación sin fines de lucro, todo partió a través de las redes sociales, pero en la actualidad es casi imposible dar abasto a la demanda a través de las redes sociales.</p>
+      </div>
+      <div class="col-lg-8 col-md-12">
+          <div class="row">
+              <div class="col-md-4 mb-5">
+                  <h5 class="text-info mb-4">Nuestrar Redes</h5>
+                  <p><i class="fa fa-map-marker-alt mr-2"></i>Av. Vicuña Mackenna 4917, San Joaquín, Región Metropolitana</p>
+                  <p><i class="fa fa-phone-alt mr-2"></i>+569 12345678</p>
+                  <p><i class="fa fa-envelope mr-2"></i>grandesamigos@empresa.com</p>
+                  <div class="d-flex justify-content-start mt-4">
+                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-5">
+                  <h5 class="text-info mb-4">Links</h5>
+                  <div class="d-flex flex-column justify-content-start">
+                      <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                      <a class="text-dark mb-2" href="Login.html"><i class="fa fa-angle-right mr-2"></i>Login</a>
+                      <a class="text-dark mb-2" href="registrar.html"><i class="fa fa-angle-right mr-2"></i>Registrate</a>
+                      <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-5">
+                  <h5 class="text-info mb-4">Fundación</h5>
+                  <p>*todos los clientes que estén suscritos se les otorgará un 5% de descuento en el total de la venta*</p>
+                  <form action="">
+                      <div class="form-group">
+                          <input type="text" class="form-control border-0" placeholder="Tu nombre" required="required" />
+                      </div>
+                      <div class="form-group">
+                          <input type="email" class="form-control border-0" placeholder="Tu email" required="required" />
+                      </div>
+                      <div>
+                          <button class="btn btn-lg btn-info btn-block border-0" type="submit">Suscribete</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
+  <div class="row">
+      <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+          <p class="m-0 text-white">
+              &copy; <a class="text-white font-weight-bold" href="#">Duoc UC San Joaquin</a>. All Rights Reserved.
+          </p>
+      </div>
+      <div class="col-md-6 text-center text-md-right">
+          <ul class="nav d-inline-flex">
+              <li class="nav-item">
+                  <a class="nav-link text-white py-0" href="#">Privacy</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white py-0" href="#">Terms</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white py-0" href="#">FAQs</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white py-0" href="https://cupofcode.blog/wp-content/uploads/2020/07/pikachu2.png">Help</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</div>
+<!-- Final Footer -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--- Mis scripts -->
+    <script> 
+
+        //funcionalidad para agregar los usuarios a la tabla
+        $("#btnAgregarUsuario").click(function(e){
+            e.preventDefault();
+
+            var primer_nombre = $("#inputPrimerNombre").val();
+            var segundo_nombre = $("#inputSegundoNombre").val();
+            var apellido_paterno = $("#inputApellidoPaterno").val();
+            var apellido_materno = $("#inputApellidoMaterno").val();
+            var rut = $("#inputRut").val();
+            var contraseña = $("#inputContraseña").val();
+            var correo = $("#inputCorreo").val();
+            var comuna = $("#inputComuna").val();
+            var direccion = $("#inputDireccion").val();
+
+
+            let fila = `<tr>
+                            <th scope="row">${ultimoId()}</th>
+                            <td>${primer_nombre}</td>
+                            <td>${segundo_nombre}</td>
+                            <td>${apellido_paterno}</td>
+                            <td>${apellido_materno}</td>
+                            <td>${rut}</td>
+                            <td>${contraseña}</td>
+                            <td>${correo}</td>
+                            <td>${comuna}</td>
+                            <td>${direccion}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+            
+           $("#tablaUsuarios").append(fila);
+        })
+    
+
+
+        function ultimoId(){
+            let ultimoId = $("#tablaUsuarios tr:last th").text();
+            return parseInt(ultimoId)+1;
+        }
+
+       // borrar linea
+        $(".btnEliminarUsuario").click(function(e){
+            e.preventDefault();
+            $(this).closest('tr').remove();
+        })
+
+        //editar usuario de la tabla
+        $(".btnEditarusuario").click(function(e){
+            e.preventDefault();
+            var idUsuario = $(this).closest('tr').find('th').text();
+            var usuario = $(this).closest('tr').find('td');
+
+            var primer_nombre = usuario.eq(0).text();
+            var segundo_nombre = usuario.eq(1).text();
+            var apellido_paterno = usuario.eq(2).text();
+            var apellido_materno = usuario.eq(3).text();
+            var rut = usuario.eq(4).text();
+            var contraseña = usuario.eq(5).text();
+            var correo = usuario.eq(6).text();
+            var comuna = usuario.eq(7).text();
+            var direccion = usuario.eq(8).text();
+
+            $("#inputPrimerNombre").val(primer_nombre);
+            $("#inputSegundoNombre").val(segundo_nombre);
+            $("#inputApellidoPaterno").val(apellido_paterno);
+            $("#inputApellidoMaterno").val(apellido_materno);
+            $("#inputRut").val(rut);
+            $("#inputContraseña").val(contraseña);
+            $("#inputCorreo").val(correo);
+            $("#inputComuna").val(comuna);
+            $("#inputDireccion").val(direccion);
+            $("#inputIdUsuario").val(idUsuario);
+            
+
+        });
+
+        //boton editar del formulario
+        $("#btnEditarUsuarioTabla").click(function(){
+            var primer_nombre = $("#inputPrimerNombre").val();
+            var segundo_nombre = $("#inputSegundoNombre").val();
+            var apellido_paterno = $("#inputApellidoPaterno").val();
+            var apellido_materno = $("#inputApellidoMaterno").val();
+            var rut = $("#inputRut").val();
+            var contraseña = $("#inputContraseña").val();
+            var correo = $("#inputCorreo").val();
+            var comuna = $("#inputComuna").val();
+            var direccion = $("#inputDireccion").val();
+            var idUsuario = $("#inputIdUsuario").val();
+
+            let fila = `<tr>
+                            <th scope="row">${idUsuario}</th>
+                            <td>${primer_nombre}</td>
+                            <td>${segundo_nombre}</td>
+                            <td>${apellido_paterno}</td>
+                            <td>${apellido_materno}</td>
+                            <td>${rut}</td>
+                            <td>${contraseña}</td>
+                            <td>${correo}</td>
+                            <td>${comuna}</td>
+                            <td>${direccion}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>`;
+
+        //eliminar la fila que seleccione
+        $(`#tablaUsuarios tr th:contains(${idUsuario})`).closest('tr').remove();
+
+        $("#tablaUsuarios").append(fila);
+
+        });
+
+    </script>
+
+     <!-- sweetalert2 -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <!-- Comunes -->
+    <script src="Admin/assets/js/comunes.js"></script>
+
+    <script>
+
+      //Agregar usuario a la lista
+        //GET
+        $(document).ready(function() {
+          getUSUARIOS();
+        });
+
+
+      getUsuarios = () => {
+        $.ajax({
+          url: `${API_URL}/AdminUsuario`,
+          type: `GET`,
+          datatype: `json`,
+          success: function(data) {
+            $.each(data, function (index, value){
+              //Llenar la Tabla
+              $("#tablaUsuarios").append(`<tr> 
+                <th scope="row">${value.ID_USUARIO}</th>
+                <td>${value.RUT}</td>
+                <td>${value.PRIMER_NOMBRE}</td>
+                <td>${value.SEGUNDO_NOMBRE}</td>
+                <td>${value.AP_PATERNO}</td>
+                <td>${value.AP_MATERNO}</td>
+                <td>${value.ESTA_SUSCRITO}</td>
+                <td>${value.ESTADO}</td>
+                <td>${value.USUARIO_ROLES_ID_ROL}</td>
+                <td>${value.CORREO}</td>
+                <td>${value.CONTRASEÑA}</td>
+                <td>${value.COMUNA}</td>
+                <td>${value.DIRECCION}</td>
+                
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                      <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+
+                </tr>`)
+            });
+          },
+          error: function (error){
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo obtener la lista de usuarios. Por favor, intenta nuevamente.'
+            });
+          }
+        });
+      }
+
+      //Funcionalidad para agregar los usuarios a la tabla
+
+      $("#btnAgregarUsuario").click(function (e){
+        e.preventDefault();
+
+        var rut =$("#inputRut").val();
+        var primer_nombre =$("#inputPrimerNombre").val();
+        var segundo_nombre =$("#inputSegundoNombre").val();
+        var ap_paterno =$("#inputApellidoPaterno").val();
+        var ap_materno =$("#inputApellidoMaterno").val();
+        var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
+        var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
+        var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
+        var correo =$("#inputCorreo").val();
+        var contraseña =$("#inputContraseña").val();
+        var comuna =$("#inputComuna").val();
+        var direccion =$("#inputDireccion").val();
+
+        var usuarioData = {
+          RUT: rut,
+          PRIMER_NOMBRE: primer_nombre,
+          SEGUNDO_NOMBRE: segundo_nombre,
+          AP_PATERNO: ap_paterno,
+          AP_MATERNO: ap_materno,
+          ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
+          ESTADO: estado,//Agregar a interfaz en caso que sea necesario
+          USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
+          CORREO: correo,
+          CONTRASEÑA: contraseña,
+          COMUNA: comuna,
+          DIRECCION: direccion
+        };
+
+        $.ajax({
+          url: `${API_URL}/AdminUsuario`,
+          type: 'POST',
+          data: usuarioData,
+          success: function(response){
+            Swal.fire({
+              icon: 'success',
+              title: 'Éxito',
+              text: 'Usuario registrado correctamente'
+            }).then(() =>{
+              //Limpiar los campos del formulario
+              $("#inputRut").val('');
+              $("#inputPrimerNombre").val('');
+              $("#inputSegundoNombre").val('');
+              $("#inputApellidoPaterno").val('');
+              $("#inputApellidoMaterno").val('');
+              $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
+              $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
+              $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
+              $("#inputCorreo").val('');
+              $("#inputContraseña").val('');
+              $("#inputComuna").val('');
+              $("#inputDireccion").val('');
+
+              //Actualizar la tabla de usuarios
+              getUSUARIOS();  //Preguntar por este get
+            });
+          },
+          error: function (error) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo registrar el usuario. Por favor, intenta nuevamente.'
+              });
+            }
+        });
+      });
+    
+      function ultimoId(){
+            let ultimoId = $("#tablaUsuarios tr:last th").text();
+            return parseInt(ultimoId)+1;
+        }      
+
+        //Borrar Linea
+        $(document).on('click', '.btnEliminarUsuario', function (){
+          // Obtener el ID del usuario a eliminar
+          var idUsuario = $(this).closest('tr').find('th').text();
+
+          //Mostrar el mensaje de confirmación utilizando SweetAlert2
+          Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Esta acción no se puede deshacer',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+          }).then((result) => {
+            if (result.isConfirmed){
+              // Enviar la solicitud de borrado
+              $.ajax({
+                url: `${API_URL}/usuarios/${idUsuario}`,
+                type: 'DELETE',
+                success: function (response) {
+                  // Mostrar mensaje de éxito
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Eliminado',
+                    text: response
+                }).then(() => {
+                  // Recargar la tabla de usuarios después de eliminar uno
+                  $("#tablaUsuarios").empty(); // Vaciar la tabla
+                  getUsuarios(); // Volver a cargar los usuarios
+                });
+              },
+              error: function (error) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'No se pudo eliminar el usuario. Por favor, intenta nuevamente.'
+                });
+              }
+            });
+          }
+        });
+      });
+
+
+      //Editar usuario tabla
+      $(document).on('click', '.btnEditarUsuario', function (e) {
+        e.preventDefault();
+        //Obtener los datos del usuario desde la fila de la tabla
+        var usuario =$(this).closest('tr').find('td');
+
+        var idUsuario = usuario.eq(0).text();
+        var rut = usuario.eq(1).text();
+        var primerNombre = usuario.eq(2).text();
+        var segundoNombre = usuario.eq(3).text();
+        var apPaterno = usuario.eq(4).text();
+        var apMaterno = usuario.eq(5).text();
+        //var estaSuscrito = usuario.eq(6).text() === 'SI' ? '1' : '0';
+        //var estado = usuario.eq(7).text();
+        //var usuarioRolesIdRol = usuario.eq(8).find('input').val();
+        var correo = usuario.eq(9).text();
+        var contraseña = usuario.eq(10).text();
+        var comuna = usuario.eq(11).text();
+        var direccion = usuario.eq(12).text();
+
+        $("#inputIdUsuario").val(idUsuario);
+        $("#inputRut").val(rut);
+        $("#inputPrimerNombre").val(primerNombre);
+        $("#inputSegundoNombre").val(segundoNombre);
+        $("#inputApellidoPaterno").val(apPaterno);
+        $("#inputApellidoMaterno").val(apMaterno);
+        $("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
+        $("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
+        $("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
+        $("#inputCorreo").val(correo);
+        $("#inputContraseña").val(contraseña);
+        $("#inputComuna").val(comuna);
+        $("#inputDireccion").val(direccion);
+      });
+
+      //Botón editar del formulario
+      $(".btnEditarUsuarioTabla").click(function (e){
+
+        //Obtener los datos del formulario
+        var idUsuario = $("#inputIdUsuario")
+        var rut =$("#inputRut").val();
+        var primer_nombre =$("#inputPrimerNombre").val();
+        var segundo_nombre =$("#inputSegundoNombre").val();
+        var ap_paterno =$("#inputApellidoPaterno").val();
+        var ap_materno =$("#inputApellidoMaterno").val();
+        var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
+        var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
+        var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
+        var correo =$("#inputCorreo").val();
+        var contraseña =$("#inputContraseña").val();
+        var comuna =$("#inputComuna").val();
+        var direccion =$("#inputDireccion").val();
+
+        //Crear objeto con datos de usuarios
+        var usuarioData = {
+          ID_USUARIO: idUsuario,
+          RUT: rut,
+          PRIMER_NOMBRE: primer_nombre,
+          SEGUNDO_NOMBRE: segundo_nombre,
+          AP_PATERNO: ap_paterno,
+          AP_MATERNO: ap_materno,
+          ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
+          ESTADO: estado,//Agregar a interfaz en caso que sea necesario
+          USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
+          CORREO: correo,
+          CONTRASEÑA: contraseña,
+          COMUNA: comuna,
+          DIRECCION: direccion
+        };
+
+        // Enviar la solicitud de actualización
+        $.ajax({
+          url:`${API_URL}/AdminUsuario`,
+          type: `PUT`,
+          data: usuarioData,
+          success: function (response){
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'Usuario actualizado correctamente.'
+              }).then(()=>{
+                // Limpiar los campos del formulario
+                $("#inputIdUsuario").val('');
+                $("#inputRut").val('');
+                $("#inputPrimerNombre").val('');
+                $("#inputSegundoNombre").val('');
+                $("#inputApellidoPaterno").val('');
+                $("#inputApellidoMaterno").val('');
+                $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
+                $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
+                $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
+                $("#inputCorreo").val('');
+                $("#inputContraseña").val('');
+                $("#inputComuna").val('');
+                $("#inputDireccion").val('');
+
+                //Actualizar la tabla usuario
+                $("#tablaUsuario").empty(); //Vaciar la tabla
+                getUSUARIOS(); //Duda
+              });
+          },
+          error: function (error) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo actualizar el usuario. Por favor, intentalo nuevamente' 
+            });
+          }
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
