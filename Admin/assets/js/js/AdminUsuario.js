@@ -24,9 +24,9 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
     $("#inputSegundoNombre").val(segundoNombre);
     $("#inputApellidoPaterno").val(apPaterno);
     $("#inputApellidoMaterno").val(apMaterno);
-    $("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
-    $("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
-    $("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
+    //$("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
+    //$("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
+    //$("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
     $("#inputCorreo").val(correo);
     $("#inputContraseña").val(contraseña);
     $("#inputComuna").val(comuna);

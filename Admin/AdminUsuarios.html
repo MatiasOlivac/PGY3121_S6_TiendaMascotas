@@ -140,7 +140,7 @@
 
               <h5 class="card-title">Listado de Usuarios</h5>
 
-              <!-- Tabla de usuarios -->
+              Tabla de usuarios
               <div class="table-responsive">
                 <table class="table" id="tablaUsuarios">
                   <thead class="thead-dark">
@@ -307,127 +307,129 @@
     
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/comunes.js" ></script>
+    <script src="assets/js/js/AdminProducto.js"></script>
     <!--- Mis scripts -->
     <script> 
 
-        //funcionalidad para agregar los usuarios a la tabla
-        $("#btnAgregarUsuario").click(function(e){
-            e.preventDefault();
+      //   //funcionalidad para agregar los usuarios a la tabla
+      //   $("#btnAgregarUsuario").click(function(e){
+      //       e.preventDefault();
 
-            var primer_nombre = $("#inputPrimerNombre").val();
-            var segundo_nombre = $("#inputSegundoNombre").val();
-            var apellido_paterno = $("#inputApellidoPaterno").val();
-            var apellido_materno = $("#inputApellidoMaterno").val();
-            var rut = $("#inputRut").val();
-            var contraseña = $("#inputContraseña").val();
-            var correo = $("#inputCorreo").val();
-            var comuna = $("#inputComuna").val();
-            var direccion = $("#inputDireccion").val();
+      //       var primer_nombre = $("#inputPrimerNombre").val();
+      //       var segundo_nombre = $("#inputSegundoNombre").val();
+      //       var apellido_paterno = $("#inputApellidoPaterno").val();
+      //       var apellido_materno = $("#inputApellidoMaterno").val();
+      //       var rut = $("#inputRut").val();
+      //       var contraseña = $("#inputContraseña").val();
+      //       var correo = $("#inputCorreo").val();
+      //       var comuna = $("#inputComuna").val();
+      //       var direccion = $("#inputDireccion").val();
 
 
-            let fila = `<tr>
-                            <th scope="row">${ultimoId()}</th>
-                            <td>${primer_nombre}</td>
-                            <td>${segundo_nombre}</td>
-                            <td>${apellido_paterno}</td>
-                            <td>${apellido_materno}</td>
-                            <td>${rut}</td>
-                            <td>${contraseña}</td>
-                            <td>${correo}</td>
-                            <td>${comuna}</td>
-                            <td>${direccion}</td>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>`;
+      //       let fila = `<tr>
+      //                       <th scope="row">${ultimoId()}</th>
+      //                       <td>${primer_nombre}</td>
+      //                       <td>${segundo_nombre}</td>
+      //                       <td>${apellido_paterno}</td>
+      //                       <td>${apellido_materno}</td>
+      //                       <td>${rut}</td>
+      //                       <td>${contraseña}</td>
+      //                       <td>${correo}</td>
+      //                       <td>${comuna}</td>
+      //                       <td>${direccion}</td>
+      //                       <td>
+      //                           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      //                           <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+      //                           <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+      //                           </div>
+      //                       </td>
+      //                   </tr>`;
             
-           $("#tablaUsuarios").append(fila);
-        })
+      //      $("#tablaUsuarios").append(fila);
+      //   })
     
 
 
-        function ultimoId(){
-            let ultimoId = $("#tablaUsuarios tr:last th").text();
-            return parseInt(ultimoId)+1;
-        }
+      //   function ultimoId(){
+      //       let ultimoId = $("#tablaUsuarios tr:last th").text();
+      //       return parseInt(ultimoId)+1;
+      //   }
 
-       // borrar linea
-        $(".btnEliminarUsuario").click(function(e){
-            e.preventDefault();
-            $(this).closest('tr').remove();
-        })
+      //  // borrar linea
+      //   $(".btnEliminarUsuario").click(function(e){
+      //       e.preventDefault();
+      //       $(this).closest('tr').remove();
+      //   })
 
-        //editar usuario de la tabla
-        $(".btnEditarusuario").click(function(e){
-            e.preventDefault();
-            var idUsuario = $(this).closest('tr').find('th').text();
-            var usuario = $(this).closest('tr').find('td');
+      //   //editar usuario de la tabla
+      //   $(".btnEditarusuario").click(function(e){
+      //       e.preventDefault();
+      //       var idUsuario = $(this).closest('tr').find('th').text();
+      //       var usuario = $(this).closest('tr').find('td');
 
-            var primer_nombre = usuario.eq(0).text();
-            var segundo_nombre = usuario.eq(1).text();
-            var apellido_paterno = usuario.eq(2).text();
-            var apellido_materno = usuario.eq(3).text();
-            var rut = usuario.eq(4).text();
-            var contraseña = usuario.eq(5).text();
-            var correo = usuario.eq(6).text();
-            var comuna = usuario.eq(7).text();
-            var direccion = usuario.eq(8).text();
+      //       var primer_nombre = usuario.eq(0).text();
+      //       var segundo_nombre = usuario.eq(1).text();
+      //       var apellido_paterno = usuario.eq(2).text();
+      //       var apellido_materno = usuario.eq(3).text();
+      //       var rut = usuario.eq(4).text();
+      //       var contraseña = usuario.eq(5).text();
+      //       var correo = usuario.eq(6).text();
+      //       var comuna = usuario.eq(7).text();
+      //       var direccion = usuario.eq(8).text();
 
-            $("#inputPrimerNombre").val(primer_nombre);
-            $("#inputSegundoNombre").val(segundo_nombre);
-            $("#inputApellidoPaterno").val(apellido_paterno);
-            $("#inputApellidoMaterno").val(apellido_materno);
-            $("#inputRut").val(rut);
-            $("#inputContraseña").val(contraseña);
-            $("#inputCorreo").val(correo);
-            $("#inputComuna").val(comuna);
-            $("#inputDireccion").val(direccion);
-            $("#inputIdUsuario").val(idUsuario);
+      //       $("#inputPrimerNombre").val(primer_nombre);
+      //       $("#inputSegundoNombre").val(segundo_nombre);
+      //       $("#inputApellidoPaterno").val(apellido_paterno);
+      //       $("#inputApellidoMaterno").val(apellido_materno);
+      //       $("#inputRut").val(rut);
+      //       $("#inputContraseña").val(contraseña);
+      //       $("#inputCorreo").val(correo);
+      //       $("#inputComuna").val(comuna);
+      //       $("#inputDireccion").val(direccion);
+      //       $("#inputIdUsuario").val(idUsuario);
             
 
-        });
+      //   });
 
-        //boton editar del formulario
-        $("#btnEditarUsuarioTabla").click(function(){
-            var primer_nombre = $("#inputPrimerNombre").val();
-            var segundo_nombre = $("#inputSegundoNombre").val();
-            var apellido_paterno = $("#inputApellidoPaterno").val();
-            var apellido_materno = $("#inputApellidoMaterno").val();
-            var rut = $("#inputRut").val();
-            var contraseña = $("#inputContraseña").val();
-            var correo = $("#inputCorreo").val();
-            var comuna = $("#inputComuna").val();
-            var direccion = $("#inputDireccion").val();
-            var idUsuario = $("#inputIdUsuario").val();
+      //   //boton editar del formulario
+      //   $("#btnEditarUsuarioTabla").click(function(){
+      //       var primer_nombre = $("#inputPrimerNombre").val();
+      //       var segundo_nombre = $("#inputSegundoNombre").val();
+      //       var apellido_paterno = $("#inputApellidoPaterno").val();
+      //       var apellido_materno = $("#inputApellidoMaterno").val();
+      //       var rut = $("#inputRut").val();
+      //       var contraseña = $("#inputContraseña").val();
+      //       var correo = $("#inputCorreo").val();
+      //       var comuna = $("#inputComuna").val();
+      //       var direccion = $("#inputDireccion").val();
+      //       var idUsuario = $("#inputIdUsuario").val();
 
-            let fila = `<tr>
-                            <th scope="row">${idUsuario}</th>
-                            <td>${primer_nombre}</td>
-                            <td>${segundo_nombre}</td>
-                            <td>${apellido_paterno}</td>
-                            <td>${apellido_materno}</td>
-                            <td>${rut}</td>
-                            <td>${contraseña}</td>
-                            <td>${correo}</td>
-                            <td>${comuna}</td>
-                            <td>${direccion}</td>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>`;
+      //       let fila = `<tr>
+      //                       <th scope="row">${idUsuario}</th>
+      //                       <td>${primer_nombre}</td>
+      //                       <td>${segundo_nombre}</td>
+      //                       <td>${apellido_paterno}</td>
+      //                       <td>${apellido_materno}</td>
+      //                       <td>${rut}</td>
+      //                       <td>${contraseña}</td>
+      //                       <td>${correo}</td>
+      //                       <td>${comuna}</td>
+      //                       <td>${direccion}</td>
+      //                       <td>
+      //                           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      //                           <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+      //                           <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+      //                           </div>
+      //                       </td>
+      //                   </tr>`;
 
-        //eliminar la fila que seleccione
-        $(`#tablaUsuarios tr th:contains(${idUsuario})`).closest('tr').remove();
+      //   //eliminar la fila que seleccione
+      //   $(`#tablaUsuarios tr th:contains(${idUsuario})`).closest('tr').remove();
 
-        $("#tablaUsuarios").append(fila);
+      //   $("#tablaUsuarios").append(fila);
 
-        });
+        //});
 
     </script>
 
