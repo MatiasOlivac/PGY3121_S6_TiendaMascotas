@@ -167,7 +167,7 @@
                         <p>Envío: $ 2.000</p>
                         <p>Descuento: $ 2.000</p>
                         <p>Total: $ 30.000</p>
-                        <button class="btn btn-success btn-block">Pagar</button>
+                        <button id="btnEliminarCarrito" class="btn btn-success btn-block">Pagar</button>
                     </div>
                 </div>
             </div>
@@ -175,6 +175,62 @@
     </div>
 </section>
 <!-- fin carrito  -->
+<script>
+    
+
+
+    //Agregar carrito a la lista
+           //GET
+           $(document).ready(function() {
+             getCARRITO();
+           });
+   
+   
+         getCarrito = () => {
+           $.ajax({
+             url: `${API_URL}/Carrito`,
+             type: `GET`,
+             datatype: `json`,
+             success: function(data) {
+               $.each(data, function (index, value){
+                 //Llenar la Tabla
+                 $("#tablaCarrito").append(`<tr> 
+                   <th scope="row">${value.ID_CARRITO}</th>
+                   <td>${value.IMAGEN}</td>
+                   <td>${value.ID_PRODUCTOS}</td>
+                   <td>${value.CANTIDAD}</td>
+                   <td>${value.PRECIO}</td>
+                   <td>${value.SUBTOTAL}</td>
+                   <td>
+                       <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                         <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
+                       </div>
+                     </td>
+   
+                   </tr>`)
+               });
+             },
+             error: function (error){
+               Swal.fire({
+                 icon: 'error',
+                 title: 'Error',
+                 text: 'No se pudo obtener la lista de carrito. Por favor, intenta nuevamente.'
+               });
+             }
+           });
+         }
+   
+         // borrar linea
+       $(".btnEliminarCarrito").click(function(e){
+           e.preventDefault();
+           $(this).closest('tr').remove();
+       })
+   
+   
+       
+   
+   </script>
+   
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
