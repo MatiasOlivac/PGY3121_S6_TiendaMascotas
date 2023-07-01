@@ -113,7 +113,7 @@
                       <table class="table" id="tablaRol">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">ID_PROMOCION</th>
+                            <th scope="col">ID_PROMOCIONES</th>
                             <th scope="col">FECHA_INICIO</th>
                             <th scope="col">FECHA_FIN</th>
                             <th scope="col">DESCUENTO</th>
@@ -177,7 +177,7 @@ crossorigin="anonymous"></script>
       success: function(data) {
         $.each(data, function(index, value) {
           // Obtener los datos de la promoción
-          var idPromocion = value.ID_PROMOCION;
+          var idPromocion = value.ID_PROMOCIONES;
           var fechaInicio = value.FECHA_INICIO;
           var fechaFin = value.FECHA_FIN;
           var porcentajeDescuento = value.DESCUENTO;
@@ -204,7 +204,7 @@ crossorigin="anonymous"></script>
                   <td>${estado}</td>
                   <td>${idProducto}</td>
                   <td>${precioConDescuento}</td>
-                  <input type="hidden" name="id_rol" value="${idPromocion}">
+                  <input type="hidden" name="id_rol" value="${idPromociones}">
                   </td>
                   <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -391,7 +391,7 @@ $('#btnCancelarEditarPromocion').hide();
             DESCUENTO: descuento,
             ESTADO: estado,
             ID_PRODUCTO: idProducto,
-            ID_PROMOCION: idPromocion
+            ID_PROMOCIONES: idPromocion
           }),
           success: function(respuesta){
               console.log("modificado");
