@@ -71,185 +71,88 @@
 
 <!-- Carrito -->
 <section id="carrito">
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-8">
-                <table class="table table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Imagen</th>
-                            <th>producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                            <th>Subtotal</th>
-                            <th>acciones</th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src="src/img_Perro/Imagen_accesorios_perros3.JPG" width="100" calss="card-img-top" alt="Libro1"></td>
-                            <td>Producto 1</td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <button id="btnRestarproducto" class="btn btn-outline-secondary" type="button">-</button>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                    <div class="input-group-append">
-                                        <button  id="btnSumarproducto" class="btn btn-outline-secondary" type="button">+</button>
-                                    </div>  
-                                </div>
-
-                            </td>
-                            <td>$ 5.000</td>
-                            <td>$ 10.000</td>
-                            <td>
-                                <button id="btnEliminarCarrito" class="btn btn-danger btn-sm">Borrar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="src/img_Gato/acc3.JPG" width="100" calss="card-img-top" alt="Libro1"></td>
-                            <td>Producto 2</td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <button id="btnRestarproducto" class="btn btn-outline-secondary" type="button">-</button>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                    <div class="input-group-append">
-                                        <button  id="btnSumarproducto" class="btn btn-outline-secondary" type="button">+</button>
-                                    </div>  
-                                </div>
-                            </td>
-                            <td>$ 5.000</td>
-                            <td>$ 15.000</td>
-                            <td>
-                                <button id="btnEliminarCarrito" class="btn btn-danger btn-sm">Borrar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="src/img_PeqAmig/Acce1.png" width="100" calss="card-img-top" alt="Libro1"></td>
-                            <td>Producto 3</td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <button id="btnRestarproducto" class="btn btn-outline-secondary" type="button">-</button>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                    <div class="input-group-append">
-                                        <button id="btnSumarproducto" class="btn btn-outline-secondary" type="button">+</button>
-                                    </div>  
-                                </div>
-                            </td>
-                            <td>$ 5.000</td>
-                            <td>$ 5.000</td>
-                            <td>
-                                <button id="btnEliminarCarrito" class="btn btn-danger btn-sm">Borrar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                            <td>Total:</td>
-                            <td>$ 30.000</td>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Resumen de la compra</h4>
-                        <p>Subtotal: $ 30.000</p>
-                        <p>Envío: $ 2.000</p>
-                        <p>Descuento: $ 2.000</p>
-                        <p>Total: $ 30.000</p>
-                        <button id="btnPagarCarrito" class="btn btn-success btn-block">Pagar</button>
+    <div class="container mt-4 border border-dark rounded">
+      <h2 class="text-center mb-4">Carrito de compras</h2>
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table" id="tablaCarrito"> <!-- id(#)tabla -->
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>$%&</td>
+                <td>Libro 1</td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-outline-secondary" type="button" id="btnMenos">-</button> <!-- id(#)btnMenos -->
+                        <input type="text" class="form-control w-25" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1" id="labelMasMenos"> <!-- id(#)labelMasMenos -->
+                        <button class="btn btn-outline-secondary" type="button" id="btnMas">+</button> <!-- id(#)btnMas -->
                     </div>
+                </td>
+                <td>$10.00</td> <!-- Duda -->
+                <td>$20.00</td>
+                <td><button class="btn btn-danger btnEliminar">Eliminar</button></td> <!--class(.) btnElminar-->
+                <thead>
+              </tr>
+              <th scope="row">2</th>
+              <td>$%&</td>
+              <td>Libro 2</td>
+              <td>
+                  <div class="d-flex justify-content-center">
+                      <button class="btn btn-outline-secondary" type="button" id="btnMenos">-</button> <!-- id(#)btnMenos -->
+                      <input type="text" class="form-control w-25" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1" id="labelMasMenos"> <!-- id(#)labelMasMenos -->
+                      <button class="btn btn-outline-secondary" type="button" id="btnMas">+</button> <!-- id(#)btnMas -->
+                  </div>
+              </td>
+              <td>$10.00</td>
+              <td>$20.00</td>
+              <td><button class="btn btn-danger btnEliminar">Eliminar</button></td> <!--class(.) btnElminar-->
+            </tr>
+            <th scope="row">3</th>
+            <td>$%&</td>
+            <td>Libro 3</td>
+            <td>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-secondary" type="button" id="btnMenos">-</button> <!-- id(#)btnMenos -->
+                    <input type="text" class="form-control w-25" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1" id="labelMasMenos"> <!-- id(#)labelMasMenos -->
+                    <button class="btn btn-outline-secondary" type="button" id="btnMas">+</button> <!-- id(#)btnMas -->
                 </div>
-            </div>
+            </td>
+            <td>$10.00</td>
+            <td>$20.00</td>
+            <td><button class="btn btn-danger btnEliminar">Eliminar</button></td> <!--class(.) btnElminar-->
+          </tr>
+          <tr>  
+            <td class="d-flex justify-content-between"><button class="btn btn-danger btnEliminarVenta">Eliminar Venta</button></td> <!--class(.) btnElminarVenta-->
+          </tr>
+            </tbody>
+          </table>
         </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Resumen de compra</h4>
+              <p class="card-text" id="subTotal"><strong>Subtotal:</strong> $35.00</p> <!--id(#)subTotal-->
+              <p class="card-text" id="iva"><strong>IVA:</strong> 19%</p> <!--id(#)iva-->
+              <p class="card-text" id="total"><strong>Total:</strong> $35.00</p> <!--id(#)total-->
+              <button class="btn btn-success btn-block" id="btnPagarTotal">Proceder al pago</button> <!--id(#)btnPagarTotal-->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 <!-- fin carrito  -->
-<script>
-    
-
-
-    //Agregar carrito a la lista
-           //GET
-           $(document).ready(function() {
-             getCARRITO();
-           });
-   
-   
-         getCarrito = () => {
-           $.ajax({
-             url: `${API_URL}/Carrito`,
-             type: `GET`,
-             datatype: `json`,
-             success: function(data) {
-               $.each(data, function (index, value){
-                 //Llenar la Tabla
-                 $("#tablaCarrito").append(`<tr> 
-                   <th scope="row">${value.ID_CARRITO}</th>
-                   <td>${value.IMAGEN}</td>
-                   <td>${value.ID_PRODUCTOS}</td>
-                   <td>${value.CANTIDAD}</td>
-                   <td>${value.PRECIO}</td>
-                   <td>${value.SUBTOTAL}</td>
-                   <td>
-                       <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                         <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
-                       </div>
-                     </td>
-   
-                   </tr>`)
-               });
-             },
-             error: function (error){
-               Swal.fire({
-                 icon: 'error',
-                 title: 'Error',
-                 text: 'No se pudo obtener la lista de carrito. Por favor, intenta nuevamente.'
-               });
-             }
-           });
-         }
-   
-         // borrar linea
-       $(".btnEliminarCarrito").click(function(e){
-           e.preventDefault();
-           $(this).closest('tr').remove();
-       })
-
-       $("#btnSumarproducto").click(function(e) {
-        e.preventDefault();
-    
-        var input = $(this).closest('td').find('input');
-        var placeholderValue = parseInt(input.attr('placeholder'));
-        var currentValue = parseInt(input.val());
-    
-        if (!isNaN(placeholderValue)) {
-            var newValue = currentValue + placeholderValue;
-            input.val(newValue);
-        }
-        });
-
-
-       $(".btnRestarproducto").click(function(e){
-           e.preventDefault();
-           $(this).closest('tr').remove();
-       })
-   
-   
-       
-   
-   </script>
-   
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
