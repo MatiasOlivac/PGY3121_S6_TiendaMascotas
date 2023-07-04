@@ -4,16 +4,18 @@
 $(document).ready(function() {
 
   getProductos();
+  getVentas();
 
 }); 
 
 //buscar los productos en la api
 getProductos = () => {
   $.ajax({
-    url: `${API_URL}/AdminProductos`,
+    url: `${API_URL}/AdminProducto`,
     type: 'GET',
     dataType: 'json',
     success: function(data) {
+      console.log(data);
       $.each(data, function(index, value) {
         //llenar el select Productos
         $("#inputProducto").append(`<option id="${value.ID_PRODUCTOS}" value="${value.ID_PRODUCTOS}">${value.NOMBRE}</option>`);
@@ -26,7 +28,7 @@ getProductos = () => {
 //buscar los productos en la api
 getValorProductos = () => {
   $.ajax({
-    url: `${API_URL}/AdminProductos`,
+    url: `${API_URL}/AdminProducto`,
     type: 'GET',
     dataType: 'json',
     success: function(data) {
