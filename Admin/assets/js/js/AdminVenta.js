@@ -42,32 +42,41 @@ getValorProductos = () => {
 }
 
 //buscar las Ventas en la api
-getVentas = () => {
+  getVentas = () => {
     $.ajax({
       url: `${API_URL}/AdminVenta`,
       type: 'GET',
       dataType: 'json',
       success: function (data) {
-        $.each(data, function (index, value) {
-          // Llenar la tabla
-          $("#tablaVentas").append(`<tr>
-            <th scope="row">${value.ID_VENTA}</th>
-            <td>${value.FECHA}</td>
-            <td>${value.HORA}</td>
-            <td>${value.ESTADO}</td>
-            <td>${value.ID_PRODUCTO}</td>
-            <td>${value.CANTIDAD}</td>
-            <td>${value.TOTAL}</td>
-            <td>
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-success btnEditarVenta"><i class="fa-solid fa-pencil"></i></button>
-              <button type="button" class="btn btn-danger btnEliminarVenta"><i class="fa-solid fa-trash"></i></button>
-              <button type="button" class="btn btn-info btnDetalleVenta"><i class="fa-solid fa-eye"></i></button>
-            </div>
-            </div>
-          </td>
-        </tr>`);
-      });
+        $.each(data, function (index, value){
+          $("#tablaVentas").append(
+            `<tr>
+                <th scope="row">${ultimoId()}</th>
+                <td>${value.ID_VENTA == null ? "" : value.ID_VENTA}
+                                <input type="hidden" name="id_venta" value="${value.ID_VENTA}">
+                <td>${value.FECHA}</td>
+                <td>${value.HORA}</td>
+                <td>
+                ${value.ESTADO}
+                <input type= "hidden" name="id_estado" id="id_estado" value="${value.ESTADO}>
+                </td>
+                <td>${value.ID_PRODUCTO}
+                <input type= "hidden" name="id_producto" id="id_producto" value="${value.ID_PRODUCTO}>
+                </td>
+                <td>${value.CANTIDAD}</td>
+              <td>${value.TOTAL}</td>
+              <td>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-success btnEditarVenta"><i
+                   class="fa-solid fa-pencil"></i></button>
+                  <button type="button" class="btn btn-danger btnEliminarVenta"><i
+                   class="fa-solid fa-trash"></i></button>
+                  <button type="button" class="btn btn-info btnDetalleVenta"><i 
+                   class="fa-solid fa-eye"></i></button>
+                </div>
+              </td>
+          </tr>`)
+         });
     },
     error: function (error) {
       Swal.fire({
@@ -88,7 +97,7 @@ $('#btnEditarVentaTabla').hide();
 $("#btnAgregarVenta").click(function (e) {
     e.preventDefault();
   
-    var ID_VENTA = $("#inputId_venta").val();
+    var ID_VENTA = $('#inputId_venta').val();
     var FECHA = $("#inputFecha").val();
     var HORA = $("#inputHora").val();
     var ESTADO = $("#inputEstado").val();
@@ -140,7 +149,7 @@ $("#btnAgregarVenta").click(function (e) {
 
 
 //Detalle venta de la tabla
-$(document).on('click', '.btnDetalleVenta', function (e) {
+$(document).on("click", ".btnDetalleVenta", function (e) {
   e.preventDefault();
   // Obtener los datos de la Venta desde la fila de la tabla
   var ID_VENTA = $(this).closest('tr').find('td');
@@ -240,12 +249,13 @@ $(document).on('click', '.btnDetalleVenta', function (e) {
     var ID_VENTA = $(this).closest('tr').find('td');
 
     var ID_VENTA = ID_VENTA.eq(0).text();
-    var FECHA = FECHA.eq(1).text();
-    var HORA = HORA.eq(2).text();
-    var ESTADO = ESTADO.eq(3).text();
-    var ID_PRODUCTO = ID_PRODUCTO.eq(4).text();
-    var CANTIDAD = CANTIDAD.eq(5).text();
-    var TOTAL= TOTAL.eq(6).text();
+    var ID_VENTA = ID_VENTA.eq(1).text();
+    var FECHA = FECHA.eq(2).text();
+    var HORA = HORA.eq(3).text();
+    var ESTADO = ESTADO.eq(4).text();
+    var ID_PRODUCTO = ID_PRODUCTO.eq(5).text();
+    var CANTIDAD = CANTIDAD.eq(6).text();
+    var TOTAL= TOTAL.eq(7).text();
 
     $("#inputId_venta").val(ID_VENTA);
     $("#inputFecha").val(FECHA);
