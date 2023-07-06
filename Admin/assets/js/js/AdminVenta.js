@@ -5,6 +5,8 @@ $(document).ready(function() {
 
   getProductos();
   getVentas();
+  //getValorProductos();
+  getEstadoVenta();
 
 }); 
 
@@ -32,9 +34,27 @@ getValorProductos = () => {
     type: 'GET',
     dataType: 'json',
     success: function(data) {
+      console.log(data);
       $.each(data, function(index, value) {
         //llenar el select Productos
-        $("#inputProducto").append(`<option id="${value.VALOR}" value="${value.VALOR}">${value.NOMBRE}</option>`);
+        $("#inputProducto").append(`<option id="${value.ID_PRODUCTOS}" value="${value.ID_PRODUCTOS}">${value.VALOR}</option>`);
+      });
+
+    }
+  });
+}
+
+//buscar el Estado de la Venta
+getEstadoVenta = () => {
+  $.ajax({
+    url: `${API_URL}/AdminVenta`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      console.log(data);
+      $.each(data, function(index, value) {
+        //llenar el select Productos
+        $("#inputEstado").append(`<option id="${value.ID_VENTA}" value="${value.ID_VENTA}">${value.ESTADO}</option>`);
       });
 
     }
@@ -155,7 +175,7 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
   var ID_VENTA = $(this).closest('tr').find('td');
 
   var ID_VENTA = ID_VENTA.eq(0).text();
-  var FECHA = FECHA.eq(1).text();
+  var FECHA = FECHA.eq(1).text().trim();
   var HORA = HORA.eq(2).text();
   var ESTADO = ESTADO.eq(3).text();
   var ID_PRODUCTO = ID_PRODUCTO.eq(4).text();
@@ -206,10 +226,10 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
-      var ID_VENTA = $(this).closest('tr').find('td');
-      var venta_id = ID_VENTA.eq(0).find('input').val();
-      console.log(ID_VENTA);
-      console.log(venta_id_id);
+      var IdVenta = $(this).closest('tr').find('td');
+      var venta_id = IdVenta.eq(0).find('input').val();
+      console.log(IdVenta);
+      console.log(venta_id);
 
         // Enviar la solicitud de borrado
         $.ajax({
@@ -246,32 +266,31 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
    $(document).on('click', '.btnEditarventa', function (e) {
     e.preventDefault();
     // Obtener los datos de la Venta desde la fila de la tabla
-    var ID_VENTA = $(this).closest('tr').find('td');
+    var venta = $(this).closest('tr').find('td');
 
-    var ID_VENTA = ID_VENTA.eq(0).text();
-    var ID_VENTA = ID_VENTA.eq(1).text();
-    var FECHA = FECHA.eq(2).text();
-    var HORA = HORA.eq(3).text();
-    var ESTADO = ESTADO.eq(4).text();
-    var ID_PRODUCTO = ID_PRODUCTO.eq(5).text();
-    var CANTIDAD = CANTIDAD.eq(6).text();
-    var TOTAL= TOTAL.eq(7).text();
+    var idVenta = venta.eq(0).find('input');
+    var Fecha = venta.eq(1).text();
+    var Hora = venta.eq(2).text();
+    var Estado = venta.eq(3).text();
+    var idProducto = venta.eq(4).text();
+    var Cantidad = venta.eq(5).text();
+    var Total= venta.eq(6).text();
 
-    $("#inputId_venta").val(ID_VENTA);
-    $("#inputFecha").val(FECHA);
-    $("#inputHora").val(HORA);
-    $("#inputEstado").val(ESTADO);
-    $("#inputProducto").val(ID_PRODUCTO);
-    $("#inputCantidad").val(CANTIDAD);
-    $("#inputTotal").val(TOTAL);
+    $("#inputId_venta").val(idVenta);
+    $("#inputFecha").val(Fecha);
+    $("#inputHora").val(Hora);
+    $("#inputEstado").val(Estado);
+    $("#inputProducto").val(idProducto);
+    $("#inputCantidad").val(Cantidad);
+    $("#inputTotal").val(Total);
 
-    console.log(ID_VENTA);
-    console.log(FECHA);
-    console.log(HORA);
-    console.log(ESTADO);
-    console.log(ID_PRODUCTO);
-    console.log(CANTIDAD);
-    console.log(TOTAL);
+    console.log(idVenta);
+    console.log(Fecha);
+    console.log(Hora);
+    console.log(Estado);
+    console.log(idProducto);
+    console.log(Cantidad);
+    console.log(Total);
 
     // esconder botones 
     $('#btnCancelarEditar').show();
@@ -283,23 +302,23 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
   $("#btnEditarVentaTabla").click(function (e) {
 
     // Obtener los datos del formulario
-    var ID_VENTA = $("#inputId_venta").val();
-    var FECHA = $("#inputFecha").val();
-    var HORA = $("#inputHora").val();
-    var ESTADO = $("#inputEstado").val();
-    var ID_PRODUCTO = $("#inputProducto").val();
-    var CANTIDAD = $("#inputCantidad").val();
-    var TOTAL = $("#inputTotal").val();
+    var idVenta = $("#inputId_venta").val();
+    var Fecha = $("#inputFecha").val();
+    var Hora = $("#inputHora").val();
+    var Estado = $("#inputEstado").val();
+    var idProducto = $("#inputProducto").val();
+    var Cantidad = $("#inputCantidad").val();
+    var Total = $("#inputTotal").val();
 
     // Crear el objeto con los datos de la  Venta
     var ventaData = {
-      ID_VENTA: ID_VENTA,
-      FECHA: FECHA,
-      HORA: HORA,
-      ESTADO: ESTADO,
-      ID_PRODUCTO: ID_PRODUCTO,
-      CANTIDAD: CANTIDAD,
-      TOTAL: TOTAL,
+      ID_VENTA: idVenta,
+      FECHA: Fecha,
+      HORA: Hora,
+      ESTADO: Estado,
+      ID_PRODUCTO: idProducto,
+      CANTIDAD: Cantidad,
+      TOTAL: Total,
     };
 
     // Enviar la solicitud de actualización
