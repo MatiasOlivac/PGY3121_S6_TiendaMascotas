@@ -6,7 +6,7 @@ $(document).ready(function() {
   getProductos();
   getVentas();
   //getValorProductos();
-  getEstadoVenta();
+  //getEstadoVenta();
 
 }); 
 
@@ -76,13 +76,7 @@ getEstadoVenta = () => {
                                 <input type="hidden" name="id_venta" value="${value.ID_VENTA}">
                 <td>${value.FECHA}</td>
                 <td>${value.HORA}</td>
-                <td>
-                ${value.ESTADO}
-                <input type= "hidden" name="id_estado" id="id_estado" value="${value.ESTADO}>
-                </td>
-                <td>${value.ID_PRODUCTO}
-                <input type= "hidden" name="id_producto" id="id_producto" value="${value.ID_PRODUCTO}>
-                </td>
+                <td>${value.ESTADO}</td>
                 <td>${value.CANTIDAD}</td>
               <td>${value.TOTAL}</td>
               <td>
@@ -121,18 +115,14 @@ $("#btnAgregarVenta").click(function (e) {
     var FECHA = $("#inputFecha").val();
     var HORA = $("#inputHora").val();
     var ESTADO = $("#inputEstado").val();
-    var ID_PRODUCTO = $("#inputProducto").val();
     var CANTIDAD = $("#inputCantidad").val();
-    var TOTAL = $("#inputTotal").val();
   
     var ventaData = {
       ID_VENTA: ID_VENTA,
       FECHA: FECHA,
       HORA: HORA,
       ESTADO: ESTADO,
-      ID_PRODUCTO: ID_PRODUCTO,
-      CANTIDAD: CANTIDAD,
-      TOTAL: TOTAL
+      CANTIDAD: CANTIDAD
     };
   
     $.ajax({
@@ -178,25 +168,19 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
   var FECHA = FECHA.eq(1).text().trim();
   var HORA = HORA.eq(2).text();
   var ESTADO = ESTADO.eq(3).text();
-  var ID_PRODUCTO = ID_PRODUCTO.eq(4).text();
-  var CANTIDAD = CANTIDAD.eq(5).text();
-  var TOTAL= TOTAL.eq(6).text();
+  var CANTIDAD = CANTIDAD.eq(4).text();
 
   $("#inputId_venta").val(ID_VENTA);
   $("#inputFecha").val(FECHA);
   $("#inputHora").val(HORA);
   $("#inputEstado").val(ESTADO);
-  $("#inputProducto").val(ID_PRODUCTO);
   $("#inputCantidad").val(CANTIDAD);
-  $("#inputTotal").val(TOTAL);
 
   console.log(ID_VENTA);
   console.log(FECHA);
   console.log(HORA);
   console.log(ESTADO);
-  console.log(ID_PRODUCTO);
   console.log(CANTIDAD);
-  console.log(TOTAL);
 
   // esconder botones 
   $('#btnCancelarEditar').show();
@@ -272,25 +256,19 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
     var Fecha = venta.eq(1).text();
     var Hora = venta.eq(2).text();
     var Estado = venta.eq(3).text();
-    var idProducto = venta.eq(4).text();
-    var Cantidad = venta.eq(5).text();
-    var Total= venta.eq(6).text();
+    var Cantidad = venta.eq(4).text();
 
     $("#inputId_venta").val(idVenta);
     $("#inputFecha").val(Fecha);
     $("#inputHora").val(Hora);
     $("#inputEstado").val(Estado);
-    $("#inputProducto").val(idProducto);
     $("#inputCantidad").val(Cantidad);
-    $("#inputTotal").val(Total);
 
     console.log(idVenta);
     console.log(Fecha);
     console.log(Hora);
     console.log(Estado);
-    console.log(idProducto);
     console.log(Cantidad);
-    console.log(Total);
 
     // esconder botones 
     $('#btnCancelarEditar').show();
@@ -306,9 +284,7 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
     var Fecha = $("#inputFecha").val();
     var Hora = $("#inputHora").val();
     var Estado = $("#inputEstado").val();
-    var idProducto = $("#inputProducto").val();
     var Cantidad = $("#inputCantidad").val();
-    var Total = $("#inputTotal").val();
 
     // Crear el objeto con los datos de la  Venta
     var ventaData = {
@@ -316,9 +292,7 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
       FECHA: Fecha,
       HORA: Hora,
       ESTADO: Estado,
-      ID_PRODUCTO: idProducto,
-      CANTIDAD: Cantidad,
-      TOTAL: Total,
+      CANTIDAD: Cantidad
     };
 
     // Enviar la solicitud de actualización
@@ -392,6 +366,6 @@ function actualizarTabla() {
           $("#inputEstado").val('');
           $("#inputProducto").val('');
           $("#inputCantidad").val('');
-          $("#inputMonto_total_venta").val('');
+
 
   };
