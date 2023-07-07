@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>carrito</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+
     
     <!-- logotipo -->
     <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
@@ -153,6 +157,102 @@
     </div>
   </section>
 <!-- fin carrito  -->
+
+<script>
+  $(document).ready(function() {
+  getCarrito();
+});
+
+getCarrito = () => {
+  $.ajax({
+    url: `${API_URL}/Carrito`,
+    type: `GET`,
+    dataType: `json`,
+    success: function(data) {
+      $.each(data, function(index, value) {
+        // Llenar la Tabla
+        $("#tablaCarrito").append(`<tr> 
+          <th scope="row">${value.ID_CARRITO}</th>
+          <td>${value.IMAGEN}</td>
+          <td>${value.ID_PRODUCTOS}</td>
+          <td>${value.CANTIDAD}</td>
+          <td>${value.PRECIO}</td>
+          <td>${value.SUBTOTAL}</td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>`);
+      });
+    },
+    error: function(xhr, status, error) {
+      console.error(error);
+    }
+  });
+};
+
+$(document).ready(function() {
+  // Manejar clic en el botón Eliminar
+  $(document).on('click', '.btnEliminar', function() {
+    var row = $(this).closest('tr');
+    var idProducto = row.find('th').text();
+
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `${API_URL}/CARRITO/${ID_PRODUCTOS}`,
+          type: 'DELETE',
+          success: function(response) {
+            row.remove(); // Eliminar la fila del producto
+             Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: response
+            });
+          },
+          error: function(error) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
+            });
+          }
+        });
+      }
+    });
+  });
+});
+
+$(document).ready(function() {
+    // Manejar clic en el botón btnMas
+    $(document).on('click', '#btnMas', function() {
+      var label = $(this).siblings('#labelMasMenos'); // Obtener el campo labelMasMenos
+      var cantidad = parseInt(label.val()); // Obtener el valor actual de cantidad como entero
+      cantidad = cantidad + 1; // Incrementar en 1
+      label.val(cantidad); // Actualizar el valor del campo labelMasMenos
+    });
+
+    // Manejar clic en el botón btnMenos
+    $(document).on('click', '#btnMenos', function() {
+      var label = $(this).siblings('#labelMasMenos'); // Obtener el campo labelMasMenos
+      var cantidad = parseInt(label.val()); // Obtener el valor actual de cantidad como entero
+      if (cantidad > 0) {
+        cantidad = cantidad - 1; // Decrementar en 1 si la cantidad es mayor a 0
+      }
+      label.val(cantidad); // Actualizar el valor del campo labelMasMenos
+    });
+  });
+
+
+       </script>
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
