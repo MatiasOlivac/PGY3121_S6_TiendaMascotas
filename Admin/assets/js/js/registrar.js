@@ -51,9 +51,9 @@ $("#btnAgregarUsuario").click(function (e){
         $("#inputSegundoNombre").val('');
         $("#inputApellidoPaterno").val('');
         $("#inputApellidoMaterno").val('');
-        $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
-        $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
-        $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
+        //$("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
+        //$("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
+        //$("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
         $("#inputCorreo").val('');
         $("#inputContraseña").val('');
         $("#inputComuna").val('');
