@@ -159,100 +159,132 @@
 <!-- fin carrito  -->
 
 <script>
-  $(document).ready(function() {
-  getCarrito();
-});
-
-getCarrito = () => {
-  $.ajax({
-    url: `${API_URL}/Carrito`,
-    type: `GET`,
-    dataType: `json`,
-    success: function(data) {
-      $.each(data, function(index, value) {
-        // Llenar la Tabla
-        $("#tablaCarrito").append(`<tr> 
-          <th scope="row">${value.ID_CARRITO}</th>
-          <td>${value.IMAGEN}</td>
-          <td>${value.ID_PRODUCTOS}</td>
-          <td>${value.CANTIDAD}</td>
-          <td>${value.PRECIO}</td>
-          <td>${value.SUBTOTAL}</td>
-          <td>
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>`);
-      });
-    },
-    error: function(xhr, status, error) {
-      console.error(error);
-    }
+  $(document).ready(() => {
+    getCarrito();
   });
-};
 
-$(document).ready(function() {
-  // Manejar clic en el botón Eliminar
-  $(document).on('click', '.btnEliminar', function() {
-    var row = $(this).closest('tr');
-    var idProducto = row.find('th').text();
-
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Esta acción no se puede deshacer',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
-          url: `${API_URL}/CARRITO/${ID_PRODUCTOS}`,
-          type: 'DELETE',
-          success: function(response) {
-            row.remove(); // Eliminar la fila del producto
-             Swal.fire({
-              icon: 'success',
-              title: 'Eliminado',
-              text: response
-            });
-          },
-          error: function(error) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
-            });
-          }
+  const getCarrito = () => {
+    $.ajax({
+      url: `${API_URL}/`,
+      type: `GET`,
+      dataType: `json`,
+      success: (data) => {
+        $.each(data, (index, value) => {
+          $("#tablaCarrito").append(`<tr> 
+            <th scope="row">${value.ID_CARRITO}</th>
+            <td>${value.CARRITO.IMAGEN}</td>
+            <td>${value.ID_PRODUCTOS}</td>
+            <td>${value.CANTIDAD}</td>
+            <td>${value.PRECIO}</td>
+            <td>${value.SUBTOTAL}</td>
+            <td>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>`);
         });
+      },
+      error: (xhr, status, error) => {
+        console.error(error);
       }
     });
+  };
+
+
+  $(document).ready(function() {
+
+  $('#btnAgregarCarrito').click(function() {
+    var producto = $(this).closest('.card');
+    var imagen = producto.find('.card-img-top').attr('src');
+    var nombre = producto.find('.card-title').text();
+    var descripcion = producto.find('.card-text').eq(0).text();
+    var precio = producto.find('.card-text').eq(1).text();
+
+    var Data = {
+      imagen: imagen,
+      nombre: nombre,
+      precio: precio
+    };
+
+      agregarProductoCarrito(imagen, nombre, precio);
   });
 });
 
-$(document).ready(function() {
-    // Manejar clic en el botón btnMas
-    $(document).on('click', '#btnMas', function() {
-      var label = $(this).siblings('#labelMasMenos'); // Obtener el campo labelMasMenos
-      var cantidad = parseInt(label.val()); // Obtener el valor actual de cantidad como entero
-      cantidad = cantidad + 1; // Incrementar en 1
-      label.val(cantidad); // Actualizar el valor del campo labelMasMenos
-    });
+  const agregarProductoCarrito = (imagen, nombre, descripcion, precio) => {
+    $("#tablaCarrito").append(`
+      <tr>
+        <th scope="row">Nuevo</th>
+        <td>${imagen}</td>
+        <td>${nombre}</td>
+        <td>1</td>
+        <td>${precio}</td>
+        <td>${precio}</td>
+        <td>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </td>
+      </tr>
+    `);
+  };
 
-    // Manejar clic en el botón btnMenos
-    $(document).on('click', '#btnMenos', function() {
-      var label = $(this).siblings('#labelMasMenos'); // Obtener el campo labelMasMenos
-      var cantidad = parseInt(label.val()); // Obtener el valor actual de cantidad como entero
-      if (cantidad > 0) {
-        cantidad = cantidad - 1; // Decrementar en 1 si la cantidad es mayor a 0
-      }
-      label.val(cantidad); // Actualizar el valor del campo labelMasMenos
+  $(document).ready(() => {
+    $(document).on('click', '.btnEliminar', function() {
+      var row = $(this).closest('tr');
+      var idProducto = row.find('th').text();
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción no se puede deshacer',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `${API_URL}/CARRITO/${idProducto}`,
+            type: 'DELETE',
+            success: (response) => {
+              row.remove();
+              Swal.fire({
+                icon: 'success',
+                title: 'Eliminado',
+                text: response
+              });
+            },
+            error: (error) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
+              });
+            }
+          });
+        }
+      });
     });
   });
 
+  $(document).ready(() => {
+    $(document).on('click', '#btnMas', function() {
+      var cantidad = $(this).siblings('#labelMasMenos').val();
+      var valorEntero = parseInt(cantidad);
+      $('#labelMasMenos').val(valorEntero);
+    });
 
-       </script>
+    $(document).on('click', '#btnMenos', function() {
+      var label = $(this).siblings('#labelMasMenos');
+      var cantidad = parseInt(label.val());
+      if (cantidad > 0) {
+        cantidad = cantidad - 1;
+      }
+      label.val(cantidad);
+    });
+  });
+</script>
+
 
 <!-- Footer -->
 <div class="container-fluid bg-light text-dark mt-5 py-5 px-sm-3 px-md-5">
