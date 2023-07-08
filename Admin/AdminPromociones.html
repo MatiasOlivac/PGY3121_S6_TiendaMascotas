@@ -13,9 +13,6 @@
   <!-- logotipo -->
   <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-  <!-- logotipo -->
-  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
-
   <!-- Fonts and icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -73,7 +70,6 @@
   </nav>
   <!-- Fin navbar -->
 
-  <!-- Inicio registro Promociones -->
   <div class="container mt-5">
     <div class="row justify-content-md-center">
       <div class="col-sm-9">
@@ -84,19 +80,14 @@
               <div class="form-group col-m-4 mt-1">
                 <label for="inputFecha_inicioPromocion">Fecha de Inicio</label>
                 <input type="date" class="form-control" id="inputFecha_inicioPromocion" required>
-                <input type="date" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputFecha_finPromocion">Fecha de Término</label>
                 <input type="date" class="form-control" id="inputFecha_finPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputDescuentoPromocion">Descuento</label>
                 <input type="text" class="form-control" id="inputDescuentoPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputEstadoPromocion">Estado</label>
                 <input type="text" class="form-control" id="inputEstadoPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputIdProductoPromocion">ID Producto</label>
                 <input type="text" class="form-control" id="inputIdProductoPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
               </div>
               <div class="col-5 m-2">
                 <a id="btnAgregarPromocion" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
@@ -135,11 +126,6 @@
       </div>
     </div>
   </div>
-  <!-- Fin Registro Promocion -->
-
-  <!-- Inicio Tabla Promocion -->
-
-  <!-- Fin Tabla Promocion -->
 
 </body>
 
@@ -154,8 +140,7 @@ integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/f
 crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- COMUNES -->
-<script src="assets/js/comunes.js" ></script>
+<script src="assets/js/AdminProducto.js" ></script>
 
 
 <script>
@@ -190,7 +175,7 @@ crossorigin="anonymous"></script>
             type: 'GET',
             dataType: 'json',
             success: function(producto) {
-              var precioOriginal = producto.ID_PRODUCTOS;
+              var precioOriginal = producto.ID_PRECIO;
               var precioConDescuento = calcularPrecioConDescuento(precioOriginal, porcentajeDescuento);
 
               // Se Agrega Con el Precio con descuento
@@ -222,11 +207,9 @@ crossorigin="anonymous"></script>
   });
 };
 
-
 //botones invisibles
 $('#btnModificarPromocion').hide();
 $('#btnCancelarEditarPromocion').hide();
-
 
 //añadir Promocion a la lista con jquery
   $(document).on('click', '#btnAgregarPromocion', function(){
@@ -236,7 +219,6 @@ $('#btnCancelarEditarPromocion').hide();
         var ESTADO = $('#inputEstadoPromocion').val();
         var ID_PRODUCTO = $('#inputIdProductoPromocion').val();
         
-
       $.ajax({
           url: `${API_URL}/Promociones`,
           type: 'POST',
@@ -253,7 +235,6 @@ $('#btnCancelarEditarPromocion').hide();
           success: function(respuesta){
               console.log(respuesta);
           }
-
       })
     Swal.fire(
       'Promocion Ingresada!',
@@ -263,8 +244,6 @@ $('#btnCancelarEditarPromocion').hide();
       limpiarFormulario();
       actualizarTabla();
   });
-
-
 
 //entregar ultimo id
   ultimoId = () =>{
@@ -286,7 +265,6 @@ $('#btnCancelarEditarPromocion').hide();
       },
       buttonsStyling: false
     })
-
     swalWithBootstrapButtons.fire({
       title: 'Desea eliminar la Promocion?.',
       text: "Se eliminará del registro.",
@@ -301,7 +279,6 @@ $('#btnCancelarEditarPromocion').hide();
         var id_rol = idUsuarioRol.eq(0).find('input').val();
         console.log(id_rol)
         
-
         $.ajax({
           url: `${API_URL}/Promociones`,
           type: 'DELETE',
@@ -333,8 +310,6 @@ $('#btnCancelarEditarPromocion').hide();
     })
   });
 
-
-
 //Editar Promocion
   $("#tablaPromocion tbody").on("click", ".btnEditarPromocion", function (e) {
          $('#btnAgregarPromocion').hide();
@@ -360,9 +335,6 @@ $('#btnCancelarEditarPromocion').hide();
         $('#btnCancelarEditarPromocion').show();
         $('#btnAgregarPromocion').hide();
   });
-
-
-
 
 //modificar Promocion
   $("#btnModificarPromocion").click(function () {
@@ -403,7 +375,6 @@ $('#btnCancelarEditarPromocion').hide();
           }
       })
   });
-
       //boton CANCELAR EDICION
       $("#btnCancelarEditarPromocion").click(function () {
         limpiarFormulario();
@@ -412,23 +383,17 @@ $('#btnCancelarEditarPromocion').hide();
         $('#btnAgregarPromocion').show();
       });
 
-
-
       //limpiar formulario
       function limpiarFormulario() {
         $("#inputNombrePromocion").val('');
         $("#inputIdPromocion").val('');
       };
 
-
-
       //actualizar
       function actualizarTabla() {
         $('#tablaPromocion tbody').empty();
         getPromociones();
       };
-
-
 </script>
 
 </html>
