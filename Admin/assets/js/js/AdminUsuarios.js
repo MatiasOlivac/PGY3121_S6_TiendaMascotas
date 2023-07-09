@@ -10,19 +10,16 @@ getUSUARIOS = () => {
     datatype: `json`,
     success: function(data) {
       $.each(data, function (index, value){
-        //Llenar la Tabla
+        //Llenar la Tabla ******** Agregar ESTA_SUSCRITO, ESTADO, USUARIO_ROLES_ID_ROL
         $("#tablaUsuarios").append(`<tr> 
           <th scope="row">${value.ID_USUARIO}</th>
-          <td>${value.RUT}</td>
           <td>${value.PRIMER_NOMBRE}</td>
           <td>${value.SEGUNDO_NOMBRE}</td>
           <td>${value.AP_PATERNO}</td>
           <td>${value.AP_MATERNO}</td>
-          <td>${value.ESTA_SUSCRITO}</td>
-          <td>${value.ESTADO}</td>
-          <td>${value.USUARIO_ROLES_ID_ROL}</td>
-          <td>${value.CORREO}</td>
+          <td>${value.RUT}</td>
           <td>${value.CONTRASEÑA}</td>
+          <td>${value.CORREO}</td>      
           <td>${value.COMUNA}</td>
           <td>${value.DIRECCION}</td>
           
@@ -51,11 +48,11 @@ getUSUARIOS = () => {
 $("#btnAgregarUsuario").click(function (e){
   e.preventDefault();
 
-  var rut =$("#inputRut").val();
   var primer_nombre =$("#inputPrimerNombre").val();
   var segundo_nombre =$("#inputSegundoNombre").val();
   var ap_paterno =$("#inputApellidoPaterno").val();
   var ap_materno =$("#inputApellidoMaterno").val();
+  var rut =$("#inputRut").val();
   //var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
   //var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
   //var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
@@ -65,11 +62,11 @@ $("#btnAgregarUsuario").click(function (e){
   var direccion =$("#inputDireccion").val();
 
   var usuarioData = {
-    RUT: rut,
     PRIMER_NOMBRE: primer_nombre,
     SEGUNDO_NOMBRE: segundo_nombre, //CAMBIAR VARIABLES A MAYUSCULAS EN CASO DE TENER UN ERROR RECURRENTE
     AP_PATERNO: ap_paterno,
     AP_MATERNO: ap_materno,
+    RUT: rut,
     //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
     //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
     //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
@@ -90,11 +87,11 @@ $("#btnAgregarUsuario").click(function (e){
         text: 'Usuario registrado correctamente'
       }).then(() =>{
         //Limpiar los campos del formulario
-        $("#inputRut").val('');
         $("#inputPrimerNombre").val('');
         $("#inputSegundoNombre").val('');
         $("#inputApellidoPaterno").val('');
         $("#inputApellidoMaterno").val('');
+        $("#inputRut").val('');
         //$("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
         //$("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
         //$("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
