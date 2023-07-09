@@ -165,7 +165,7 @@
 
   const getCarrito = () => {
     $.ajax({
-      url: `${API_URL}/`,
+      url: `${API_URL}/Carrito`, //url de carrito en la api documento "app.js"
       type: `GET`,
       dataType: `json`,
       success: (data) => {
@@ -244,7 +244,7 @@
       }).then((result) => {
         if (result.isConfirmed) {
           $.ajax({
-            url: `${API_URL}/CARRITO/${idProducto}`,
+            url: `${API_URL}/Carrito/${idProducto}`,
             type: 'DELETE',
             success: (response) => {
               row.remove();

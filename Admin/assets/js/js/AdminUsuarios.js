@@ -28,7 +28,7 @@ getUSUARIOS = () => {
           
           <td>
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                <button type="button" class="btn btn-success btnEditarUsuario"><i class="fa-solid fa-pencil"></i></button>
                 <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
               </div>
             </td>
@@ -56,9 +56,9 @@ $("#btnAgregarUsuario").click(function (e){
   var segundo_nombre =$("#inputSegundoNombre").val();
   var ap_paterno =$("#inputApellidoPaterno").val();
   var ap_materno =$("#inputApellidoMaterno").val();
-  var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
-  var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
-  var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
+  //var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
+  //var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
+  //var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
   var correo =$("#inputCorreo").val();
   var contraseña =$("#inputContraseña").val();
   var comuna =$("#inputComuna").val();
@@ -70,9 +70,9 @@ $("#btnAgregarUsuario").click(function (e){
     SEGUNDO_NOMBRE: segundo_nombre, //CAMBIAR VARIABLES A MAYUSCULAS EN CASO DE TENER UN ERROR RECURRENTE
     AP_PATERNO: ap_paterno,
     AP_MATERNO: ap_materno,
-    ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
-    ESTADO: estado,//Agregar a interfaz en caso que sea necesario
-    USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
+    //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
+    //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
+    //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
     CORREO: correo,
     CONTRASEÑA: contraseña,
     COMUNA: comuna,
@@ -95,9 +95,9 @@ $("#btnAgregarUsuario").click(function (e){
         $("#inputSegundoNombre").val('');
         $("#inputApellidoPaterno").val('');
         $("#inputApellidoMaterno").val('');
-        $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
-        $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
-        $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
+        //$("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
+        //$("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
+        //$("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
         $("#inputCorreo").val('');
         $("#inputContraseña").val('');
         $("#inputComuna").val('');
@@ -193,9 +193,9 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   $("#inputSegundoNombre").val(segundoNombre);
   $("#inputApellidoPaterno").val(apPaterno);
   $("#inputApellidoMaterno").val(apMaterno);
-  $("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
-  $("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
-  $("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
+  //$("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
+  //$("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
+  //$("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
   $("#inputCorreo").val(correo);
   $("#inputContraseña").val(contraseña);
   $("#inputComuna").val(comuna);
@@ -228,9 +228,9 @@ $(".btnEditarUsuarioTabla").click(function (e){
     SEGUNDO_NOMBRE: segundo_nombre,
     AP_PATERNO: ap_paterno,
     AP_MATERNO: ap_materno,
-    ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
-    ESTADO: estado,//Agregar a interfaz en caso que sea necesario
-    USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
+    //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
+    //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
+    //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
     CORREO: correo,
     CONTRASEÑA: contraseña,
     COMUNA: comuna,
