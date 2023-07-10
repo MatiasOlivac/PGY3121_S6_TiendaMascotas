@@ -103,8 +103,8 @@
                     <button class="btn btn-outline-secondary btnMas" type="button">+</button>
                   </div>
                 </td>
-                <td>$10.00</td>
-                <td>$20.00</td>
+                <td id="precio">$1000</td>
+                <td id="subtotal">$2000</td>
                 <td><button class="btn btn-danger btnEliminar">Eliminar</button></td>
               </tr>
               <tr>
@@ -118,8 +118,8 @@
                     <button class="btn btn-outline-secondary btnMas" type="button">+</button>
                   </div>
                 </td>
-                <td>$10.00</td>
-                <td>$20.00</td>
+                <td>$1000</td>
+                <td>$2000</td>
                 <td><button class="btn btn-danger btnEliminar">Eliminar</button></td>
               </tr>
               <tr>
@@ -133,8 +133,8 @@
                     <button class="btn btn-outline-secondary btnMas" type="button">+</button>
                   </div>
                 </td>
-                <td>$10.00</td>
-                <td>$20.00</td>
+                <td>$2000</td>
+                <td>$3000</td>
                 <td><button class="btn btn-danger btnEliminar">Eliminar</button></td>
               </tr>              
           <tr>  
@@ -193,46 +193,6 @@
     });
   };
 
-
-  $(document).ready(function() {
-
-  $('#btnAgregarCarrito').click(function() {
-    var producto = $(this).closest('.card');
-    var imagen = producto.find('.card-img-top').attr('src');
-    var nombre = producto.find('.card-title').text();
-    var descripcion = producto.find('.card-text').eq(0).text();
-    var precio = producto.find('.card-text').eq(1).text();
-
-    console.log(nombre);
-
-    var Data = {
-      imagen: imagen,
-      nombre: nombre,
-      precio: precio
-    };
-
-      agregarProductoCarrito(imagen, nombre, precio);
-  });
-});
-
-  const agregarProductoCarrito = (imagen, nombre, descripcion, precio) => {
-    $("#tablaCarrito").append(`
-      <tr>
-        <th scope="row">Nuevo</th>
-        <td>${imagen}</td>
-        <td>${nombre}</td>
-        <td>1</td>
-        <td>${precio}</td>
-        <td>${precio}</td>
-        <td>
-          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        </td>
-      </tr>
-    `);
-  };
-
   $(document).ready(() => {
     $(document).on('click', '.btnEliminar', function() {
       var row = $(this).closest('tr');
@@ -271,61 +231,51 @@
     });
   });
 
-  // $(document).ready(() => {
-  //   $(document).on('click', '#btnMas', function() {
-  //     var cantidad = $(this).siblings('#labelMasMenos').val();
-  //     var valorEntero = parseInt(cantidad);
-  //     $('#labelMasMenos').val(valorEntero);
-  //   });
-
-    // $(document).on('click', '#btnMas', function() {
-    //   var labelMasMenos = document.getElementById("labelMasMenos").getAttribute("placeholder");
-
-    //   var cantidad = parseInt(labelMasMenos);
-    //       console.log(cantidad);
-    //       cantidad = cantidad + 1;
-    //       console.log(cantidad);
-    //       document.getElementById("labelMasMenos").getAttribute("placeholder")= cantidad;
-    // });
-    
-//     $(document).on('click', '#btnMas', function() {
-//     var labelMasMenosElement = document.getElementById("labelMasMenos");
-//     var labelMasMenosPlaceholder = labelMasMenosElement.getAttribute("placeholder");
-//     var cantidad = parseInt(labelMasMenosPlaceholder);
-    
-//     console.log(cantidad);
-//     cantidad = cantidad + 1;
-//     console.log(cantidad);
-
-//     labelMasMenosElement.placeholder = cantidad.toString();
-// });
 
 
 $(document).on('click', '.btnMas', function() {
-    var parentRow = $(this).closest('tr');
-    var labelMasMenosElement = parentRow.find('.labelMasMenos');
-    var labelMasMenosPlaceholder = labelMasMenosElement.attr("placeholder");
-    var cantidad = parseInt(labelMasMenosPlaceholder);
-    
-    console.log(cantidad);
-    cantidad = cantidad + 1;
-    console.log(cantidad);
-
-    labelMasMenosElement.attr("placeholder", cantidad.toString());
+  var parentRow = $(this).closest('tr');
+  var labelMasMenosElement = parentRow.find('.labelMasMenos');
+  var labelMasMenosPlaceholder = labelMasMenosElement.attr("placeholder");
+  var cantidad = parseInt(labelMasMenosPlaceholder);
+  var precioElement = parentRow.find('td:nth-child(5)');
+  var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
+  var subtotalElement = parentRow.find('td:nth-child(6)');
+  
+  console.log(subtotalElement.text());
+  
+  cantidad = cantidad + 1;
+  console.log(cantidad);
+  
+  var subtotal = cantidad * precio;
+  subtotalElement.text("$" + subtotal.toFixed());
+  
+  console.log(subtotalElement.text());
+  
+  labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
+
 
 $(document).on('click', '.btnMenos', function() {
   var parentRow = $(this).closest('tr');
   var labelMasMenosElement = parentRow.find('.labelMasMenos');
   var labelMasMenosPlaceholder = labelMasMenosElement.attr("placeholder");
   var cantidad = parseInt(labelMasMenosPlaceholder);
+  var precioElement = parentRow.find('td:nth-child(5)');
+  var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
+  var subtotalElement = parentRow.find('td:nth-child(6)');
   
-  console.log(cantidad);
-  if (cantidad > 1) {
-    cantidad = cantidad - 1;
+  console.log(subtotalElement.text());
+  if(cantidad>1){
+  cantidad = cantidad - 1;
   }
   console.log(cantidad);
-
+  
+  var subtotal = cantidad * precio;
+  subtotalElement.text("$" + subtotal.toFixed());
+  
+  console.log(subtotalElement.text());
+  
   labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
 
