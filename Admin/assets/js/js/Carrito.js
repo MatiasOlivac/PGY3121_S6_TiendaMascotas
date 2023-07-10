@@ -63,14 +63,14 @@ document.querySelectorAll('#btnAgregarCarrito').forEach(function(button) {
         Swal.fire({
           icon: 'success',
           title: 'Éxito',
-          text: 'Usuario registrado correctamente'
+          text: 'Producto registrado en el carrito correctamente'
         })
       },
       error: function (error) {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'No se pudo registrar el usuario. Por favor, intenta nuevamente.'
+          text: 'No se pudo registrar el producto en el carrito. Por favor, intenta nuevamente.'
         });
       }
     });
