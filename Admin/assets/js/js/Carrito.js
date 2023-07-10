@@ -1,33 +1,4 @@
-// document.querySelectorAll('#btnAgregarCarrito').forEach(function(button) {
-//   button.addEventListener('click', function() {
-//     var card = this.parentElement.parentElement;
-//     var nombre = card.querySelector('.card-title').textContent;
-//     var imagen = card.querySelector('.card-img-top').getAttribute('src');
-//     var cardBody = card.querySelector('.card-body');
-//     var precioText = cardBody.querySelector('.card-text:last-child');
-//     var precio = parseFloat(precioText.textContent.replace(/[^0-9.]/g, ''));
-//     var cantidad = 1;
-
-//     var carritoData = {
-//       IMAGEN: imagen,
-//       NOMBRE: nombre,
-//       PRECIO: precio,
-//       CANTIDAD: cantidad
-//     };
-
-//     console.log(carritoData);
-
-//     $.ajax({
-//       url: `${API_URL}/Carrito`,
-//       type: 'POST',
-//       contentType: 'application/json',
-//       data: JSON.stringify(carritoData),
-//       success: function(response) {
-//         console.log(response);
-//       }
-//     });
-//   });
-// });
+//Funcion agregar Carrito
 document.querySelectorAll('#btnAgregarCarrito').forEach(function(button) {
   button.addEventListener('click', function() {
     var card = this.parentElement.parentElement;
@@ -78,6 +49,52 @@ document.querySelectorAll('#btnAgregarCarrito').forEach(function(button) {
 });
 
 
+
+$(document).on('click', '.btnMas', function() {
+  var parentRow = $(this).closest('tr');
+  var labelMasMenosElement = parentRow.find('.labelMasMenos');
+  var labelMasMenosPlaceholder = labelMasMenosElement.attr("placeholder");
+  var cantidad = parseInt(labelMasMenosPlaceholder);
+  var precioElement = parentRow.find('td:nth-child(5)');
+  var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
+  var subtotalElement = parentRow.find('td:nth-child(6)');
+  
+  console.log(subtotalElement.text());
+  
+  cantidad = cantidad + 1;
+  console.log(cantidad);
+  
+  var subtotal = cantidad * precio;
+  subtotalElement.text("$" + subtotal.toFixed());
+  
+  console.log(subtotalElement.text());
+  
+  labelMasMenosElement.attr("placeholder", cantidad.toString());
+});
+
+
+$(document).on('click', '.btnMenos', function() {
+  var parentRow = $(this).closest('tr');
+  var labelMasMenosElement = parentRow.find('.labelMasMenos');
+  var labelMasMenosPlaceholder = labelMasMenosElement.attr("placeholder");
+  var cantidad = parseInt(labelMasMenosPlaceholder);
+  var precioElement = parentRow.find('td:nth-child(5)');
+  var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
+  var subtotalElement = parentRow.find('td:nth-child(6)');
+  
+  console.log(subtotalElement.text());
+  if(cantidad>1){
+  cantidad = cantidad - 1;
+  }
+  console.log(cantidad);
+  
+  var subtotal = cantidad * precio;
+  subtotalElement.text("$" + subtotal.toFixed());
+  
+  console.log(subtotalElement.text());
+  
+  labelMasMenosElement.attr("placeholder", cantidad.toString());
+});
 
 const agregarProductoCarrito = (imagen, nombre, cantidad, precio) => {
   $("#tablaCarrito").append(`
