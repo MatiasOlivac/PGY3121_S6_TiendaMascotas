@@ -10,6 +10,7 @@ document.querySelectorAll('#btnAgregarCarrito').forEach(function(button) {
     var cantidad = 1;
     var subtotal = cantidad * precio;
     var id_productos = 1;
+    console.log(nombre);
 
     var carritoData = {
       IMAGEN: imagen,
@@ -58,16 +59,12 @@ $(document).on('click', '.btnMas', function() {
   var precioElement = parentRow.find('td:nth-child(5)');
   var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
   var subtotalElement = parentRow.find('td:nth-child(6)');
-  
-  console.log(subtotalElement.text());
-  
+   
   cantidad = cantidad + 1;
-  console.log(cantidad);
-  
+    
   var subtotal = cantidad * precio;
   subtotalElement.text("$" + subtotal.toFixed());
   
-  console.log(subtotalElement.text());
   
   labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
@@ -82,34 +79,15 @@ $(document).on('click', '.btnMenos', function() {
   var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
   var subtotalElement = parentRow.find('td:nth-child(6)');
   
-  console.log(subtotalElement.text());
   if(cantidad>1){
   cantidad = cantidad - 1;
   }
-  console.log(cantidad);
   
   var subtotal = cantidad * precio;
   subtotalElement.text("$" + subtotal.toFixed());
   
-  console.log(subtotalElement.text());
   
   labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
 
-const agregarProductoCarrito = (imagen, nombre, cantidad, precio) => {
-  $("#tablaCarrito").append(`
-    <tr>
-      <th scope="row">Nuevo</th>
-      <td><img src="${imagen}" alt="producto" style="width: 100px;"></td>
-      <td>${nombre}</td>
-      <td>${cantidad}</td>
-      <td>${precio}</td>
-      <td>${precio}</td>
-      <td>
-        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </td>
-    </tr>
-  `);
-};
+
