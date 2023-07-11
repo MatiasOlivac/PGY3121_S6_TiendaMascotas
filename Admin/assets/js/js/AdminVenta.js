@@ -247,7 +247,7 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
   });
 
    //editar venta de la tabla
-   $(document).on('click', '.btnEditarventa', function (e) {
+   $(document).on('click', '.btnEditarVenta', function (e) {
     e.preventDefault();
     // Obtener los datos de la Venta desde la fila de la tabla
     var venta = $(this).closest('tr').find('td');
@@ -298,7 +298,7 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
     // Enviar la solicitud de actualización
     $.ajax({
       url: `${API_URL}/AdminVenta`,
-      type: 'PUT',
+      type: 'PATCH',
       data: ventaData,
       success: function (response) {
         Swal.fire({
