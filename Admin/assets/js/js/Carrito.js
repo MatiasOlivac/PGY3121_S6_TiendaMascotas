@@ -90,4 +90,42 @@ $(document).on('click', '.btnMenos', function() {
   labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
 
+$(document).ready(() => {
+  $(document).on('click', '.btnEliminarVenta', function() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `${API_URL}/Carrito`,
+          type: 'DELETE',
+          success: (response) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: response
+            }).then(() => {
+              // Recargar la página o realizar cualquier otra acción después de eliminar
+              location.reload();
+            });
+          },
+          error: (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
+            });
+          }
+        });
+      }
+    });
+  });
+});
+
+
 
