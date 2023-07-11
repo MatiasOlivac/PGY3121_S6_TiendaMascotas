@@ -10,25 +10,22 @@ getUSUARIOS = () => {
     datatype: `json`,
     success: function(data) {
       $.each(data, function (index, value){
-        //Llenar la Tabla
+        //Llenar la Tabla ******** Agregar ESTA_SUSCRITO, ESTADO, USUARIO_ROLES_ID_ROL
         $("#tablaUsuarios").append(`<tr> 
           <th scope="row">${value.ID_USUARIO}</th>
-          <td>${value.RUT}</td>
           <td>${value.PRIMER_NOMBRE}</td>
           <td>${value.SEGUNDO_NOMBRE}</td>
           <td>${value.AP_PATERNO}</td>
           <td>${value.AP_MATERNO}</td>
-          <td>${value.ESTA_SUSCRITO}</td>
-          <td>${value.ESTADO}</td>
-          <td>${value.USUARIO_ROLES_ID_ROL}</td>
-          <td>${value.CORREO}</td>
+          <td>${value.RUT}</td>
           <td>${value.CONTRASEÑA}</td>
+          <td>${value.CORREO}</td>      
           <td>${value.COMUNA}</td>
           <td>${value.DIRECCION}</td>
           
           <td>
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
+                <button type="button" class="btn btn-success btnEditarUsuario"><i class="fa-solid fa-pencil"></i></button>
                 <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
               </div>
             </td>
@@ -51,28 +48,28 @@ getUSUARIOS = () => {
 $("#btnAgregarUsuario").click(function (e){
   e.preventDefault();
 
-  var rut =$("#inputRut").val();
   var primer_nombre =$("#inputPrimerNombre").val();
   var segundo_nombre =$("#inputSegundoNombre").val();
   var ap_paterno =$("#inputApellidoPaterno").val();
   var ap_materno =$("#inputApellidoMaterno").val();
-  var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
-  var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
-  var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
+  var rut =$("#inputRut").val();
+  //var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
+  //var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
+  //var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
   var correo =$("#inputCorreo").val();
   var contraseña =$("#inputContraseña").val();
   var comuna =$("#inputComuna").val();
   var direccion =$("#inputDireccion").val();
 
   var usuarioData = {
-    RUT: rut,
     PRIMER_NOMBRE: primer_nombre,
     SEGUNDO_NOMBRE: segundo_nombre, //CAMBIAR VARIABLES A MAYUSCULAS EN CASO DE TENER UN ERROR RECURRENTE
     AP_PATERNO: ap_paterno,
     AP_MATERNO: ap_materno,
-    ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
-    ESTADO: estado,//Agregar a interfaz en caso que sea necesario
-    USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
+    RUT: rut,
+    //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
+    //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
+    //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
     CORREO: correo,
     CONTRASEÑA: contraseña,
     COMUNA: comuna,
@@ -90,14 +87,14 @@ $("#btnAgregarUsuario").click(function (e){
         text: 'Usuario registrado correctamente'
       }).then(() =>{
         //Limpiar los campos del formulario
-        $("#inputRut").val('');
         $("#inputPrimerNombre").val('');
         $("#inputSegundoNombre").val('');
         $("#inputApellidoPaterno").val('');
         $("#inputApellidoMaterno").val('');
-        $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
-        $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
-        $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
+        $("#inputRut").val('');
+        //$("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
+        //$("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
+        //$("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
         $("#inputCorreo").val('');
         $("#inputContraseña").val('');
         $("#inputComuna").val('');
@@ -140,7 +137,7 @@ function ultimoId(){
       if (result.isConfirmed){
         // Enviar la solicitud de borrado
         $.ajax({
-          url: `${API_URL}/usuarios/${idUsuario}`,
+          url: `${API_URL}/AdminUsuario/${idUsuario}`,
           type: 'DELETE',
           success: function (response) {
             // Mostrar mensaje de éxito
@@ -151,7 +148,7 @@ function ultimoId(){
           }).then(() => {
             // Recargar la tabla de usuarios después de eliminar uno
             $("#tablaUsuarios").empty(); // Vaciar la tabla
-            getUsuarios(); // Volver a cargar los usuarios
+            getUSUARIOS(); // Volver a cargar los usuarios
           });
         },
         error: function (error) {
@@ -182,20 +179,20 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   //var estaSuscrito = usuario.eq(6).text() === 'SI' ? '1' : '0';
   //var estado = usuario.eq(7).text();
   //var usuarioRolesIdRol = usuario.eq(8).find('input').val();
-  var correo = usuario.eq(9).text().trim();
-  var contraseña = usuario.eq(10).text();
-  var comuna = usuario.eq(11).text().trim();
-  var direccion = usuario.eq(12).text().trim();
+  var correo = usuario.eq(6).text().trim();
+  var contraseña = usuario.eq(7).text();
+  var comuna = usuario.eq(8).text().trim();
+  var direccion = usuario.eq(9).text().trim();
 
   $("#inputIdUsuario").val(idUsuario);
-  $("#inputRut").val(rut);
   $("#inputPrimerNombre").val(primerNombre);
   $("#inputSegundoNombre").val(segundoNombre);
   $("#inputApellidoPaterno").val(apPaterno);
   $("#inputApellidoMaterno").val(apMaterno);
-  $("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
-  $("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
-  $("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
+  $("#inputRut").val(rut);
+  //$("#inputEstaSuscrito").val(estaSuscrito);//Agregar a interfaz en caso que sea necesario
+  //$("#inputEstado").val(estado);//Agregar a interfaz en caso que sea necesario
+  //$("#inputUsuarioRolesIdRol").val(usuarioRolesIdRol); //Agregar a interfaz en caso que sea necesario
   $("#inputCorreo").val(correo);
   $("#inputContraseña").val(contraseña);
   $("#inputComuna").val(comuna);
@@ -228,9 +225,9 @@ $(".btnEditarUsuarioTabla").click(function (e){
     SEGUNDO_NOMBRE: segundo_nombre,
     AP_PATERNO: ap_paterno,
     AP_MATERNO: ap_materno,
-    ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
-    ESTADO: estado,//Agregar a interfaz en caso que sea necesario
-    USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
+    //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
+    //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
+    //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
     CORREO: correo,
     CONTRASEÑA: contraseña,
     COMUNA: comuna,
