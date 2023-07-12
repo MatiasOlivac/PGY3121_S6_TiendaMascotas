@@ -171,11 +171,11 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   var usuario =$(this).closest('tr').find('td');
 
   var idUsuario = usuario.eq(0).find('input').val();
-  var rut = usuario.eq(1).text();
-  var primerNombre = usuario.eq(2).text().trim();
-  var segundoNombre = usuario.eq(3).text().trim();
-  var apPaterno = usuario.eq(4).text().trim();
-  var apMaterno = usuario.eq(5).text().trim();
+  var primerNombre = usuario.eq(1).text().trim();
+  var segundoNombre = usuario.eq(2).text().trim();
+  var apPaterno = usuario.eq(3).text().trim();
+  var apMaterno = usuario.eq(4).text().trim();
+  var rut = usuario.eq(5).text();
   //var estaSuscrito = usuario.eq(6).text() === 'SI' ? '1' : '0';
   //var estado = usuario.eq(7).text();
   //var usuarioRolesIdRol = usuario.eq(8).find('input').val();
@@ -204,14 +204,14 @@ $(".btnEditarUsuarioTabla").click(function (e){
 
   //Obtener los datos del formulario
   var idUsuario = $("#inputIdUsuario")
-  var rut =$("#inputRut").val();
   var primer_nombre =$("#inputPrimerNombre").val();
   var segundo_nombre =$("#inputSegundoNombre").val();
   var ap_paterno =$("#inputApellidoPaterno").val();
   var ap_materno =$("#inputApellidoMaterno").val();
-  var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
-  var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
-  var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
+  var rut =$("#inputRut").val();
+  //var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
+  //var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
+  //var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
   var correo =$("#inputCorreo").val();
   var contraseña =$("#inputContraseña").val();
   var comuna =$("#inputComuna").val();
@@ -220,11 +220,11 @@ $(".btnEditarUsuarioTabla").click(function (e){
   //Crear objeto con datos de usuarios
   var usuarioData = {
     ID_USUARIO: idUsuario,
-    RUT: rut,
     PRIMER_NOMBRE: primer_nombre,
     SEGUNDO_NOMBRE: segundo_nombre,
     AP_PATERNO: ap_paterno,
     AP_MATERNO: ap_materno,
+    RUT: rut,
     //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
     //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
     //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
@@ -247,14 +247,14 @@ $(".btnEditarUsuarioTabla").click(function (e){
         }).then(()=>{
           // Limpiar los campos del formulario
           $("#inputIdUsuario").val('');
-          $("#inputRut").val('');
           $("#inputPrimerNombre").val('');
           $("#inputSegundoNombre").val('');
           $("#inputApellidoPaterno").val('');
           $("#inputApellidoMaterno").val('');
-          $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
-          $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
-          $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
+          $("#inputRut").val('');
+         // $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
+         // $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
+         // $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
           $("#inputCorreo").val('');
           $("#inputContraseña").val('');
           $("#inputComuna").val('');
