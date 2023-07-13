@@ -174,8 +174,8 @@
         $.each(data, (index, value) => {
           $("#tablaCarrito").append(`<tr>
                 <th scope="row">${value.ID_CARRITO}</th>
-                <td>${value.IMAGEN}</td>
-                <td>${value.ID_PRODUCTOS}</td>
+                <td><img ${value.IMAGEN} alt="Product" height="90px" class=""></td>
+                <td>${value.PRODUCTO}</td>
                 <td>
                   <div class="d-flex justify-content-center">
                     <button class="btn btn-outline-secondary btnMenos" type="button">-</button>
