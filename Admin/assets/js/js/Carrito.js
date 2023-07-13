@@ -10,6 +10,7 @@ document.querySelectorAll('#btnAgregarCarrito').forEach(function(button) {
     var cantidad = 1;
     var subtotal = cantidad * precio;
     var id_productos = 1;
+    console.log(nombre);
 
     var carritoData = {
       IMAGEN: imagen,
@@ -58,16 +59,12 @@ $(document).on('click', '.btnMas', function() {
   var precioElement = parentRow.find('td:nth-child(5)');
   var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
   var subtotalElement = parentRow.find('td:nth-child(6)');
-  
-  console.log(subtotalElement.text());
-  
+   
   cantidad = cantidad + 1;
-  console.log(cantidad);
-  
+    
   var subtotal = cantidad * precio;
   subtotalElement.text("$" + subtotal.toFixed());
   
-  console.log(subtotalElement.text());
   
   labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
@@ -82,34 +79,53 @@ $(document).on('click', '.btnMenos', function() {
   var precio = parseFloat(precioElement.text().replace(/[^0-9.]/g, ''));
   var subtotalElement = parentRow.find('td:nth-child(6)');
   
-  console.log(subtotalElement.text());
   if(cantidad>1){
   cantidad = cantidad - 1;
   }
-  console.log(cantidad);
   
   var subtotal = cantidad * precio;
   subtotalElement.text("$" + subtotal.toFixed());
   
-  console.log(subtotalElement.text());
   
   labelMasMenosElement.attr("placeholder", cantidad.toString());
 });
 
-const agregarProductoCarrito = (imagen, nombre, cantidad, precio) => {
-  $("#tablaCarrito").append(`
-    <tr>
-      <th scope="row">Nuevo</th>
-      <td><img src="${imagen}" alt="producto" style="width: 100px;"></td>
-      <td>${nombre}</td>
-      <td>${cantidad}</td>
-      <td>${precio}</td>
-      <td>${precio}</td>
-      <td>
-        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-danger btnEliminarCarrito"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </td>
-    </tr>
-  `);
-};
+$(document).ready(() => {
+  $(document).on('click', '.btnEliminarVenta', function() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `${API_URL}/Carrito`,
+          type: 'DELETE',
+          success: (response) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: response
+            }).then(() => {
+              // Recargar la página o realizar cualquier otra acción después de eliminar
+              location.reload();
+            });
+          },
+          error: (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
+            });
+          }
+        });
+      }
+    });
+  });
+});
+
+
+
