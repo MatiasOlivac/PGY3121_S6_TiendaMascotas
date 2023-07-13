@@ -13,9 +13,6 @@
   <!-- logotipo -->
   <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-  <!-- logotipo -->
-  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
-
   <!-- Fonts and icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -28,7 +25,7 @@
 
   <!-- Navbar_AdminPromociones-->
   <nav class="navbar navbar-expand-lg border-bottom text-dark">
-    <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+   
     <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse"
       data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -73,7 +70,6 @@
   </nav>
   <!-- Fin navbar -->
 
-  <!-- Inicio registro Promociones -->
   <div class="container mt-5">
     <div class="row justify-content-md-center">
       <div class="col-sm-9">
@@ -84,19 +80,14 @@
               <div class="form-group col-m-4 mt-1">
                 <label for="inputFecha_inicioPromocion">Fecha de Inicio</label>
                 <input type="date" class="form-control" id="inputFecha_inicioPromocion" required>
-                <input type="date" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputFecha_finPromocion">Fecha de Término</label>
                 <input type="date" class="form-control" id="inputFecha_finPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputDescuentoPromocion">Descuento</label>
                 <input type="text" class="form-control" id="inputDescuentoPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputEstadoPromocion">Estado</label>
                 <input type="text" class="form-control" id="inputEstadoPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
                 <label for="inputIdProductoPromocion">ID Producto</label>
                 <input type="text" class="form-control" id="inputIdProductoPromocion" required>
-                <input type="text" class="form-control" id="inputIdUsuarioPromocion" hidden>
               </div>
               <div class="col-5 m-2">
                 <a id="btnAgregarPromocion" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
@@ -110,19 +101,20 @@
                   <div class="card-body">
                     <h5 class="card-title">Roles</h5>
                     <div class="table-responsive">
-                      <table class="table" id="tablaRol">
+                      <table class="table" id="tablaPromocion">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">ID_PROMOCION</th>
+                            <th scope="col">ID_PROMOCIONES</th>
                             <th scope="col">FECHA_INICIO</th>
                             <th scope="col">FECHA_FIN</th>
                             <th scope="col">DESCUENTO</th>
                             <th scope="col">ESTADO</th>
-                            <th scope="col">ID_PRODUCTO</th>
-                            <th scope="col">NOMBRE</th>
+                            <th scope="col">ID_PRODUCTOS</th>
+                            <th scope="col">PRECIO_CON_DESCUENTO</th>
+                            <th scope="col">ACCIONES</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tablaPromocionBody">
                         </tbody>
                       </table>
                     </div>
@@ -135,14 +127,11 @@
       </div>
     </div>
   </div>
-  <!-- Fin Registro Promocion -->
-
-  <!-- Inicio Tabla Promocion -->
-
-  <!-- Fin Tabla Promocion -->
 
 </body>
 
+
+<script> var API_URL = "http://localhost:5500/API";</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -154,58 +143,72 @@ integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/f
 crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- COMUNES -->
-<script src="assets/js/comunes.js" ></script>
+
 
 
 <script>
 
 //buscar las Promociones en la api
-  $(document).ready(function() {
+ 
+$(document).ready(function() {
+  getPromociones();
+});
 
-    getPromociones();
+getPromociones = () => {
+  var productosMap = {};
 
-  });
+  // Obtener las promociones de la API
+  $.ajax({
+    url: `${API_URL}/Promociones`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(promociones) {
+      // Obtener los productos de la API
+      $.ajax({
+        url: `${API_URL}/AdminProducto`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(productos) {
+          
+          // Crear un objeto para almacenar los productos por ID
+          productosMap = productos.reduce(function(map, producto) {
+            map[producto.ID_PRODUCTO] = producto;
+            
+            return map;
+          }, {});
 
+          promociones.forEach(function(promocion) {
+            if (estado === 0) {
+              return;
+            }
+            // Obtener los datos de la promoción
+            var idPromocion = promocion.ID_PROMOCIONES;
+            var fechaInicio = new Date(promocion.FECHA_INICIO).toLocaleDateString('es-ES');
+            var fechaFin = new Date(promocion.FECHA_FIN).toLocaleDateString('es-ES');
+            var descuento = promocion.DESCUENTO;
+            var estado = promocion.ESTADO;
+            var idProducto = productos.ID_PRODUCTOS;
 
-  getPromociones = () => {
-  $(document).ready(function() {
-    $.ajax({
-      url: `${API_URL}/Promociones`,
-      type: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        $.each(data, function(index, value) {
-          // Obtener los datos de la promoción
-          var idPromocion = value.ID_PROMOCION;
-          var fechaInicio = value.FECHA_INICIO;
-          var fechaFin = value.FECHA_FIN;
-          var porcentajeDescuento = value.DESCUENTO;
-          var estado = value.ESTADO;
-          var idProducto = value.ID_PRODUCTO;
+            // Obtener el producto correspondiente utilizando el ID del producto
+            var producto = productosMap[idProducto];
+            if (estado === 0 || estado === null) {
+              console.log(`La promoción con ID ${idPromocion} tiene estado ${estado} y no se muestra en la tabla.`);
+              return;
+            }
+            if (producto) {
+              var precioOriginal = producto.VALOR;
+              var precioConDescuento = calcularPrecioConDescuento(precioOriginal, descuento);
 
-          // Realizar consulta a tabla producto
-          $.ajax({
-            url: `${API_URL}/AdminProducto/${idProducto}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(producto) {
-              var precioOriginal = producto.ID_PRODUCTOS;
-              var precioConDescuento = calcularPrecioConDescuento(precioOriginal, porcentajeDescuento);
-
-              // Se Agrega Con el Precio con descuento
-              $('#tablaPromocion tbody').append(
+              // Agregar los datos al tbody de la tabla
+              $('#tablaPromocionBody').append(
                 `<tr>
-                  <th scope="row">${ultimoId()}</th>
                   <td>${idPromocion}</td>
                   <td>${fechaInicio}</td>
                   <td>${fechaFin}</td>
-                  <td>${porcentajeDescuento}</td>
+                  <td>${descuento}</td>
                   <td>${estado}</td>
                   <td>${idProducto}</td>
-                  <td>${precioConDescuento}</td>
-                  <input type="hidden" name="id_usuario" value="${idPromocion}">
-                  </td>
+                  <td>${precioOriginal} (${precioConDescuento})</td>
                   <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-info btnEditarPromocion"><i class="fa-solid fa-pencil"></i></button>
@@ -214,126 +217,131 @@ crossorigin="anonymous"></script>
                   </td>
                 </tr>`
               );
-            }
-          });
+              } else {
+                console.log(`La promoción con ID ${idPromocion} tiene estado 0 y no se muestra en la tabla.`);
+              }
+            });
+          }
         });
       }
     });
-  });
-};
+  };
 
+  function calcularPrecioConDescuento(precioOriginal, porcentajeDescuento) {
+    var precio = parseFloat(precioOriginal);
+    var descuento = parseFloat(porcentajeDescuento);
+    var precioConDescuento = precio - (precio * descuento / 100);
+    return precioConDescuento.toFixed(2);
+  }
 
-//botones invisibles
-$('#btnModificarPromocion').hide();
-$('#btnCancelarEditarPromocion').hide();
+  //botones invisibles
+  $('#btnModificarPromocion').hide();
+  $('#btnCancelarEditarPromocion').hide();
 
-
-//añadir Promocion a la lista con jquery
+  //añadir Promocion a la lista con jquery
   $(document).on('click', '#btnAgregarPromocion', function(){
-        var FECHA_INICIO = $('#inputFecha_InicioPromocion').val();
-        var FECHA_FIN = $('#inputFecha_finPromocion').val();
-        var DESCUENTO = $('#inputDescuentoPromocion').val();
-        var ESTADO = $('#inputEstadoPromocion').val();
-        var ID_PRODUCTO = $('#inputIdProductoPromocion').val();
+    var fechaInicio = $('#inputFecha_inicioPromocion').val();
+    var fechaFin = $('#inputFecha_finPromocion').val();
+    var descuento = $('#inputDescuentoPromocion').val();
+    var estado = $('#inputEstadoPromocion').val();
+    var idProducto = $('#inputIdProductoPromocion').val();
         
-
-      $.ajax({
-          url: `${API_URL}/Promociones`,
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({
-          FECHA_INICIO: FECHA_INICIO,
-          FECHA_FIN: FECHA_FIN,
-          DESCUENTO: DESCUENTO,
-          ESTADO: ESTADO,
-          ID_PRODUCTO: ID_PRODUCTO,
-          })
-          ,
-          
-          success: function(respuesta){
-              console.log(respuesta);
-          }
-
-      })
-    Swal.fire(
-      'Promocion Ingresada!',
-      'Presione "ok" para continuar.',
-      'success');
-
-      limpiarFormulario();
-      actualizarTabla();
+    $.ajax({
+      url: `${API_URL}/Promociones`,
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        FECHA_INICIO: fechaInicio,
+        FECHA_FIN: fechaFin,
+        DESCUENTO: descuento,
+        ESTADO: estado,
+        ID_PRODUCTO: idProducto
+      }),
+      success: function(respuesta) {
+        Swal.fire(
+          'Promocion Ingresada!',
+          'Presione "ok" para continuar.',
+          'success'
+        );
+        limpiarFormulario();
+        actualizarTabla();
+      }
+    });
   });
-
-
+  
 
 //entregar ultimo id
-  ultimoId = () =>{
-    let ultimoId = $("#tablaPromocion tbody tr:last th").text();
-    let value = parseInt(ultimoId) + 1;
-    if (isNaN(value)){
-      value=1
-    }
-    return value;
-  };
+ultimoId = () => {
+  let ultimoId = $("#tablaPromocion tbody tr:last th").text();
+  let value = parseInt(ultimoId) + 1;
+  if (isNaN(value)) {
+    value = 1;
+  }
+  return value;
+};
 
   
 //botón BORRAR
-  $(document).on('click', '.btnEliminarPromocion', function(e){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-
-    swalWithBootstrapButtons.fire({
-      title: 'Desea eliminar la Promocion?.',
-      text: "Se eliminará del registro.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, Eliminar!.',
-      cancelButtonText: 'No, Cancelar!.',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        var idUsuario = $(this).closest('tr').find('td');
-        var id_usuario = idUsuario.eq(0).find('input').val();
-        console.log(id_usuario)
-        
-
-        $.ajax({
-          url: `${API_URL}/Promociones`,
-          type: 'DELETE',
-          dataType: 'json',
-          data: {
-            ID_USUARIO : id_usuario
-        },
-        success: function(respuesta){
-            console.log('Promocion Eliminada')
-            actualizarTabla();
-        }
-
-    })
-        swalWithBootstrapButtons.fire(
-          'Promocion eliminada!.',
-          'presione ok para finalizar.',
-          'success'
-        )
-        actualizarTabla();
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado.',
-          'La Promocion está a salvo! :D .',
-          'error'
-        )
-      }
-    })
+$(document).on('click', '.btnEliminarPromocion', function(e) {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
   });
 
+  swalWithBootstrapButtons.fire({
+    title: 'Desea cambiar el estado de la promoción?',
+    text: 'El estado se cambiará a 0.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si, Cambiar estado!',
+    cancelButtonText: 'No, Cancelar!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      var idPromocion = $(this).closest('tr').find('td:first-child').text();
 
+      // Realizar la solicitud PATCH para cambiar el estado a 0
+      $.ajax({
+        url: `${API_URL}/Promociones/${idPromocion}`,
+        type: 'PATCH',
+        dataType: 'json',
+        data: JSON.stringify({ ESTADO: 0 }),
+        contentType: 'application/json',
+        success: function(respuesta) {
+          console.log('Estado de la promoción cambiado');
+          // Aquí puedes realizar cualquier otra acción que necesites, como actualizar la tabla
+          actualizarTabla();
+          swalWithBootstrapButtons.fire(
+            'Estado cambiado!',
+            'Presione "OK" para finalizar.',
+            'success'
+          );
+        },
+        error: function() {
+          swalWithBootstrapButtons.fire(
+            'Error',
+            'No se pudo cambiar el estado de la promoción.',
+            'error'
+          );
+        }
+      });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      swalWithBootstrapButtons.fire(
+        'Cancelado.',
+        'El estado de la promoción no ha sido cambiado.',
+        'error'
+      );
+    }
+  });
+});
+
+function actualizarTabla() {
+  $('#tablaPromocion tbody').empty();
+  getPromociones();
+}
 
 //Editar Promocion
   $("#tablaPromocion tbody").on("click", ".btnEditarPromocion", function (e) {
@@ -341,15 +349,13 @@ $('#btnCancelarEditarPromocion').hide();
          $('#btnModificarPromocion').show();
         e.preventDefault();
         var idPromocion = $(this).closest('tr').find('th').text();
-        var nombrePromocion = $(this).closest('tr').find('td').eq(0).text().trim();
-        var fechaInicio = $(this).closest('tr').find('td').eq(1).text().trim();
-        var fechaFin = $(this).closest('tr').find('td').eq(2).text().trim();
-        var descuento = $(this).closest('tr').find('td').eq(3).text().trim();
-        var estado = $(this).closest('tr').find('td').eq(4).text().trim();
-        var idProducto = $(this).closest('tr').find('td').eq(5).text().trim();
+        var fechaInicio = $(this).closest('tr').find('td').eq(0).text().trim();
+        var fechaFin = $(this).closest('tr').find('td').eq(1).text().trim();
+        var descuento = $(this).closest('tr').find('td').eq(2).text().trim();
+        var estado = $(this).closest('tr').find('td').eq(3).text().trim();
+        var idProducto = $(this).closest('tr').find('td').eq(4).text().trim();
         
         $("#inputIdPromocion").val(idPromocion);
-        $("#inputNombrePromocion").val(nombrePromocion);
         $("#inputFecha_inicioPromocion").val(fechaInicio);
         $("#inputFecha_finPromocion").val(fechaFin);
         $("#inputDescuentoPromocion").val(descuento);
@@ -361,17 +367,14 @@ $('#btnCancelarEditarPromocion').hide();
         $('#btnAgregarPromocion').hide();
   });
 
-
-
-
 //modificar Promocion
   $("#btnModificarPromocion").click(function () {
-    let fechaInicio = $("#inputFecha_inicioPromocion").val();
-    let fechaFin = $("#inputFecha_finPromocion").val();
-    let descuento = $("#inputDescuentoPromocion").val();
-    let estado = $("#inputEstadoPromocion").val();
-    let idProducto = $("#inputIdProductoPromocion").val();
-    let idPromocion = $("#inputIdPromocion").val();
+    var idPromocion = $("#inputIdPromocPromocion").val();
+    var fechaInicio = $("#inputFecha_inicioPromocion").val();
+    var fechaFin = $("#inputFecha_finPromocion").val();
+    var descuento = $("#inputDescuentoPromocion").val();
+    var estado = $("#inputEstadoPromocion").val();
+    var idProducto = $("#inputIdProductoPromocion").val();
     
     console.log(fechaInicio);
     console.log(fechaFin);
@@ -391,19 +394,22 @@ $('#btnCancelarEditarPromocion').hide();
             DESCUENTO: descuento,
             ESTADO: estado,
             ID_PRODUCTO: idProducto,
-            ID_PROMOCION: idPromocion
+            ID_PROMOCIONES: idPromocion
           }),
           success: function(respuesta){
-              console.log("modificado");
-              limpiarFormulario();
-              actualizarTabla();
-              $('#btnCancelarEditarPromocion').hide();
-              $('#btnModificarPromocion').hide();
-              $('#btnAgregarPromocion').show();
-          }
-      })
-  });
-
+            Swal.fire(
+          'Promocion modificada!',
+          'Presione "ok" para finalizar.',
+          'success'
+          );
+            limpiarFormulario();
+            actualizarTabla();
+            $('#btnCancelarEditarPromocion').hide();
+            $('#btnModificarPromocion').hide();
+            $('#btnAgregarPromocion').show();
+            }
+          })
+        });
       //boton CANCELAR EDICION
       $("#btnCancelarEditarPromocion").click(function () {
         limpiarFormulario();
@@ -412,22 +418,21 @@ $('#btnCancelarEditarPromocion').hide();
         $('#btnAgregarPromocion').show();
       });
 
-
-
       //limpiar formulario
       function limpiarFormulario() {
-        $("#inputNombrePromocion").val('');
-        $("#inputIdPromocion").val('');
+      $("#inputIdPromocion").val('');
+      $("#inputFecha_inicioPromocion").val('');
+      $("#inputFecha_finPromocion").val('');
+      $("#inputDescuentoPromocion").val('');
+      $("#inputEstadoPromocion").val('');
+      $("#inputIdProductoPromocion").val('');
       };
-
-
 
       //actualizar
       function actualizarTabla() {
-        $('#tablaPromocion tbody').empty();
-        getPromociones();
-      };
-
+  $('#tablaPromocion tbody').empty();
+  getPromociones();
+}
 
 </script>
 
