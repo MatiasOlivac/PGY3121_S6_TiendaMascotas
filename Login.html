@@ -83,11 +83,11 @@
                         <form id="login-form" class="form" action="" method="post">
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
-                                <label for="email_login" class="text-dark">Correo:</label><br>
+                                <label for="email_login" class="text-dark">Correo:(admin@correo.cl)</label><br>
                                 <input type="email" class="form-control" id="input_Email" placeholder="Ingrese su correo aquí" required>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-dark">Contraseña:</label><br>
+                                <label for="password" class="text-dark">Contraseña:(123)</label><br>
                                 <input type="password" class="form-control" id="input_Password" placeholder="Ingrese su contraseña aquí" required>
                             </div>
                             <div class="form-group">
@@ -169,6 +169,11 @@
      <!-- sweetalert2 -->
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- COMUNES -->
+  <script src="/Admin/assets/js/comunes.js" ></script>
+
+
+
  <script>
      var email;
      var pass;
@@ -192,7 +197,6 @@
              return;
          }
 
-         $(location).attr('href','index.html'); //agrega funcionalidad href
 
          console.log(resultado);
 
@@ -200,8 +204,10 @@
 
      //funcion normal
      function validar_login(email, pass){
-         if (email == 'nuevo@correo.cl' && pass == '123'){
+         if (email == 'admin@correo.cl' && pass == '123'){
+            $(location).attr('href','/Admin/AdminLogin.html'); //agrega funcionalidad href
              return "Correcto";
+
          } else{
              return "Correo o Password incorrecto";
          }
