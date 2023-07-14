@@ -182,7 +182,7 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   var contraseña = usuario.eq(6).text();
   var comuna = usuario.eq(7).text().trim();
   var direccion = usuario.eq(8).text().trim();
-  var idUsuario = usuario.eq(9).find('input').val();
+  var idUsuario = $(this).closest("tr").find("th").text();
 
   
   $("#inputPrimerNombre").val(primerNombre);
@@ -200,78 +200,74 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   $("#inputIdUsuario").val(idUsuario);
 });
 
-//Botón editar del formulario
-$(".btnEditarUsuarioTabla").click(function (e){
-  
-  //Obtener los datos del formulario
-  var primer_nombre =$("#inputPrimerNombre").val();
-  var segundo_nombre =$("#inputSegundoNombre").val();
-  var ap_paterno =$("#inputApellidoPaterno").val();
-  var ap_materno =$("#inputApellidoMaterno").val();
-  var rut =$("#inputRut").val();
-  //var esta_suscrito =$("#inputEstaSuscrito").val();//Agregar a interfaz en caso que sea necesario
-  //var estado =$("#inputEstado").val();//Agregar a interfaz en caso que sea necesario
-  //var usuario_roles_id_rol =$("#inputUsuarioRolesIdRol").val(); //Agregar a interfaz en caso que sea necesario
-  var correo =$("#inputCorreo").val();
-  var contraseña =$("#inputContraseña").val();
-  var comuna =$("#inputComuna").val();
-  var direccion =$("#inputDireccion").val();
-  var idUsuario = $("#inputIdUsuario")
 
-  //Crear objeto con datos de usuarios
+$("#btnEditarUsuarioTabla").click(function (e) {
+  e.preventDefault(); // Evitar el envío predeterminado del formulario
+
+  // Obtener los datos del formulario
+  var primer_nombre = $("#inputPrimerNombre").val();
+  var segundo_nombre = $("#inputSegundoNombre").val();
+  var ap_paterno = $("#inputApellidoPaterno").val();
+  var ap_materno = $("#inputApellidoMaterno").val();
+  var rut = $("#inputRut").val();
+  var correo = $("#inputCorreo").val();
+  var contraseña = $("#inputContraseña").val();
+  var comuna = $("#inputComuna").val();
+  var direccion = $("#inputDireccion").val();
+  var idUsuario = $("#inputIdUsuario").val();
+
+  // Crear objeto con los datos del usuario
   var usuarioData = {
-    
-    PRIMER_NOMBRE: primer_nombre,
-    SEGUNDO_NOMBRE: segundo_nombre,
-    AP_PATERNO: ap_paterno,
-    AP_MATERNO: ap_materno,
-    RUT: rut,
-    //ESTA_SUSCRITO: esta_suscrito,//Agregar a interfaz en caso que sea necesario
-    //ESTADO: estado,//Agregar a interfaz en caso que sea necesario
-    //USUARIO_ROLES_ID_ROL: usuario_roles_id_rol,//Agregar a interfaz en caso que sea necesario
-    CORREO: correo,
-    CONTRASEÑA: contraseña,
-    COMUNA: comuna,
-    DIRECCION: direccion,
-    ID_USUARIO: idUsuario
+
+        RUT: rut,    
+        PRIMER_NOMBRE: primer_nombre,
+        SEGUNDO_NOMBRE: segundo_nombre,
+        AP_PATERNO: ap_paterno,
+        AP_MATERNO: ap_materno,
+        CORREO: correo,
+        CONTRASEÑA: contraseña,
+        COMUNA: comuna,
+        DIRECCION: direccion,
+        ID_USUARIO: idUsuario
   };
 
+  console.log(usuarioData);
+  
   // Enviar la solicitud de actualización
   $.ajax({
-    url:`${API_URL}/AdminUsuario`,
-    type: `PATCH`,
-    data: usuarioData,
-    success: function (response){
+    url: `${API_URL}/AdminUsuario`,
+    type: "PATCH",
+    data: JSON.stringify(usuarioData), // Convertir a JSON sin comillas adicionales
+    contentType: "application/json", // Establecer el tipo de contenido a JSON
+    success: function (response) {
       Swal.fire({
-          icon: 'success',
-          title: 'Éxito',
-          text: 'Usuario actualizado correctamente.'
-        }).then(()=>{
-          // Limpiar los campos del formulario         
-          $("#inputPrimerNombre").val('');
-          $("#inputSegundoNombre").val('');
-          $("#inputApellidoPaterno").val('');
-          $("#inputApellidoMaterno").val('');
-          $("#inputRut").val('');
-         // $("#inputEstaSuscrito").val('0');//Agregar a interfaz en caso que sea necesario
-         // $("#inputEstado").val('');//Agregar a interfaz en caso que sea necesario
-         // $("#inputUsuarioRolesIdRol").val(''); //Agregar a interfaz en caso que sea necesario
-          $("#inputCorreo").val('');
-          $("#inputContraseña").val('');
-          $("#inputComuna").val('');
-          $("#inputDireccion").val('');
-          $("#inputIdUsuario").val('');
+        icon: "success",
+        title: "Éxito",
+        text: "Usuario actualizado correctamente."
+      }).then(() => {
+        // Limpiar los campos del formulario
+        $("#inputPrimerNombre").val("");
+        $("#inputSegundoNombre").val("");
+        $("#inputApellidoPaterno").val("");
+        $("#inputApellidoMaterno").val("");
+        $("#inputRut").val("");
+        $("#inputCorreo").val("");
+        $("#inputContraseña").val("");
+        $("#inputComuna").val("");
+        $("#inputDireccion").val("");
+        $("#inputIdUsuario").val("");
 
-          //Actualizar la tabla usuario
-          $("#tablaUsuario").empty(); //Vaciar la tabla
-          getUSUARIOS(); //Duda
-        });
+        // Actualizar la tabla de usuarios
+        $("#tablaUsuario").empty(); // Vaciar la tabla
+        getUSUARIOS(); 
+      });
     },
     error: function (error) {
+      
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'No se pudo actualizar el usuario. Por favor, intentalo nuevamente' 
+        icon: "error",
+        title: "Error",
+        text: "No se pudo actualizar el usuario. Por favor, inténtalo nuevamente."
       });
     }
   });
