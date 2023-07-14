@@ -85,7 +85,7 @@ getEstadoVenta = () => {
                    class="fa-solid fa-pencil"></i></button>
                   <button type="button" class="btn btn-danger btnEliminarVenta"><i
                    class="fa-solid fa-trash"></i></button>
-                  <button type="button" class="btn btn-info btnDetalleVenta"><i 
+                   <button class="btn-primary" onclick="DetalleVenta.html"><i 
                    class="fa-solid fa-eye"></i></button>
                 </div>
               </td>
@@ -312,7 +312,7 @@ $(document).on("click", ".btnDetalleVenta", function (e) {
           // Actualizar la tabla de Ventas
           $("#tablaVentas").empty(); // Vaciar la tabla
           getVentas(); // Volver a cargar las Ventas
-           // desaparecer botones
+          // desaparecer botones
           $('#btnCancelarEditar').hide();
           $('#btnEditarVentaTabla').hide();
           $('#btnAgregarVenta').show();
