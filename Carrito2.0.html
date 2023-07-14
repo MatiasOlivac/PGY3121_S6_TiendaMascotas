@@ -196,7 +196,10 @@
 
         subtotalResumen += parseInt(value.SUBTOTAL);
         console.log(subtotalResumen);
-        totalResumen = subtotalResumen * 1.19
+        totalResumen = subtotalResumen * 1.19;
+        totalResumen = parseInt(totalResumen);
+
+
       });
 
       $("#tablaCarrito").append(` 

@@ -68,6 +68,7 @@ $(document).on('click', '.btnMas', function() {
 
   cantidad = cantidad + 1;
   var subtotal = cantidad * precio;
+  console.log(cantidad);
 
   
   var carritoData = {
@@ -102,6 +103,9 @@ $(document).on('click', '.btnMas', function() {
       });
     }
   });
+  $("#tablaCarrito").empty(); // Vaciar la tabla    
+  $("#resumenCompra").empty();
+  getCarrito();
   
 });
 
@@ -161,7 +165,54 @@ $(document).on('click', '.btnMenos', function() {
       });
     }
   });
-  
+    
+});
+
+
+
+  //Borrar Linea
+  $(document).on('click', '.btnEliminar', function (e){
+    e.preventDefault();
+    // Obtener el ID del producto dentro del carrito a eliminar
+    var idProducto = $(this).closest('tr').find('th').text();
+    console.log(idProducto);
+
+    //Mostrar el mensaje de confirmación utilizando SweetAlert2
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed){
+        // Enviar la solicitud de borrado
+        $.ajax({
+          url: `${API_URL}/Carrito/${idProducto}`,
+          type: 'DELETE',
+          success: function (response) {
+            // Mostrar mensaje de éxito
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: response
+          }).then(() => {
+            // Recargar la tabla de usuarios después de eliminar uno
+            $("#tablaCarrito").empty(); // Vaciar la tabla
+            getCarrito(); // Volver a cargar los usuarios
+          });
+        },
+        error: function (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar el usuario. Por favor, intenta nuevamente.'
+          });
+        }
+      });
+    }
+  });
 });
 
 
