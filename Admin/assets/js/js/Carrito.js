@@ -200,6 +200,7 @@ $(document).on('click', '.btnMenos', function() {
           }).then(() => {
             // Recargar la tabla de usuarios después de eliminar uno
             $("#tablaCarrito").empty(); // Vaciar la tabla
+            $("#resumenCompra").empty(); // Vaciar la tabla
             getCarrito(); // Volver a cargar los usuarios
           });
         },
