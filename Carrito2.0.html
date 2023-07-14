@@ -198,6 +198,8 @@
         console.log(subtotalResumen);
         totalResumen = subtotalResumen * 1.19;
         totalResumen = parseInt(totalResumen);
+        ivaResumen = subtotalResumen * 0.19;
+        ivaResumen = parseInt(ivaResumen);
 
 
       });
@@ -212,7 +214,7 @@
             <div class="card-body">
               <h4 class="card-title mb-4">Resumen de compra</h4>
               <p class="card-text" id="subTotalResumen"><strong>Subtotal:</strong> $${subtotalResumen}</p> <!--id(#)subTotal-->
-              <p class="card-text" id="iva"><strong>IVA:</strong> 19%</p> <!--id(#)iva-->
+              <p class="card-text" id="iva"><strong>IVA:</strong> ${ivaResumen}</p> <!--id(#)iva-->
               <p class="card-text" id="totalResumenCompra"><strong>Total:</strong> $${totalResumen}</p> <!--id(#)total-->
               <button class="btn btn-success btn-block" id="btnPagarTotal">Proceder al pago</button> <!--id(#)btnPagarTotal-->
             </div>
