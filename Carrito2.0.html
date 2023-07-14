@@ -162,6 +162,7 @@
 
 <script>
   $(document).ready(() => {
+    $("#tablaCarrito").empty(); // Vaciar la tabla
     getCarrito();
   });
 
@@ -174,7 +175,7 @@
         $.each(data, (index, value) => {
           $("#tablaCarrito").append(`<tr>
                 <th scope="row">${value.ID_CARRITO}</th>
-                <td><img ${value.IMAGEN} alt="Product" height="90px" class=""></td>
+                <td><img src=${value.IMAGEN} alt="Product" height="60px" class=""></td>
                 <td>${value.PRODUCTO}</td>
                 <td>
                   <div class="d-flex justify-content-center">
@@ -191,7 +192,7 @@
         });
         $("#tablaCarrito").append(` 
           <tr>  
-            <td class="d-flex justify-content-between"><button class="btn btn-danger btnEliminarVenta">Eliminar Venta</button></td> <!--class(.) btnElminarVenta-->
+            <td class="d-flex justify-content-between"><button class="btn btn-danger btnEliminarVenta">Vaciar Carrito</button></td> <!--class(.) btnElminarVenta-->
           </tr>
         
         `);
@@ -205,44 +206,93 @@
 
 
 
-  $(document).ready(() => {
-    $(document).on('click', '.btnEliminar', function() {
-      var row = $(this).closest('tr');
-      var id_carrito = row.find('th').text();
-      console.log(id_carrito);
+  // $(document).ready(() => {
+  //   $(document).on('click', '.btnEliminar', function() {
+  //     var row = $(this).closest('tr');
+  //     var id_carrito = row.find('th').text();
+  //     console.log(id_carrito);
 
-      Swal.fire({
-        title: '¿Estás seguro?',
-        text: 'Esta acción no se puede deshacer',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $.ajax({
-            url: `${API_URL}/Carrito/${id_carrito}`,
-            type: 'DELETE',
-            success: (response) => {
-              row.remove();
-              Swal.fire({
-                icon: 'success',
-                title: 'Eliminado',
-                text: response
-              });
-            },
-            error: (error) => {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
-              });
-            }
+  //     Swal.fire({
+  //       title: '¿Estás seguro?',
+  //       text: 'Esta acción no se puede deshacer',
+  //       icon: 'warning',
+  //       showCancelButton: true,
+  //       confirmButtonText: 'Sí, eliminar',
+  //       cancelButtonText: 'Cancelar'
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         $.ajax({
+  //           url: `${API_URL}/Carrito/${id_carrito}`,
+  //           type: 'DELETE',
+  //           success: (response) => {
+  //             row.remove();
+  //             Swal.fire({
+  //               icon: 'success',
+  //               title: 'Eliminado',
+  //               text: response
+  //             });
+  //           },
+  //           error: (error) => {
+  //             Swal.fire({
+  //               icon: 'error',
+  //               title: 'Error',
+  //               text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
+  //             });
+  //           }
+  //         });
+  //       }
+  //     });
+  //   });
+  // });
+
+
+
+
+  //Borrar Linea
+  $(document).on('click', '.btnEliminar', function (e){
+    e.preventDefault();
+    // Obtener el ID del producto dentro del carrito a eliminar
+    var idProducto = $(this).closest('tr').find('th').text();
+    console.log(idProducto);
+
+    //Mostrar el mensaje de confirmación utilizando SweetAlert2
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed){
+        // Enviar la solicitud de borrado
+        $.ajax({
+          url: `${API_URL}/Carrito/${idProducto}`,
+          type: 'DELETE',
+          success: function (response) {
+            // Mostrar mensaje de éxito
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: response
+          }).then(() => {
+            // Recargar la tabla de usuarios después de eliminar uno
+            $("#tablaCarrito").empty(); // Vaciar la tabla
+            getCarrito(); // Volver a cargar los usuarios
+          });
+        },
+        error: function (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar el usuario. Por favor, intenta nuevamente.'
           });
         }
       });
-    });
+    }
   });
+});
+
 
 //   function calcularSubtotal() {
 //   let subtotal = 0;
