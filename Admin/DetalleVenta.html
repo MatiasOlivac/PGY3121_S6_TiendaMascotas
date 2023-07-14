@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boleta de Venta</title>
+    <style>
+        /* navbar */
+        nav {
+            border-radius: 12px;
+            background-color: #ffffff84;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-menu {
+            background-color: #e3eff7f7;
+        }
+
+        /* fondo */
+        body {
+            background: rgb(135, 187, 200);
+            background: linear-gradient(189deg, rgba(135, 187, 200, 0.59156162464986) 0%, rgba(163, 209, 231, 0.5495448179271709) 100%);
+        }
+
+        /* boton de imagen */
+        .btn.btn-border,
+        .btn.btn-link {
+            background-color: transparent;
+        }
+
+        .btn-danger.btn-link {
+            color: #f5593d;
+        }
+
+        .btn-outline-default {
+            border-color: #66615b;
+            color: #66615b;
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .btn-outline-primary {
+            border-color: #51cbce;
+            color: #51cbce;
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        /* tablas */
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 6px 10px -4px rgba(0, 0, 0, .15);
+            background-color: #ffffffbe;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            border: 0 none;
+            box-shadow: 0 12px 19px -7px rgba(0, 0, 0, .3);
+        }
+
+        /* botones */
+        .btn-primary {
+            background-color: #51cbce;
+            border-color: #51cbce;
+            color: #fff;
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        .btn-primary:hover {
+            background-color: #34b5b8;
+            border-color: #34b5b8;
+        }
+
+        .btn-primary .btn-link {
+            color: #51cbce;
+        }
+
+        /* imagen */
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+        .btn-file>input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-size: 23px;
+            cursor: pointer;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            direction: ltr;
+        }
+
+        .fileinput .thumbnail {
+            display: inline-block;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+
+        .fileinput-exists .fileinput-new,
+        .fileinput-new .fileinput-exists {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Contenido del navbar -->
+    </nav>
+
+    <div class="container">
+        <h1>Boleta de Venta</h1>
+
+        <div class="card">
+            <table>
+                <tr>
+                    <th>Estado del despacho:</th>
+                    <td><!-- Estado del despacho (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>Fecha venta:</th>
+                    <td><!-- Fecha venta (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>Id venta:</th>
+                    <td><!-- Id venta (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>Cantidad de productos comprados:</th>
+                    <td><!-- Cantidad de productos comprados (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>Todos los productos comprados:</th>
+                    <td><!-- Todos los productos comprados (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>Subtotal:</th>
+                    <td><!-- Subtotal (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>IVA:</th>
+                    <td><!-- IVA (ingresar valor dinámicamente) --></td>
+                </tr>
+                <tr>
+                    <th>Total venta:</th>
+                    <td><!-- Total venta (ingresar valor dinámicamente) --></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
