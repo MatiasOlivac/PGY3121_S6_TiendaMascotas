@@ -169,22 +169,22 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   e.preventDefault();
   //Obtener los datos del usuario desde la fila de la tabla
   var usuario =$(this).closest('tr').find('td');
-
-  var idUsuario = usuario.eq(0).find('input').val();
-  var primerNombre = usuario.eq(1).text().trim();
-  var segundoNombre = usuario.eq(2).text().trim();
-  var apPaterno = usuario.eq(3).text().trim();
-  var apMaterno = usuario.eq(4).text().trim();
-  var rut = usuario.eq(5).text();
+  
+  var primerNombre = usuario.eq(0).text().trim();
+  var segundoNombre = usuario.eq(1).text().trim();
+  var apPaterno = usuario.eq(2).text().trim();
+  var apMaterno = usuario.eq(3).text().trim();
+  var rut = usuario.eq(4).text();
   //var estaSuscrito = usuario.eq(6).text() === 'SI' ? '1' : '0';
   //var estado = usuario.eq(7).text();
   //var usuarioRolesIdRol = usuario.eq(8).find('input').val();
-  var correo = usuario.eq(6).text().trim();
-  var contraseña = usuario.eq(7).text();
-  var comuna = usuario.eq(8).text().trim();
-  var direccion = usuario.eq(9).text().trim();
+  var correo = usuario.eq(5).text().trim();
+  var contraseña = usuario.eq(6).text();
+  var comuna = usuario.eq(7).text().trim();
+  var direccion = usuario.eq(8).text().trim();
+  var idUsuario = usuario.eq(9).find('input').val();
 
-  $("#inputIdUsuario").val(idUsuario);
+  
   $("#inputPrimerNombre").val(primerNombre);
   $("#inputSegundoNombre").val(segundoNombre);
   $("#inputApellidoPaterno").val(apPaterno);
@@ -197,13 +197,13 @@ $(document).on('click', '.btnEditarUsuario', function (e) {
   $("#inputContraseña").val(contraseña);
   $("#inputComuna").val(comuna);
   $("#inputDireccion").val(direccion);
+  $("#inputIdUsuario").val(idUsuario);
 });
 
 //Botón editar del formulario
 $(".btnEditarUsuarioTabla").click(function (e){
-
+  
   //Obtener los datos del formulario
-  var idUsuario = $("#inputIdUsuario")
   var primer_nombre =$("#inputPrimerNombre").val();
   var segundo_nombre =$("#inputSegundoNombre").val();
   var ap_paterno =$("#inputApellidoPaterno").val();
@@ -216,10 +216,11 @@ $(".btnEditarUsuarioTabla").click(function (e){
   var contraseña =$("#inputContraseña").val();
   var comuna =$("#inputComuna").val();
   var direccion =$("#inputDireccion").val();
+  var idUsuario = $("#inputIdUsuario")
 
   //Crear objeto con datos de usuarios
   var usuarioData = {
-    ID_USUARIO: idUsuario,
+    
     PRIMER_NOMBRE: primer_nombre,
     SEGUNDO_NOMBRE: segundo_nombre,
     AP_PATERNO: ap_paterno,
@@ -231,13 +232,14 @@ $(".btnEditarUsuarioTabla").click(function (e){
     CORREO: correo,
     CONTRASEÑA: contraseña,
     COMUNA: comuna,
-    DIRECCION: direccion
+    DIRECCION: direccion,
+    ID_USUARIO: idUsuario
   };
 
   // Enviar la solicitud de actualización
   $.ajax({
     url:`${API_URL}/AdminUsuario`,
-    type: `PUT`,
+    type: `PATCH`,
     data: usuarioData,
     success: function (response){
       Swal.fire({
@@ -245,8 +247,7 @@ $(".btnEditarUsuarioTabla").click(function (e){
           title: 'Éxito',
           text: 'Usuario actualizado correctamente.'
         }).then(()=>{
-          // Limpiar los campos del formulario
-          $("#inputIdUsuario").val('');
+          // Limpiar los campos del formulario         
           $("#inputPrimerNombre").val('');
           $("#inputSegundoNombre").val('');
           $("#inputApellidoPaterno").val('');
@@ -259,6 +260,7 @@ $(".btnEditarUsuarioTabla").click(function (e){
           $("#inputContraseña").val('');
           $("#inputComuna").val('');
           $("#inputDireccion").val('');
+          $("#inputIdUsuario").val('');
 
           //Actualizar la tabla usuario
           $("#tablaUsuario").empty(); //Vaciar la tabla

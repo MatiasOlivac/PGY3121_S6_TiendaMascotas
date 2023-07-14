@@ -61,7 +61,7 @@
 <!-- Inicio detalle producto -->
 <main class="flex-shrink-0 m-5">
   <div class="container bg-light border border-dark">
-      <div class="row">
+      <div class="row" id="TablaGato">
           <div class="col-md-5 order-md-1">
             <!--Carrusel-->
             <div class="d-flex justify-content-center m-4">
@@ -93,9 +93,10 @@
           </div>
             <!-- Fin carrusel -->
             <div class="col-md-7 order-md-2 mt-5">
-                <h2 class="mt-4">Alimento Seco Salmón para Gato Bolsa 8 Kg</h2>
-                <h4 class="mt-5">Precio: $20.392 <span class="badge badge-pill badge-danger">-20%</span></h4>
-                <p>Precio Normal: <del class="text-dark">$ 25.490 </del></p>
+                <h2 class="mt-4" id="nombre"></h2>
+                <h4 class="mt-5" id="total"></h4><span class="badge badge-pill badge-danger">-20%</span>
+                <del class="text-dark"><p id="valor"></p></del>
+                <p class="card-text" id="stock"></p>
               <div class="col-3 my-3 mt-5">
                 <p>CANTIDAD:</p>
                 <input class="form-control" type="number" min="1" max="10" value="1">
@@ -223,7 +224,7 @@
 
 <!-- COMUNES -->
 <script src="Admin/assets/js/comunes.js" ></script>
-<script src="Admin/assets/js/js/Gatos.js"></script>
+<script src="Admin/assets/js/js/infoProduct.js"></script>
 
 </body>
 </html>
