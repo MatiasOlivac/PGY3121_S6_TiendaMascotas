@@ -18,7 +18,7 @@ getUSUARIOS = () => {
           <td>${value.AP_PATERNO}</td>
           <td>${value.AP_MATERNO}</td>
           <td>${value.RUT}</td>
-          <td>${value.CONTRASEÑA}</td>
+          <td><input type="password" value="${value.CONTRASEÑA}" readonly></td>
           <td>${value.CORREO}</td>      
           <td>${value.COMUNA}</td>
           <td>${value.DIRECCION}</td>
