@@ -13,9 +13,6 @@
   <!-- logotipo -->
   <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-  <!-- logotipo -->
-  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
-
   <!-- Fonts and icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -28,7 +25,7 @@
 
   <!-- Navbar_AdminPromociones-->
   <nav class="navbar navbar-expand-lg border-bottom text-dark">
-    <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
+   
     <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse"
       data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -73,7 +70,6 @@
   </nav>
   <!-- Fin navbar -->
 
-  <!-- Inicio registro Promociones -->
   <div class="container mt-5">
     <div class="row justify-content-md-center">
       <div class="col-sm-9">
@@ -84,45 +80,40 @@
               <div class="form-group col-m-4 mt-1">
                 <label for="inputFecha_inicioSuscripcion">Fecha de Inicio</label>
                 <input type="date" class="form-control" id="inputFecha_inicioSuscripcion" required>
-                <input type="date" class="form-control" id="inputIdSuscriptorSuscripcion" hidden>
-                <label for="inputFecha_terminoSuscripcion">Fecha de Término</label>
-                <input type="date" class="form-control" id="inputFecha_terminoSuscripcion" required>
-                <input type="text" class="form-control" id="inputIdSuscriptorSuscripcion" hidden>
+                
                 <label for="inputEstadoSuscripcion">Estado</label>
                 <input type="text" class="form-control" id="inputEstadoSuscripcion" required>
-                <input type="text" class="form-control" id="inputIdSuscriptorSuscripcion" hidden>
-                <label for="inputMontoSuscripcion">Monto</label>
-                <input type="number" class="form-control" id="inputMontoSuscripcion" required>
-                <input type="text" class="form-control" id="inputIdSuscriptorSuscripcion" hidden>
                 <label for="inputIdUsuarioSuscripcion">ID Usuario</label>
-                <input type="number" class="form-control" id="inputIdUsuarioSuscripcion" required>
-                <input type="text" class="form-control" id="inputIdSuscriptorSuscripcion" hidden>
+                <input type="text" class="form-control" id="inputIdUsuarioSuscripcion" required>
+                <label for="inputMontoSuscripcion">Monto</label>
+                <input type="text" class="form-control" id="inputMontoSuscripcion" required>
               </div>
               <div class="col-5 m-2">
                 <a id="btnAgregarSuscripcion" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
                 <a id="btnModificarSuscripcion" class="btn btn-info col-md-4 mt-1 mt-4">Confirmar</a>
                 <a id="btnCancelarEditarSuscripcion" class="btn btn-danger col-md-4 mt-1 mt-4">Cancelar</a>
               </div>
-            </div>
-            <div class="row mt-4 mb-4">
-              <div class="col-sm-12">
-                <div class="card" style="height: 100%;">
-                  <div class="card-body">
-                    <h5 class="card-title">Suscripciones</h5>
-                    <div class="table-responsive">
-                      <table class="table" id="tablaSuscripcion">
-                        <thead class="thead-dark">
-                          <tr>
-                            <th scope="col">ID_SUSCRIPTOR</th>
-                            <th scope="col">FECHA_INICIO</th>
-                            <th scope="col">ESTADO_SUSCRIPCION</th>
-                            <th scope="col">FECHA_TERMINO</th>
-                            <th scope="col">MONTO</th>
-                            <th scope="col">ID_USUARIO</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
+              </div>
+              <div class="row mt-4 mb-4">
+                <div class="col-sm-12">
+                  <div class="card" style="height: 100%;">
+                    <div class="card-body">
+                      <h5 class="card-title">Suscripciones</h5>
+                      <div class="table-responsive">
+                        <table class="table" id="tablaSuscripcion">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">ID_SUSCRIPTOR</th>
+                              <th scope="col">FECHA_INICIO</th>
+                              <th scope="col">FECHA_TERMINO</th>
+                              <th scope="col">ESTADO</th>
+                              <th scope="col">ID_USUARIO</th>
+                              <th scope="col">MONTO</th>
+                              <th scope="col">ACCIONES</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tablaSuscripcionBody">
+                          </tbody>
                       </table>
                     </div>
                   </div>
@@ -134,14 +125,11 @@
       </div>
     </div>
   </div>
-  <!-- Fin Registro Promocion -->
-
-  <!-- Inicio Tabla Promocion -->
-
-  <!-- Fin Tabla Promocion -->
 
 </body>
 
+
+<script> var API_URL = "http://localhost:5500/API";</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -152,112 +140,100 @@ crossorigin="anonymous"></script>
 integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
 crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
-<!-- COMUNES -->
-<script src="assets/js/comunes.js" ></script>
+
+
 
 
 <script>
 
-// Buscar las Suscripciones en la API
+//buscar las Promociones en la api
+ 
 $(document).ready(function() {
-  getSuscripcion();
+  getSuscripciones();
 });
 
-getSuscripcion = () => {
-  $(document).ready(function() {
-    $.ajax({
-      url: `${API_URL}/Suscripcion`,
-      type: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        $.each(data, function(index, value) {
-          // Obtener los datos de la suscripción
-          var idSuscriptor = value.ID_SUSCRIPTOR;
-          var fechaInicio = value.FECHA_INICIO;
-          var estadoSuscripcion = value.ESTADO_SUSCRIPCION;
-          var fechaTermino = value.FECHA_TERMINO;
-          var monto = value.MONTO;
-          var idUsuario = value.ID_USUARIO;
+getSuscripciones = () => {
+  $.ajax({
+    url: `${API_URL}/Suscripcion`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(suscripciones) {
+      suscripciones.forEach(function(suscripcion) {
+        var idSuscriptor = suscripcion.ID_SUSCRIPTOR;
+        var fechaInicio = moment(suscripcion.FECHA_INICIO).format('YYYY-MM-DD');
+        var fechaTermino = moment(suscripcion.FECHA_TERMINO).format('YYYY-MM-DD');
+        var estado = suscripcion.ESTADO;
+        var idUsuario = suscripcion.ID_USUARIO;
+        var monto = suscripcion.MONTO;
 
-          // Realizar consulta a tabla usuario
-          $.ajax({
-            url: `${API_URL}/AdminProducto/${idUsuario}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(usuario) {
-              var nombreUsuario = usuario.NOMBRE;
-
-              // Agregar los datos de la suscripción a la tabla
-              $('#tablaSuscripcion tbody').append(
-                `<tr>
-                  <th scope="row">${idSuscriptor}</th>
-                  <td>${fechaInicio}</td>
-                  <td>${estadoSuscripcion}</td>
-                  <td>${fechaTermino}</td>
-                  <td>${monto}</td>
-                  <td>${idUsuario}</td>
-                  <td>${nombreUsuario}</td>
-                  <td>
-                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-info btnEditarSuscripcion"><i class="fa-solid fa-pencil"></i></button>
-                      <button type="button" class="btn btn-danger btnEliminarSuscripcion"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                  </td>
-                </tr>`
-              );
-            }
-          });
-        });
-      }
-    });
+        if (idUsuario !== null && estado !== 0 && estado !== null) {
+          // Agregar los datos al tbody de la tabla
+          $('#tablaSuscripcionBody').append(
+            `<tr>
+              <td>${idSuscriptor}</td>
+              <td>${fechaInicio}</td>
+              <td>${fechaTermino}</td>
+              <td>${estado}</td>
+              <td>${idUsuario}</td>
+              <td>${monto}</td>
+              <td>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-info btnEditarSuscripcion"><i class="fa-solid fa-pencil"></i></button>
+                  <button type="button" class="btn btn-danger btnEliminarSuscripcion"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </td>
+            </tr>`
+          );
+        }
+      });
+    }
   });
 };
 
 
-// Botones invisibles
+
+  //botones invisibles
 $('#btnModificarSuscripcion').hide();
 $('#btnCancelarEditarSuscripcion').hide();
 
-// Añadir suscripción a la lista con jQuery
-$(document).on('click', '#btnAgregarSuscripcion', function(){
-  var fechaInicio = $('#inputFechaInicioSuscripcion').val();
-  var estadoSuscripcion = $('#inputEstadoSuscripcion').val();
-  var fechaTermino = $('#inputFechaTerminoSuscripcion').val();
-  var monto = $('#inputMontoSuscripcion').val();
+// añadir Suscripcion a la lista con jQuery
+$(document).on('click', '#btnAgregarSuscripcion', function() {
+  var fechaInicio = $('#inputFecha_inicioSuscripcion').val();
+  var estado = $('#inputEstadoSuscripcion').val();
   var idUsuario = $('#inputIdUsuarioSuscripcion').val();
+  var monto = $('#inputMontoSuscripcion').val();
+  
+  // Calcular la fecha de término sumando 30 días a la fecha de inicio
+  var fechaTermino = moment(fechaInicio).add(30, 'days').format('YYYY-MM-DD');
 
   $.ajax({
-    url: `${API_URL}/Suscripciones`,
+    url: `${API_URL}/Suscripcion`,
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({
       FECHA_INICIO: fechaInicio,
-      ESTADO_SUSCRIPCION: estadoSuscripcion,
       FECHA_TERMINO: fechaTermino,
-      MONTO: monto,
-      ID_USUARIO: idUsuario
+      ESTADO: estado,
+      ID_USUARIO: idUsuario,
+      MONTO: monto
     }),
-    success: function(respuesta){
-      console.log(respuesta);
+    success: function(respuesta) {
+      Swal.fire(
+        'Suscripcion Ingresada!',
+        'Presione "OK" para continuar.',
+        'success'
+      );
+      limpiarFormulario();
+      actualizarTabla();
     }
   });
-
-  Swal.fire(
-    'Suscripción Ingresada!',
-    'Presione "OK" para continuar.',
-    'success'
-  );
-
-  limpiarFormulario();
-  actualizarTabla();
 });
 
-
-
-// Entregar último id
+//entregar ultimo id
 ultimoId = () => {
-  let ultimoId = $("#tablaSuscripcion tbody tr:last th").text();
+  let ultimoId = $("#tablaPromocion tbody tr:last th").text();
   let value = parseInt(ultimoId) + 1;
   if (isNaN(value)) {
     value = 1;
@@ -265,7 +241,8 @@ ultimoId = () => {
   return value;
 };
 
-// Botón BORRAR
+  
+//botón BORRAR
 $(document).on('click', '.btnEliminarSuscripcion', function(e) {
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -276,103 +253,110 @@ $(document).on('click', '.btnEliminarSuscripcion', function(e) {
   });
 
   swalWithBootstrapButtons.fire({
-    title: '¿Desea eliminar la suscripción?',
-    text: "Se eliminará del registro.",
+    title: 'Desea cambiar el estado de la suscripción?',
+    text: 'El estado se cambiará a 0.',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Sí, Eliminar',
-    cancelButtonText: 'No, Cancelar',
+    confirmButtonText: 'Si, Cambiar estado!',
+    cancelButtonText: 'No, Cancelar!',
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
-      var idSuscripcion = $(this).closest('tr').find('td').eq(0).text();
+      var idSuscripcion = $(this).closest('tr').find('td:first-child').text();
 
+      // Realizar la solicitud PATCH para cambiar el estado a 0
       $.ajax({
-        url: `${API_URL}/Suscripcion/${idSuscripcion}`,
-        type: 'DELETE',
+        url: `${API_URL}/Suscripcion`,
+        type: 'PATCH',
         dataType: 'json',
+        data: JSON.stringify({ ESTADO: 0 }),
+        contentType: 'application/json',
         success: function(respuesta) {
-          console.log('Suscripción eliminada');
+          console.log('Estado de la suscripción cambiado');
+          // Aquí puedes realizar cualquier otra acción que necesites, como actualizar la tabla
           actualizarTabla();
+          swalWithBootstrapButtons.fire(
+            'Estado cambiado!',
+            'Presione "OK" para finalizar.',
+            'success'
+          );
+        },
+        error: function() {
+          swalWithBootstrapButtons.fire(
+            'Error',
+            'No se pudo cambiar el estado de la suscripción.',
+            'error'
+          );
         }
       });
-
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
       swalWithBootstrapButtons.fire(
-        'Suscripción eliminada',
-        'Presione OK para finalizar.',
-        'success'
-      );
-      actualizarTabla();
-    } else if (
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
-      swalWithBootstrapButtons.fire(
-        'Cancelado',
-        'La suscripción está a salvo.',
+        'Cancelado.',
+        'El estado de la suscripción no ha sido cambiado.',
         'error'
       );
     }
   });
 });
 
+function actualizarTabla() {
+  $('#tablaPromocion tbody').empty();
+  getPromociones();
+}
 
-
-// Editar Suscripción
+//Editar Suscripción
 $("#tablaSuscripcion tbody").on("click", ".btnEditarSuscripcion", function(e) {
   $('#btnAgregarSuscripcion').hide();
   $('#btnModificarSuscripcion').show();
   e.preventDefault();
-  var idSuscripcion = $(this).closest('tr').find('th').text();
-  var fechaInicio = $(this).closest('tr').find('td').eq(0).text().trim();
-  var fechaFin = $(this).closest('tr').find('td').eq(1).text().trim();
-  var estadoSuscripcion = $(this).closest('tr').find('td').eq(2).text().trim();
-  var monto = $(this).closest('tr').find('td').eq(3).text().trim();
-  var idUsuario = $(this).closest('tr').find('td').eq(4).text().trim();
+
+  var fila = $(this).closest('tr');
+  var idSuscripcion = fila.find('td:eq(0)').text();
+  var fechaInicio = fila.find('td:eq(1)').text();
+  var fechaFin = fila.find('td:eq(2)').text();
+  var estado = fila.find('td:eq(3)').text();
+  var idUsuario = fila.find('td:eq(4)').text();
+  var monto = fila.find('td:eq(5)').text();
 
   $("#inputIdSuscripcion").val(idSuscripcion);
-  $("#inputFechaInicioSuscripcion").val(fechaInicio);
-  $("#inputFechaFinSuscripcion").val(fechaFin);
-  $("#inputEstadoSuscripcion").val(estadoSuscripcion);
-  $("#inputMontoSuscripcion").val(monto);
+  $("#inputFecha_inicioSuscripcion").val(fechaInicio);
+  $("#inputFecha_finSuscripcion").val(fechaFin);
+  $("#inputEstadoSuscripcion").val(estado);
   $("#inputIdUsuarioSuscripcion").val(idUsuario);
+  $("#inputMontoSuscripcion").val(monto);
 
   $('#btnModificarSuscripcion').show();
   $('#btnCancelarEditarSuscripcion').show();
   $('#btnAgregarSuscripcion').hide();
 });
 
-
-
-// Modificar Suscripción
+//modificar Suscripción
 $("#btnModificarSuscripcion").click(function() {
-  let fechaInicio = $("#inputFecha_inicioSuscripcion").val();
-  let estadoSuscripcion = $("#inputEstadoSuscripcion").val();
-  let fechaTermino = $("#inputFecha_terminoSuscripcion").val();
-  let monto = $("#inputMontoSuscripcion").val();
-  let idUsuario = $("#inputIdUsuarioSuscripcion").val();
-  let idSuscriptor = $("#inputIdSuscriptor").val();
-
-  console.log(fechaInicio);
-  console.log(estadoSuscripcion);
-  console.log(fechaTermino);
-  console.log(monto);
-  console.log(idUsuario);
-  console.log(idSuscriptor);
+  var idSuscripcion = $("#inputIdSuscripcion").val();
+  var fechaInicio = $("#inputFecha_inicioSuscripcion").val();
+  var fechaFin = $("#inputFecha_finSuscripcion").val();
+  var estado = $("#inputEstadoSuscripcion").val();
+  var idUsuario = $("#inputIdUsuarioSuscripcion").val();
+  var monto = $("#inputMontoSuscripcion").val();
 
   $.ajax({
-    url: `${API_URL}/Suscripciones/${idSuscriptor}`,
+    url: `${API_URL}/Suscripcion`,
     type: 'PATCH',
     contentType: 'application/json',
     crossDomain: true,
     data: JSON.stringify({
       FECHA_INICIO: fechaInicio,
-      ESTADO_SUSCRIPCION: estadoSuscripcion,
-      FECHA_TERMINO: fechaTermino,
-      MONTO: monto,
-      ID_USUARIO: idUsuario
+      FECHA_TERMINO: fechaFin,
+      ESTADO: estado,
+      ID_USUARIO: idUsuario,
+      MONTO: monto
     }),
     success: function(respuesta) {
-      console.log("modificado");
+      Swal.fire(
+        'Suscripción modificada!',
+        'Presione "OK" para finalizar.',
+        'success'
+      );
       limpiarFormulario();
       actualizarTabla();
       $('#btnCancelarEditarSuscripcion').hide();
@@ -382,7 +366,7 @@ $("#btnModificarSuscripcion").click(function() {
   });
 });
 
-// Botón CANCELAR EDICIÓN
+//boton CANCELAR EDICION
 $("#btnCancelarEditarSuscripcion").click(function() {
   limpiarFormulario();
   $('#btnCancelarEditarSuscripcion').hide();
@@ -390,17 +374,17 @@ $("#btnCancelarEditarSuscripcion").click(function() {
   $('#btnAgregarSuscripcion').show();
 });
 
-// Limpiar formulario
+//limpiar formulario
 function limpiarFormulario() {
+  $("#inputIdSuscripcion").val('');
   $("#inputFecha_inicioSuscripcion").val('');
+  $("#inputFecha_finSuscripcion").val('');
   $("#inputEstadoSuscripcion").val('');
-  $("#inputFecha_terminoSuscripcion").val('');
-  $("#inputMontoSuscripcion").val('');
   $("#inputIdUsuarioSuscripcion").val('');
-  $("#inputIdSuscriptor").val('');
-}
+  $("#inputMontoSuscripcion").val('');
+};
 
-// Actualizar tabla
+//actualizar tabla
 function actualizarTabla() {
   $('#tablaSuscripcion tbody').empty();
   getSuscripciones();

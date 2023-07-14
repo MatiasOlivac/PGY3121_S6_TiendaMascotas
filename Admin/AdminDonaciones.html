@@ -1,309 +1,378 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link href="styloAdmin.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="styloAdmin.css" rel="stylesheet" />
 
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+  <!-- logotipo -->
+  <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
 
-    <!-- logotipo -->
-    <link rel="icon" type="image/x-icon" href="src/Logotipo.png">
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Fonts and icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Administrar Promociones</title>
+</head>
 
-    <title>Administrar Roles</title>
-  </head>
-  <body>
+<body>
 
-    <!-- Navbar_AdminProducto-->
-    <nav class="navbar navbar-expand-lg border-bottom text-dark">
-      <a class="navbar-brand"><img src="/src/Logotipo.png" alt="Logo" height="90px" class="rounded-circle border"></a>
-      <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-              aria-expanded="false">
-              Usuarios
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Administrar Usuarios</a>
-              <a class="dropdown-item active" href="AdminDonaciones.html">Visualizar Donaciones</a>
-              <a class="dropdown-item" href="AdminRoles.html">Roles</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-              aria-expanded="false">
-              Productos
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="AdminProducto.html">Ingreso de Productos</a>
-              <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
-              <a class="dropdown-item" href="AdminVenta.html">Ventas</a>
-              <a class="dropdown-item" href="AdminDespacho.html">Despachos</a>
-              <a class="dropdown-item" href="AdminSeguimiento.html">Seguimiento</a>
-              <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <nav class="navbar navbar-expand-lg">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link mr-4 text-dark" href="/Login.html">Cerrar Sesion</a>
-          </li>
-        </ul>
-      </nav>
-    </nav>
-<!-- Fin navbar -->
-
-<div class="container">
-
-  <div class="row justify-content-md-center border-dark">
-      <div class="col-sm-6">
-        <div class="card m-2 border border-primary">
-          <div class="card-body">
-            <h5 class="card-title">Registro de Donaciones</h5>
-    
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputPrimerNombre">Id Donacion</label>
-                <input type="text" class="form-control border border-success" id="inputIdDonacion">
-                <input type="text" class="form-control" id="inputIdusuario" hidden>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputSegundoNombre">Fecha</label>
-                <input type="text" class="form-control" placeholder="dd/mm/aa" id="inputFecha">
-              </div>
-            </div>
-    
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputApellidoPaterno">Monto</label>
-                <input type="text" class="form-control" placeholder="$ CLP" id="inputmonto">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputApellidoMaterno">Id Usuario</label>
-                <input type="text" class="form-control" id="inputidUsuario">
-              </div>
-            </div>
-    
-            
-
-        </div>
-          <div class="btn-group btn-group-sm m-2 " role="group" aria-label="Basic example">
-            <a id="btnAgregarUsuario" class="btn btn-primary w-25">Registrar</a>
-            
+  <!-- Navbar_AdminPromociones-->
+  <nav class="navbar navbar-expand-lg border-bottom text-dark">
+   
+    <button class="navbar-toggler " style="background: #a0d6ef91;" type="button" data-toggle="collapse"
+      data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Usuarios
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Administrar Usuarios</a>
+            <a class="dropdown-item" href="AdminDonaciones.html">Visualizar Donaciones</a>
+            <a class="dropdown-item" href="AdminRoles.html">Administrar Roles</a>
           </div>
-      </div>
-  </div>
-</div>
-  
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Productos
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="AdminProducto.html">Ingreso de Productos</a>
+            <a class="dropdown-item" href="AdminEspecies.html">Especies</a>
+            <a class="dropdown-item" href="AdminVenta.html">Ventas</a>
+            <a class="dropdown-item" href="AdminDespacho.html">Despachos</a>
+              <a class="dropdown-item" href="AdminSeguimiento.html">Seguimiento</a>
+            <a class="dropdown-item" href="AdminDashboard.html">Resultados Ventas/dashboard</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <nav class="navbar navbar-expand-lg">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link mr-4 text-dark" href="/Login.html">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </nav>
+  </nav>
+  <!-- Fin navbar -->
 
-</div>
-
-
-
-</div><div class="row mt-4">
-  <div class="col-sm-12">
-    <div class="card" style="height: 100%;">
-      <div class="card-body">
-
-        <h5 class="card-title">Listado de Donaciones</h5>
-
-        <!-- Tabla de usuarios -->
-        <div class="table-responsive">
-          <table class="table" id="tablaUsuarios">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Id Donacion</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Monto</th>
-                <th scope="col">Id Usuario</th>
-                
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>002727</td>
-                <td>22/02/2023</td>
-                <td>$5.000</td>
-                <td>1213</td>
-                
-                
-                <td>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+  <div class="container mt-5">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-9">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">ADMINISTRAR DONACIONES</h5>
+            <div class="form-row">
+              <div class="form-group col-m-4 mt-1">
+                <label for="inputFechaDonacion">Fecha de Donación</label>
+                <input type="date" class="form-control" id="inputFechaDonacion" required>
+                <label for="inputMontoDonacion">Monto</label>
+                <input type="text" class="form-control" id="inputMontoDonacion" required>
+                <label for="inputEstadoDonacion">Estado</label>
+                <input type="text" class="form-control" id="inputEstadoDonacion" required>
+                <label for="inputIdUsuarioDonacion">ID Usuario</label>
+                <input type="text" class="form-control" id="inputIdUsuarioDonacion" required>
+              </div>
+              <div class="col-5 m-2">
+                <a id="btnAgregarDonacion" class="btn btn-success col-md-4 mt-1 mt-4">Ingresar</a>
+                <a id="btnModificarDonacion" class="btn btn-info col-md-4 mt-1 mt-4">Confirmar</a>
+                <a id="btnCancelarEditarDonacion" class="btn btn-danger col-md-4 mt-1 mt-4">Cancelar</a>
+              </div>
+            </div>
+            <div class="row mt-4 mb-4">
+              <div class="col-sm-12">
+                <div class="card" style="height: 100%;">
+                  <div class="card-body">
+                    <h5 class="card-title">Donaciones</h5>
+                    <div class="table-responsive">
+                      <table class="table" id="tablaDonacion">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">ID_DONACION</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">MONTO</th>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col">ID_USUARIO</th>
+                            <th scope="col">ACCIONES</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tablaDonacionBody">
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>002928</td>
-                <td>18/04/2023</td>
-                <td>$3.000</td>
-                <td>1215</td>
-                <td>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>002928</td>
-                <td>06/04/2023</td>
-                <td>$10.000</td>
-                <td>1218</td>
-                
-                <td>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
-</div>
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-
-
-<!-- sweetalert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!--- Mis scripts -->
-<script> 
-
-    //funcionalidad para agregar los usuarios a la tabla
-    $("#btnAgregarUsuario").click(function(e){
-        e.preventDefault();
-
-        var idDonacion = $("#inputIdDonacion").val();
-        var fecha = $("#inputFecha").val();
-        var monto = $("#inputMonto").val();
-        var idUsuario = $("#inputidUsuario").val();
-        
-        
-
-
-        let fila = `<tr>
-                        <th scope="row">${ultimoId()}</th>
-                        <td>${idDonacion}</td>
-                        <td>${fecha}</td>
-                        <td>${monto}</td>
-                        <td>${idUsuario}</td>
-                        
-                        <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>`;
-        
-       $("#tablaUsuarios").append(fila);
-    })
-
-
-
-    function ultimoId(){
-        let ultimoId = $("#tablaUsuarios tr:last th").text();
-        return parseInt(ultimoId)+1;
-    }
-
-   // borrar linea
-    $(".btnEliminarUsuario").click(function(e){
-        e.preventDefault();
-        $(this).closest('tr').remove();
-    })
-
-    //editar usuario de la tabla
-    $(".btnEditarusuario").click(function(e){
-        e.preventDefault();
-        var idVenta = $(this).closest('tr').find('th').text();
-        var venta = $(this).closest('tr').find('td');
-
-        var idDonacion = venta.eq(0).text();
-        var fecha = venta.eq(1).text();
-        var monto = venta.eq(2).text();
-        var idUsuario = venta.eq(3).text();
-        
-        
-
-        $("#inputIdDonacion").val(idDonacion);
-        $("#inputFecha").val(fecha);
-        $("#inputEstado").val(monto);
-        $("#inputidUsuario").val(idUsuario);
-        
-        
-        
-
-    });
-
-    //boton editar del formulario
-    $("#btnEditarUsuarioTabla").click(function(){
-        var idDonacion = $("#inputIdProducto").val();
-        var fecha = $("#inputFecha").val();
-        var monto = $("#inputEstado").val();
-        var idUsuario = $("#inputidUsuario").val();
-        
-
-        let fila = `<tr>
-                        <th scope="row">${idDonacion}</th>
-                        <td>${fecha}</td>
-                        <td>${monto}</td>
-                        <td>${idUsuario}</td>
-                        
-                        <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success btnEditarusuario"><i class="fa-solid fa-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btnEliminarUsuario"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>`;
-
-    //eliminar la fila que seleccione
-    $(`#tablaUsuarios tr th:contains(${idVenta})`).closest('tr').remove();
-
-    $("#tablaUsuarios").append(fila);
-
-    });
-
-
-
-
-</script>
 </body>
 
+<script> var API_URL = "http://localhost:5500/API";</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 
+
+
+<script>
+
+//buscar las Donaciones en la api
+ 
+$(document).ready(function() {
+  getDonaciones();
+});
+
+function getDonaciones() {
+  $.ajax({
+    url: `${API_URL}/Donacion`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(donaciones) {
+      donaciones.forEach(function(donacion) {
+        var idDonacion = donacion.ID_DONACION;
+        var fecha = moment(donacion.FECHA).format('YYYY-MM-DD');
+        var monto = donacion.MONTO;
+        var estado = donacion.ESTADO;
+        var idUsuario = donacion.ID_USUARIO;
+        console.log(donaciones);
+        if (estado !== 0 && estado !== null) {
+          $('#tablaDonacionBody').append(
+            `<tr>
+              <td>${idDonacion}</td>
+              <td>${fecha}</td>
+              <td>${monto}</td>
+              <td>${estado}</td>
+              <td>${idUsuario}</td>
+              <td>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-info btnEditarDonacion"><i class="fa-solid fa-pencil"></i></button>
+                  <button type="button" class="btn btn-danger btnEliminarDonacion"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </td>
+            </tr>`
+          );
+        }
+      });
+    }
+  });
+}
+
+ // Botones invisibles
+$('#btnModificarDonacion').hide();
+$('#btnCancelarEditarDonacion').hide();
+
+// Añadir donación a la lista con jQuery
+$(document).on('click', '#btnAgregarDonacion', function() {
+  var fecha = $('#inputFechaDonacion').val();
+  var monto = $('#inputMontoDonacion').val();
+  var estado = $('#inputEstadoDonacion').val();
+  var idUsuario = $('#inputIdUsuarioDonacion').val();
+
+  $.ajax({
+    url: `${API_URL}/Donacion`,
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      FECHA: fecha,
+      MONTO: monto,
+      ESTADO: estado,
+      ID_USUARIO: idUsuario
+    }),
+    success: function(respuesta) {
+      Swal.fire(
+        'Donación ingresada!',
+        'Presione "OK" para continuar.',
+        'success'
+      );
+      limpiarFormulario();
+      actualizarTabla();
+    }
+  });
+});
+  
+// Entregar último ID
+ultimoId = () => {
+  let ultimoId = $("#tablaDonacion tbody tr:last td:first-child").text();
+  let value = parseInt(ultimoId) + 1;
+  if (isNaN(value)) {
+    value = 1;
+  }
+  return value;
+};
+
+// Botón BORRAR
+$(document).on('click', '.btnEliminarDonacion', function(e) {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  });
+
+  swalWithBootstrapButtons.fire({
+    title: 'Desea cambiar el estado de la donación?',
+    text: 'El estado se cambiará a 0.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si, Cambiar estado!',
+    cancelButtonText: 'No, Cancelar!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      var idDonacion = $(this).closest('tr').find('td:first-child').text();
+
+      // Realizar la solicitud PATCH para cambiar el estado a 0
+      $.ajax({
+        url: `${API_URL}/Donacion/${idDonacion}`,
+        type: 'PATCH',
+        dataType: 'json',
+        data: JSON.stringify({ ESTADO: 0 }),
+        contentType: 'application/json',
+        success: function(respuesta) {
+          console.log('Estado de la donación cambiado');
+          // Aquí puedes realizar cualquier otra acción que necesites, como actualizar la tabla
+          actualizarTabla();
+          swalWithBootstrapButtons.fire(
+            'Estado cambiado!',
+            'Presione "OK" para finalizar.',
+            'success'
+          );
+        },
+        error: function() {
+          swalWithBootstrapButtons.fire(
+            'Error',
+            'No se pudo cambiar el estado de la donación.',
+            'error'
+          );
+        }
+      });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      swalWithBootstrapButtons.fire(
+        'Cancelado.',
+        'El estado de la donación no ha sido cambiado.',
+        'error'
+      );
+    }
+  });
+});
+
+function actualizarTabla() {
+  $('#tablaDonacion tbody').empty();
+  getDonaciones();
+}
+
+// Editar Donación
+$("#tablaDonacion tbody").on("click", ".btnEditarDonacion", function(e) {
+  $('#btnAgregarDonacion').hide();
+  $('#btnModificarDonacion').show();
+  e.preventDefault();
+
+  var fila = $(this).closest('tr');
+  var idDonacion = fila.find('td:eq(0)').text();
+  var fecha = fila.find('td:eq(1)').text();
+  var monto = fila.find('td:eq(2)').text();
+  var estado = fila.find('td:eq(3)').text();
+  var idUsuario = fila.find('td:eq(4)').text();
+
+  $("#inputIdDonacion").val(idDonacion);
+  $("#inputFechaDonacion").val(fecha);
+  $("#inputMontoDonacion").val(monto);
+  $("#inputEstadoDonacion").val(estado);
+  $("#inputIdUsuarioDonacion").val(idUsuario);
+
+  $('#btnModificarDonacion').show();
+  $('#btnCancelarEditarDonacion').show();
+  $('#btnAgregarDonacion').hide();
+});
+
+//modificar Suscripción
+$("#btnModificarSuscripcion").click(function() {
+  var idSuscripcion = $("#inputIdSuscripcion").val();
+  var fechaInicio = $("#inputFecha_inicioSuscripcion").val();
+  var fechaFin = $("#inputFecha_finSuscripcion").val();
+  var estado = $("#inputEstadoSuscripcion").val();
+  var idUsuario = $("#inputIdUsuarioSuscripcion").val();
+  var monto = $("#inputMontoSuscripcion").val();
+
+  $.ajax({
+    url: `${API_URL}/Suscripciones`,
+    type: 'PATCH',
+    contentType: 'application/json',
+    crossDomain: true,
+    data: JSON.stringify({
+      FECHA_INICIO: fechaInicio,
+      FECHA_TERMINO: fechaFin,
+      ESTADO: estado,
+      ID_USUARIO: idUsuario,
+      MONTO: monto
+    }),
+    success: function(respuesta) {
+      Swal.fire(
+        'Suscripción modificada!',
+        'Presione "OK" para finalizar.',
+        'success'
+      );
+      limpiarFormulario();
+      actualizarTabla();
+      $('#btnCancelarEditarSuscripcion').hide();
+      $('#btnModificarSuscripcion').hide();
+      $('#btnAgregarSuscripcion').show();
+    }
+  });
+});
+
+//boton CANCELAR EDICION
+$("#btnCancelarEditarSuscripcion").click(function() {
+  limpiarFormulario();
+  $('#btnCancelarEditarSuscripcion').hide();
+  $('#btnModificarSuscripcion').hide();
+  $('#btnAgregarSuscripcion').show();
+});
+
+//limpiar formulario
+function limpiarFormulario() {
+  $("#inputIdSuscripcion").val('');
+  $("#inputFecha_inicioSuscripcion").val('');
+  $("#inputFecha_finSuscripcion").val('');
+  $("#inputEstadoSuscripcion").val('');
+  $("#inputIdUsuarioSuscripcion").val('');
+  $("#inputMontoSuscripcion").val('');
+};
+
+//actualizar tabla
+function actualizarTabla() {
+  $('#tablaSuscripcion tbody').empty();
+  getSuscripciones();
+}
+
+</script>
 
 </html>
