@@ -92,7 +92,7 @@ $(document).on('click', '.btnMas', function() {
       Swal.fire({
         icon: 'success',
         title: 'Éxito',
-        text: 'Producto agregado en el carrito correctamente'
+        text: 'Has agregado un producto más, ahora tienes ' + cantidad +' productos: '+ nombre
       })
     },
     error: function (error) {
@@ -200,7 +200,6 @@ $(document).on('click', '.btnMenos', function() {
           }).then(() => {
             // Recargar la tabla de usuarios después de eliminar uno
             $("#tablaCarrito").empty(); // Vaciar la tabla
-            $("#resumenCompra").empty(); // Vaciar la tabla
             getCarrito(); // Volver a cargar los usuarios
           });
         },
