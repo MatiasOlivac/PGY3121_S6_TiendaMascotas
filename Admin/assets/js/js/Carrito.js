@@ -199,6 +199,8 @@ $(document).on('click', '.btnMenos', function() {
               text: response
           }).then(() => {
             // Recargar la tabla de usuarios después de eliminar uno
+            
+            $("#resumenCompra").empty();     
             $("#tablaCarrito").empty(); // Vaciar la tabla
             getCarrito(); // Volver a cargar los usuarios
           });
@@ -212,7 +214,11 @@ $(document).on('click', '.btnMenos', function() {
         }
       });
     }
-  });
+    $("#resumenCompra").empty();     
+    $("#tablaCarrito").empty(); // Vaciar la tabla
+    getCarrito();
+  }
+  );
 });
 
 
