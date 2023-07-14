@@ -143,7 +143,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="resumenCompra">
           <div class="card mb-4">
             <div class="card-body">
               <h4 class="card-title mb-4">Resumen de compra</h4>
@@ -162,194 +162,140 @@
 
 <script>
   $(document).ready(() => {
-    $("#tablaCarrito").empty(); // Vaciar la tabla
+    $("#tablaCarrito").empty(); // Vaciar la tabla    
+    $("#resumenCompra").empty(); // Vaciar la tabla
     getCarrito();
   });
 
   const getCarrito = () => {
-    $.ajax({
-      url: `${API_URL}/Carrito`, //url de carrito en la api documento "app.js"
-      type: `GET`,
-      dataType: `json`,
-      success: (data) => {
-        $.each(data, (index, value) => {
-          $("#tablaCarrito").append(`<tr>
-                <th scope="row">${value.ID_CARRITO}</th>
-                <td><img src=${value.IMAGEN} alt="Product" height="60px" class=""></td>
-                <td>${value.PRODUCTO}</td>
-                <td>
-                  <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-secondary btnMenos" type="button">-</button>
-                    <input type="text" class="form-control w-25 labelMasMenos" placeholder="${value.CANTIDAD}" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                    <button class="btn btn-outline-secondary btnMas" type="button">+</button>
-                  </div>
-                </td>
-                <td id="precio">${value.PRECIO}</td>
-                <td id="subtotal">${value.SUBTOTAL}</td>
-                <td><button class="btn btn-danger btnEliminar">Eliminar</button></td>
-              </tr>              
-              `);
-        });
-        $("#tablaCarrito").append(` 
-          <tr>  
-            <td class="d-flex justify-content-between"><button class="btn btn-danger btnEliminarVenta">Vaciar Carrito</button></td> <!--class(.) btnElminarVenta-->
-          </tr>
-        
+  $.ajax({
+    url: `${API_URL}/Carrito`,
+    type: 'GET',
+    dataType: 'json',
+    success: (data) => {
+      let subtotalResumen = 0;
+
+      $.each(data, (index, value) => {
+        $("#tablaCarrito").append(`
+          <tr>
+            <th scope="row">${value.ID_CARRITO}</th>
+            <td><img src=${value.IMAGEN} alt="Product" height="60px" class=""></td>
+            <td>${value.PRODUCTO}</td>
+            <td>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-outline-secondary btnMenos" type="button">-</button>
+                <input type="text" class="form-control w-25 labelMasMenos" placeholder="${value.CANTIDAD}" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <button class="btn btn-outline-secondary btnMas" type="button">+</button>
+              </div>
+            </td>
+            <td id="precio">${value.PRECIO}</td>
+            <td id="subtotal">${value.SUBTOTAL}</td>
+            <td><button class="btn btn-danger btnEliminar">Eliminar</button></td>
+          </tr>              
         `);
-      },
-      error: (xhr, status, error) => {
-        console.error(error);
-      }
-    });
-  };
 
-
-
-
-  // $(document).ready(() => {
-  //   $(document).on('click', '.btnEliminar', function() {
-  //     var row = $(this).closest('tr');
-  //     var id_carrito = row.find('th').text();
-  //     console.log(id_carrito);
-
-  //     Swal.fire({
-  //       title: '¿Estás seguro?',
-  //       text: 'Esta acción no se puede deshacer',
-  //       icon: 'warning',
-  //       showCancelButton: true,
-  //       confirmButtonText: 'Sí, eliminar',
-  //       cancelButtonText: 'Cancelar'
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         $.ajax({
-  //           url: `${API_URL}/Carrito/${id_carrito}`,
-  //           type: 'DELETE',
-  //           success: (response) => {
-  //             row.remove();
-  //             Swal.fire({
-  //               icon: 'success',
-  //               title: 'Eliminado',
-  //               text: response
-  //             });
-  //           },
-  //           error: (error) => {
-  //             Swal.fire({
-  //               icon: 'error',
-  //               title: 'Error',
-  //               text: 'No se pudo eliminar el producto. Por favor, intenta nuevamente.'
-  //             });
-  //           }
-  //         });
-  //       }
-  //     });
-  //   });
-  // });
-
-
-
-
-  //Borrar Linea
-  $(document).on('click', '.btnEliminar', function (e){
-    e.preventDefault();
-    // Obtener el ID del producto dentro del carrito a eliminar
-    var idProducto = $(this).closest('tr').find('th').text();
-    console.log(idProducto);
-
-    //Mostrar el mensaje de confirmación utilizando SweetAlert2
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Esta acción no se puede deshacer',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed){
-        // Enviar la solicitud de borrado
-        $.ajax({
-          url: `${API_URL}/Carrito/${idProducto}`,
-          type: 'DELETE',
-          success: function (response) {
-            // Mostrar mensaje de éxito
-            Swal.fire({
-              icon: 'success',
-              title: 'Eliminado',
-              text: response
-          }).then(() => {
-            // Recargar la tabla de usuarios después de eliminar uno
-            $("#tablaCarrito").empty(); // Vaciar la tabla
-            getCarrito(); // Volver a cargar los usuarios
-          });
-        },
-        error: function (error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'No se pudo eliminar el usuario. Por favor, intenta nuevamente.'
-          });
-        }
+        subtotalResumen += parseInt(value.SUBTOTAL);
+        console.log(subtotalResumen);
+        totalResumen = subtotalResumen * 1.19
       });
+
+      $("#tablaCarrito").append(` 
+        <tr>  
+          <td class="d-flex justify-content-between"><button class="btn btn-danger btnEliminarVenta">Vaciar Carrito</button></td> <!--class(.) btnElminarVenta-->
+        </tr>                
+      `);
+
+      $("#resumenCompra").append(` <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Resumen de compra</h4>
+              <p class="card-text" id="subTotalResumen"><strong>Subtotal:</strong> $${subtotalResumen}</p> <!--id(#)subTotal-->
+              <p class="card-text" id="iva"><strong>IVA:</strong> 19%</p> <!--id(#)iva-->
+              <p class="card-text" id="totalResumenCompra"><strong>Total:</strong> $${totalResumen}</p> <!--id(#)total-->
+              <button class="btn btn-success btn-block" id="btnPagarTotal">Proceder al pago</button> <!--id(#)btnPagarTotal-->
+            </div>
+          </div>`)
+    },
+
+    error: (xhr, status, error) => {
+      console.error(error);
     }
   });
-});
+};
 
 
-//   function calcularSubtotal() {
-//   let subtotal = 0;
-//   const subtotales = document.querySelectorAll("#tablaCarrito tbody tr");
 
-//   subtotales.forEach((fila) => {
-//     var subtotalProducto = parseFloat(fila.querySelector("td#subtotal").textContent.replace("$", ""));
-//     console.log(subtotalProducto)
-//     subtotal = subtotal + subtotalProducto;
-//     console.log(subtotalProducto)
+//   const getResumen = () => {
+//   $.ajax({
+//     url: `${API_URL}/Carrito`,
+//     type: 'GET',
+//     dataType: 'json',
+//     success: (data) => {
+//       $.each(data, (index, value) => {
+//       const subtotal = data.subtotal;
+//       // Realiza las operaciones que necesites con el subtotal obtenido
+//       console.log('Subtotal:', subtotal);
+
+//     })
+//     },
+//     error: (xhr, status, error) => {
+//       console.error(error);
+//     }
 //   });
+// };
+
+
   
 
-//   const subtotalElement = document.getElementById("subTotal");
-//   if (subtotalElement) {
-//     subtotalElement.textContent = `: $${subtotal.toFixed()}`;
-//   }
-// }
 
-// calcularSubtotal();
-
-
-// function calcularSubtotal() {
-//   let subtotal = 0;
-//   const subtotales = document.querySelectorAll("#tablaCarrito tbody tr");
-
-//   subtotales.forEach((fila) => {
-//     const subtotalProducto = parseInt(fila.querySelector("td#subtotal").textContent.replace("$", ""));
-//     subtotal += subtotalProducto;
+// // Realiza la solicitud HTTP para obtener los datos del carrito desde la API
+//   $.ajax({
+//       url: `${API_URL}/Carrito`, //url de carrito en la api documento "app.js"
+//       type: `GET`,
+//       dataType: `json`, // Especifica que se espera una respuesta en formato JSON
+//     success: function(response) {
+//     // Maneja la respuesta exitosa de la API
+//       const subtotal = response.subtotal; // Obtén el subtotal de la respuesta de la API
+    
+//     // Actualiza el valor del elemento "subTotalResumen" con el subtotal obtenido
+//       $('#subTotalResumen').text(`Subtotal: $${subtotal}`);
+//     },
+//     error: function(error) {
+//     // Maneja el error de la API
+//       console.error('Error al obtener los datos del carrito', error);
+//     }
 //   });
 
-//   const subtotalElement = document.getElementById("subTotalResumen"); 
-//   console.log(subtotalElement);
-//   if (subtotalElement) {
-//     subtotalElement.textContent = `Subtotal: $${subtotal}`;
-//   }
-// }
-
-// calcularSubtotal();
-
-// function calcularTotal() {
-//   const subtotalElement = document.getElementById("subTotalResumen");
-//   const totalElement = document.getElementById("totalResumenCompra");
-
-//   console.log(subtotalElement);
-//   console.log(totalElement)
-
-//   if (subtotalElement && totalElement) {
-//     const subtotal = parseFloat(subtotalElement.textContent.replace("$", ""));
-//     const total = subtotal * 1.19;
-//     totalElement.textContent = `Total: $${total.toFixed(2)}`;
-//   }
-// }
-
-// calcularTotal();
+  
 
 
+
+  //   const getResumen = () => {
+  //   $.ajax({
+  //     url: `${API_URL}/Carrito`, //url de carrito en la api documento "app.js"
+  //     type: `GET`,
+  //     dataType: `json`,
+  //     success: (data) => {
+  //       $.each(data, (index, value) => {
+  //         $.each(data, (index, value) => {
+  //       $("#resumenCompra").append(` 
+  //           <div class="card mb-4">
+  //           <div class="card-body">
+  //             <h4 class="card-title mb-4">Resumen de compra</h4>
+  //             <p class="card-text" id="subTotalResumen"><strong>Subtotal:</strong> $2500</p> <!--id(#)subTotal-->
+  //             <p class="card-text" id="iva"><strong>IVA:</strong> 19%</p> <!--id(#)iva-->
+  //             <p class="card-text" id="totalResumenCompra"><strong>Total:</strong> $5500</p> <!--id(#)total-->
+  //             <button class="btn btn-success btn-block" id="btnPagarTotal">Proceder al pago</button> <!--id(#)btnPagarTotal-->
+  //           </div>
+  //         </div>  
+  //         `);
+  //       });
+             
+  //     },
+  //     error: (xhr, status, error) => {
+  //       console.error(error);
+  //     }
+  //   });
+  // };
 
 
 
