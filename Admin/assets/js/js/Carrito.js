@@ -129,10 +129,12 @@ $(document).on('click', '.btnMenos', function() {
   var nombre = nombreElement.text();
   var id = parseInt(id);
 
-  cantidad = cantidad - 1;
-  var subtotal = cantidad * precio;
+  if (cantidad>1)
+  {
+    cantidad = cantidad - 1;
+    var subtotal = cantidad * precio;
 
-  
+  } 
   var carritoData = {
     CANTIDAD: cantidad,
     ID_CARRITO: id    
@@ -165,6 +167,9 @@ $(document).on('click', '.btnMenos', function() {
       });
     }
   });
+  $("#resumenCompra").empty();     
+  $("#tablaCarrito").empty(); // Vaciar la tabla
+  getCarrito(); // Volver a cargar los usuarios
     
 });
 
